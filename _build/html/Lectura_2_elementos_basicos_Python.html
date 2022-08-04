@@ -1,0 +1,2351 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Introducción a Python - elementos básicos del lenguaje &#8212; Programación Python</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Funciones en Python." href="Lectura_3_Defi_Function_Python.html" />
+    <link rel="prev" title="Introducción a los notebooks y al lenguaje Markdown" href="Lectura_1_Intro_Markdown.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo_python.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Programación Python</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Introducción al book.
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Clases_Python.html">
+   Clases en
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Python
+    </span>
+   </code>
+   (En construcción)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lectura_1_Intro_Markdown.html">
+   Introducción a los notebooks y al lenguaje Markdown
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Introducción a Python - elementos básicos del lenguaje
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lectura_3_Defi_Function_Python.html">
+   Funciones en Python.
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lectura_4_estruc_Datos_Python.html">
+   Estructuras de datos en python.
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lectura_5_Pandas_Series_DataFrame.html">
+   Introducción Libreria
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Pandas
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lectura_6.0_Mas_de_Pandas.html">
+   Más sobre la libreria
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     pandas
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lectura_6.1_operacionesB%C3%A1sicasDataframes.html">
+   Operaciones básicas con dataframes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lectura_7_CruceDatos_TratamientoInformaci%C3%B3n.html">
+   Tratamiento de datos.
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lectura_8_procesamientoDeCadenasDeTexto.html">
+   Manipulación de cadenas de texto.
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lectura_12_Intro_Plotly.html">
+   Introducción a la librería
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Plotly
+    </span>
+   </code>
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/Lectura_2_elementos_basicos_Python.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FLectura_2_elementos_basicos_Python.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/Lectura_2_elementos_basicos_Python.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#metodologia">
+   Metodología
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#elementos-basicos-de-python">
+   <strong>
+    Elementos básicos de Python.
+   </strong>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#instrucciones">
+     <strong>
+      1. Instrucciones
+     </strong>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#comentarios">
+       Comentarios
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#variables">
+     <strong>
+      2. Variables.
+     </strong>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#imprimir-en-python">
+   Imprimir en Python
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#precedencia-de-operadores">
+     Precedencia de operadores
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#probar-el-nivel-de-precedencia-de-la-potencia">
+     Probar el nivel de precedencia de la potencia
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tipos-de-datos">
+   <strong>
+    3. Tipos de datos.
+   </strong>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#capturar-valores-de-entrada">
+     Capturar valores de entrada:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#manejo-de-strings">
+     manejo de strings
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#otras-opciones-con-strings">
+     Otras opciones con strings
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#entrada-proceso-y-salida">
+   <strong>
+    4. Entrada, proceso y salida.
+   </strong>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#estructuras-condicionales">
+   <strong>
+    5. Estructuras condicionales.
+   </strong>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ejercicio">
+     Ejercicio:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tarea-revisar-este-tutorial">
+     Tarea: revisar este tutorial
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#estructuras-ciclicas">
+   <strong>
+    6. Estructuras cíclicas
+   </strong>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Ejercicio:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problemas-a-resolver">
+   Problemas a resolver:
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Introducción a Python - elementos básicos del lenguaje</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#metodologia">
+   Metodología
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#elementos-basicos-de-python">
+   <strong>
+    Elementos básicos de Python.
+   </strong>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#instrucciones">
+     <strong>
+      1. Instrucciones
+     </strong>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#comentarios">
+       Comentarios
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#variables">
+     <strong>
+      2. Variables.
+     </strong>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#imprimir-en-python">
+   Imprimir en Python
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#precedencia-de-operadores">
+     Precedencia de operadores
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#probar-el-nivel-de-precedencia-de-la-potencia">
+     Probar el nivel de precedencia de la potencia
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tipos-de-datos">
+   <strong>
+    3. Tipos de datos.
+   </strong>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#capturar-valores-de-entrada">
+     Capturar valores de entrada:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#manejo-de-strings">
+     manejo de strings
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#otras-opciones-con-strings">
+     Otras opciones con strings
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#entrada-proceso-y-salida">
+   <strong>
+    4. Entrada, proceso y salida.
+   </strong>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#estructuras-condicionales">
+   <strong>
+    5. Estructuras condicionales.
+   </strong>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ejercicio">
+     Ejercicio:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tarea-revisar-este-tutorial">
+     Tarea: revisar este tutorial
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#estructuras-ciclicas">
+   <strong>
+    6. Estructuras cíclicas
+   </strong>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Ejercicio:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problemas-a-resolver">
+   Problemas a resolver:
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="introduccion-a-python-elementos-basicos-del-lenguaje">
+<h1>Introducción a Python - elementos básicos del lenguaje<a class="headerlink" href="#introduccion-a-python-elementos-basicos-del-lenguaje" title="Permalink to this headline">#</a></h1>
+<section id="metodologia">
+<h2>Metodología<a class="headerlink" href="#metodologia" title="Permalink to this headline">#</a></h2>
+<p>Para iniciar en programación se deben aprender algunos conceptos básicos como son los pilares del pensamiento computacional, y para codificar conceptos como: variables, expresiones, condicionales, ciclos, entre otros. Sin embargo, la habilidad de programar para resolver problemas se adquiere mediante la práctica constante.</p>
+<ul class="simple">
+<li><p>La experiencia en la solución de diferentes problemas es un factor fundamental que ayuda a la solución de otros problemas que son parecidos o un poco más complejos. Es decir, que aprender a programar es incremental y se puede realizar mediante el entendimiento de ejemplos.</p></li>
+<li><p>Tenga en cuenta que entre más ejemplos logre apropiar mayores habilidades y técnicas adquiere. Por consiguiente, aprender a programar deber ser una responsabilidad individual y una actividad consciente, puesto que es la persona misma, quien puede experimentar sus conocimientos, habilidades y limitaciones cuando se enfrenta a distintos problemas.</p></li>
+</ul>
+<p>La metodología propuesta en este curso tiene como objetivo que el estudiante practique con ejemplos guíados que ayuden de manera incremental a mejorar sus habilidades en la solución de problemas mediante algoritmos. Para esto se proponen las siguientes actividades en las clases tipo taller:</p>
+<ul class="simple">
+<li><p>Realizar con tiempo la lectura del material propuesto para la clase.</p></li>
+<li><p>En el desarrollo del taller se deben seguir los ejemplos planteados, hacer que funcionen, autoevaluar su entendimiento, preguntar en que otros escenarios se puede usar.</p></li>
+<li><p>Cuando se propongan actividades, es el momento de verificar si se entendió, primero intente resolverlo solo, recurra al material dado, si no es suficiente busque ayuda en la red o con otros compañeros</p></li>
+<li><p>Tómese el tiempo para desarrollar el taller, vaya de acuerdo con el ritmo más apropiado. Siga los diferentes ejemplos, entienda su funcionamiento y modifiquelos conscientemente. La idea, es que las modificaciones que realiza sirvan para autoevaluar su entendimiento.</p></li>
+<li><p>Cuando tenga dificultades, primero siempre trate de solucionarlas usted mismo, para esto, repase material conocido (por tanto es importante mantener el material organizado incluso el que consigue por sus propios medios). Si no logró resolver sus dificultades busque ayuda en compañeros, monitor y/o profesor. Se recomienda que no aplace la solución a sus inquietudes.</p></li>
+</ul>
+</section>
+<section id="elementos-basicos-de-python">
+<h2><strong>Elementos básicos de Python.</strong><a class="headerlink" href="#elementos-basicos-de-python" title="Permalink to this headline">#</a></h2>
+<p>Este tutorial esta escrito en un <strong>Notebook</strong> de <em>Python</em>. El notebook es proporcionado por Anaconda usando un módulo llamado <em>Jupyter</em> o por <em>Google Drive</em> mediante una aplicación llamada <strong>Colaboratory</strong>. El  <strong>Notebook</strong> tiene tres componentes CODE, TEXT y OUTPUT.</p>
+<ul class="simple">
+<li><p>CODE: espacio para escribir un programa usando el lenguaje de python</p></li>
+<li><p>TEXT: espacio para escribir texto con formato, es posible agregar fórmulas, imágenes, tablas, entre otros muchos elementos. Ideal para documentar los trabajos y reportar resultados.</p></li>
+<li><p>OUTPUT: este espacio se genera debajo de un componente de código, cuando este último se ejecuta. Muestra los resultados del programa o los errores en dado caso. Los resultados de la ejecución pueden ser numéricos, texto, gráficas, imágenes, etc.</p></li>
+</ul>
+<p>Para información de referencia en elementos básicos del lenguaje visite: <a class="reference external" href="https://entrenamiento-python-basico.readthedocs.io/es/latest/leccion3/">Covantec cap3</a> o más información de otros elementos: <a class="reference external" href="https://entrenamiento-python-basico.readthedocs.io/es/latest/">Aquí</a></p>
+<section id="instrucciones">
+<h3><strong>1. Instrucciones</strong><a class="headerlink" href="#instrucciones" title="Permalink to this headline">#</a></h3>
+<p>Para observar instrucciones aritméticas, se usa Python como calculadora.</p>
+<p>Para escribir las instrucciones en Python, genere un espacio de código y escriba la operación. Tenga en cuenta que los operadores requieren un orden y en general deben tener dos valores a cada lado. Por ejemplo:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>Operación</p></th>
+<th class="text-align:center head"><p>Siginificado</p></th>
+<th class="text-align:center head"><p>Resultado</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>5032 + 7624 + 365</p></td>
+<td class="text-align:center"><p>sumar valores</p></td>
+<td class="text-align:center"><p>13021</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>18213 - 9567.5</p></td>
+<td class="text-align:center"><p>restar valores</p></td>
+<td class="text-align:center"><p>8645.5</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>13.3 * 8.52</p></td>
+<td class="text-align:center"><p>multiplicación</p></td>
+<td class="text-align:center"><p>113.316</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>35698.7 / 798.23</p></td>
+<td class="text-align:center"><p>división</p></td>
+<td class="text-align:center"><p>44.72232314</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>23 / 8</p></td>
+<td class="text-align:center"><p>División</p></td>
+<td class="text-align:center"><p>2.875</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>23 // 8</p></td>
+<td class="text-align:center"><p>División entera</p></td>
+<td class="text-align:center"><p>2</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>23 % 8</p></td>
+<td class="text-align:center"><p>Módulo de la división</p></td>
+<td class="text-align:center"><p>7</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>13**2</p></td>
+<td class="text-align:center"><p>Potenciación</p></td>
+<td class="text-align:center"><p>169</p></td>
+</tr>
+</tbody>
+</table>
+<p>En un bloque de código pruebe una a una las operaciones de la tabla y verifique el resultado</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pruebe una por una las operaciones de la tabla en esta celda</span>
+<span class="mi">5032</span> <span class="o">+</span> <span class="mi">7624</span> <span class="o">+</span> <span class="mi">365</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>13021
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Resta</span>
+<span class="mi">18213</span> <span class="o">-</span> <span class="mf">9567.5</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8645.5
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Multiplicación</span>
+<span class="mf">13.3</span> <span class="o">*</span> <span class="mf">8.52</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>113.316
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">35698.7</span><span class="o">/</span><span class="mf">798.23</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>44.72232313994713
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">23</span> <span class="o">/</span> <span class="mi">8</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.875
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#  División entera : Se obtiene solamente el cociente de la división</span>
+<span class="mi">23</span> <span class="o">//</span> <span class="mi">8</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Resto de la división</span>
+<span class="mi">23</span> <span class="o">%</span> <span class="mi">8</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7
+</pre></div>
+</div>
+</div>
+</div>
+<section id="comentarios">
+<h4>Comentarios<a class="headerlink" href="#comentarios" title="Permalink to this headline">#</a></h4>
+<p>Note que los comentarios en las celdas de código de python inician con el caracter llamado almohadilla ‘#’.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Esto tiene formato de código</span>
+<span class="c1"># y estas líneas son comentarios</span>
+<span class="sd">&quot;&quot;&quot; cuando se quieren comentarios de</span>
+<span class="sd">    varias líneas en un bloque de código</span>
+<span class="sd">    se pueden usar comillas dobles</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>  <span class="c1"># para tomar un valor entero</span>
+
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># bloque de código para probar</span>
+<span class="c1"># Esto tiene formato de código</span>
+<span class="c1"># y estas líneas son comentarios</span>
+<span class="sd">&quot;&quot;&quot; cuando se quieren comentarios de</span>
+<span class="sd">    varias líneas en un bloque de código</span>
+<span class="sd">    se pueden usar comillas dobles</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>  <span class="c1"># para tomar un valor entero</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="variables">
+<h3><strong>2. Variables.</strong><a class="headerlink" href="#variables" title="Permalink to this headline">#</a></h3>
+<p>Además de las operaciones básicas, lo interesante de la calculadora es cuando se maneja memoria. Para guardar los resultados de las operaciones en memoria se utilizan las <strong>variables</strong>. Estas <strong>variables</strong> también son útiles para guardar todos los valores que se necesiten. Ejemplos son:</p>
+<ul class="simple">
+<li><p>x = 3</p></li>
+<li><p>x1 = -2</p></li>
+<li><p>x2 = 6.28</p></li>
+<li><p>y = 4*x**2</p></li>
+<li><p>u = 45</p></li>
+</ul>
+<p>En el espacio de código cada vez que escriba cada una de estas líneas  ejecute la celda y observe el resultado.</p>
+<p>Ahora, con los valores de las variables anteriores se prueba la siguiente ecuación:</p>
+<div class="math notranslate nohighlight">
+\[Z = 4x^3y - 2x^2y^2 + 10xy^3 + 5x\]</div>
+<p>Es más eficiente utilizar variables que escribir los valores de <span class="math notranslate nohighlight">\(x\)</span> y <span class="math notranslate nohighlight">\(y\)</span> cada vez que se requiere un valor de la función <span class="math notranslate nohighlight">\(Z = f(x,y)\)</span>. Determine el valor de <span class="math notranslate nohighlight">\(Z\)</span> cuando <span class="math notranslate nohighlight">\(x=3.5\)</span> y <span class="math notranslate nohighlight">\(y=0.7\)</span>, pruebe en un bloque de código:</p>
+<ul class="simple">
+<li><p>x = 3.5</p></li>
+<li><p>y = 0.7</p></li>
+<li><p>Z = 4 * x**3 * y - 2 * x**2 * y**2 + 10*x * y**3 + 5*x</p></li>
+</ul>
+<p>El resultado debe ser: 137.55</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pruebe la declaración de variables en esta celda</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mf">3.5</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mf">0.7</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">*</span> <span class="n">y</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">y</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">10</span><span class="o">*</span><span class="n">x</span> <span class="o">*</span> <span class="n">y</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">5</span><span class="o">*</span><span class="n">x</span>
+<span class="n">Z</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>137.55
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="imprimir-en-python">
+<h2>Imprimir en Python<a class="headerlink" href="#imprimir-en-python" title="Permalink to this headline">#</a></h2>
+<p>Es posible que haya notado que el notebook automaticamente imprime la última operación o la variable que se escriba en la línea final. Pero si se quiere imprimir varias veces en un segmento de código se puede usar la función <strong>print</strong> o la función <strong>display</strong>.</p>
+<p>Observe las diferentes formas de imrpimir con la función <strong>print</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">()</span> <span class="c1"># imprime línea en blanco</span>
+<span class="n">x</span> <span class="o">=</span>  <span class="o">-</span><span class="mi">256</span><span class="o">/</span><span class="mi">117</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># imprime valor de x, además del cambio de línea</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Tipo:&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="s1">&#39;Valor:&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s1">&#39;Sin signo:&#39;</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="c1"># imprime 6 veces en la misma línea </span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">22</span>
+<span class="n">c</span> <span class="o">=</span> <span class="mi">333</span>
+<span class="n">d</span> <span class="o">=</span> <span class="mi">4444</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">d</span><span class="p">)</span> <span class="c1"># imprimir valores en cada linea</span>
+
+<span class="c1">#agregar un poco de formato para alinear los valores en la presentación</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Tabla de valores</span><span class="se">\n</span><span class="s1"> a = </span><span class="si">%5d</span><span class="se">\n</span><span class="s1"> b = </span><span class="si">%5d</span><span class="se">\n</span><span class="s1"> c = </span><span class="si">%5d</span><span class="se">\n</span><span class="s1"> d = </span><span class="si">%5d</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Se recomienda revisar algo más de documentación para el manejo de la función print en el siguiente enlace: <a class="reference external" href="https://realpython.com/python-print/">Print Function</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># bloque de código para probar</span>
+<span class="nb">print</span><span class="p">()</span> <span class="c1"># imprime línea en blanco</span>
+
+<span class="n">x</span> <span class="o">=</span>  <span class="o">-</span><span class="mi">256</span><span class="o">/</span><span class="mi">117</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># imprime valor de x, además del cambio de línea</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tipo:&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="s1">&#39;Valor:&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s1">&#39;Sin signo:&#39;</span><span class="p">,</span> <span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="c1"># imprime 6 veces en la misma línea </span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">22</span>
+<span class="n">c</span> <span class="o">=</span> <span class="mi">333</span>
+<span class="n">d</span> <span class="o">=</span> <span class="mi">4444</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">d</span><span class="p">)</span> <span class="c1"># imprimir valores en cada linea</span>
+
+<span class="c1"># agregar un poco de formato para alinear los valores en la presentación</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Tabla de valores</span><span class="se">\n</span><span class="s1"> a = </span><span class="si">%5d</span><span class="se">\n</span><span class="s1"> b = </span><span class="si">%5d</span><span class="se">\n</span><span class="s1"> c = </span><span class="si">%5d</span><span class="se">\n</span><span class="s1"> d = </span><span class="si">%5d</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="p">))</span>
+
+<span class="c1"># Otro formato.</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Tabla de valores</span><span class="se">\n</span><span class="s1"> a = </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="se">\n</span><span class="s1"> b = </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="se">\n</span><span class="s1"> c = </span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="se">\n</span><span class="s1"> d = </span><span class="si">{</span><span class="n">d</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-2.1880341880341883
+Tipo: &lt;class &#39;float&#39;&gt; Valor: -2.1880341880341883 Sin signo: 2.1880341880341883
+1 
+ 22 
+ 333 
+ 4444
+Tabla de valores
+ a =     1
+ b =    22
+ c =   333
+ d =  4444
+Tabla de valores
+ a = 1
+ b = 22
+ c = 333
+ d = 4444
+</pre></div>
+</div>
+</div>
+</div>
+<section id="precedencia-de-operadores">
+<h3>Precedencia de operadores<a class="headerlink" href="#precedencia-de-operadores" title="Permalink to this headline">#</a></h3>
+<p>No todos los operadores tienen la misma jerarquía. La multiplicación, división, módulo y división entera tienen el mismo nivel de precedencia, al igual que la suma y la resta. Pero estos últimos tienen menor precedencia sobre los primeros. Es decir, por ejemplo, que primero es la multiplicación sobre la suma:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># No es lo mismo</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">c</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span> <span class="o">+</span> <span class="n">c</span>
+<span class="n">a</span> <span class="o">*</span> <span class="p">(</span><span class="n">b</span> <span class="o">+</span> <span class="n">c</span><span class="p">)</span>
+<span class="c1"># Sin usar parentesis que sucede?</span>
+</pre></div>
+</div>
+<p>La recomendación es usar parentesis si no se está seguro. Para profundizar en este tema puede consultar <a class="reference external" href="https://www.interactivechaos.com/manual/tutorial-de-python/precedencia-de-operadores">Precedencia en python</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># celda de código para probar</span>
+<span class="c1"># No es lo mismo</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">c</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="nb">print</span><span class="p">((</span><span class="n">a</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span> <span class="o">+</span> <span class="n">c</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="p">(</span><span class="n">b</span> <span class="o">+</span> <span class="n">c</span><span class="p">))</span>
+<span class="c1"># Sin usar parentesis que sucede?</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>11
+16
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="probar-el-nivel-de-precedencia-de-la-potencia">
+<h3>Probar el nivel de precedencia de la potencia<a class="headerlink" href="#probar-el-nivel-de-precedencia-de-la-potencia" title="Permalink to this headline">#</a></h3>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">z</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="n">y</span><span class="p">)</span><span class="o">*</span><span class="n">z</span> 
+<span class="n">x</span><span class="o">**</span><span class="p">(</span><span class="n">y</span><span class="o">*</span><span class="n">z</span><span class="p">)</span>
+<span class="p">(</span><span class="n">z</span><span class="o">/</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="n">y</span>
+<span class="n">z</span><span class="o">/</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>¿Cuál es el nivel de precedencia del operador potencia? es igual?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># celda de código para probar</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">z</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="nb">print</span><span class="p">((</span><span class="n">x</span><span class="o">**</span><span class="n">y</span><span class="p">)</span><span class="o">*</span><span class="n">z</span><span class="p">,</span> <span class="n">x</span><span class="o">**</span><span class="p">(</span><span class="n">y</span><span class="o">*</span><span class="n">z</span><span class="p">),</span> <span class="p">(</span><span class="n">z</span><span class="o">/</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="o">/</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="n">y</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>45 59049 2.777777777777778 0.5555555555555556
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="tipos-de-datos">
+<h2><strong>3. Tipos de datos.</strong><a class="headerlink" href="#tipos-de-datos" title="Permalink to this headline">#</a></h2>
+<p>Los tipos de datos básicos que se pueden identificar en un programa son:</p>
+<ul class="simple">
+<li><p>Numéricos: (valores enteros o que pertenecen a los números reales).</p></li>
+<li><p>Lógicos (Son aquellos que pueden tomar por valor solamente <strong>verdadero</strong> o <strong>falso</strong>).</p></li>
+<li><p>Caracter (Caracter o cadena de caracteres).</p></li>
+</ul>
+<p>A diferencia de otros lenguajes de programación como C o Java que son fuertemente tipados, Python es un lenguaje de programación de <strong>tipado dinámico</strong>. Esto quiere decir que si una variable ha sido declarada en este lenguaje, en cualquier momento usted podrá cambiarle el tipo sin ninguna restricción.</p>
+<p>Lo anterior quiere decir que Python no le exige que defina el tipo de dato de la variable. La asignación del tipo es de forma automática. Sin embargo, usted puede validar el tipo de dato asignado.</p>
+<p>Para profundizar sobre los tipos de datos que maneja Python u obtener documentación se recomienda el siguiente enlace: <a class="reference external" href="https://docs.python.org/3/library/datatypes.html">Python Data Types</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">num_entero</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">num_entero</span><span class="p">))</span>
+<span class="c1"># Tipo de dato real</span>
+<span class="n">num_real</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">num_real</span><span class="p">))</span>
+<span class="c1"># verdadero</span>
+<span class="n">v</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="c1"># Falso</span>
+<span class="n">f</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pruebe los tipos de dato en esta celda</span>
+<span class="n">num_entero</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">num_entero</span><span class="p">))</span>
+<span class="c1"># Tipo de dato real</span>
+<span class="n">num_real</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">num_real</span><span class="p">))</span>
+<span class="c1"># verdadero</span>
+<span class="n">v</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="c1"># Falso</span>
+<span class="n">f</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;int&#39;&gt;
+&lt;class &#39;float&#39;&gt;
+True
+False
+</pre></div>
+</div>
+</div>
+</div>
+<section id="capturar-valores-de-entrada">
+<h3>Capturar valores de entrada:<a class="headerlink" href="#capturar-valores-de-entrada" title="Permalink to this headline">#</a></h3>
+<p>Resulta muy útil interactuar con el usuario del programa para que este sea más flexible. Una forma es pedirle que ingrese valores por la consola de texto usando la función <strong>input</strong>:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># leer de la consola y guardar en la variable valor</span>
+<span class="n">valor</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Ingrese un valor entero positivo:&#39;</span><span class="p">)</span>
+<span class="c1"># imprimir el tipo que recibe y el valor</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;tipo: &#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">valor</span><span class="p">),</span> <span class="s1">&#39;contenido:&#39;</span><span class="p">,</span> <span class="n">valor</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>El siguiente bloque de código produce un error, por que es necesario convertir el valor de entrada para que se pueda usar en operaciones aritméticas. Por ejemplo:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># solicite al usuario ingresar un valor real por la consola de texto</span>
+<span class="n">valor2</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Ingrese un valor real positivo (por ejemplo 0.25):&#39;</span><span class="p">)</span>
+<span class="c1"># observe el tipo de dato </span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;tipo: &#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">valor2</span><span class="p">),</span> <span class="s1">&#39;contenido:&#39;</span><span class="p">,</span> <span class="n">valor2</span><span class="p">)</span>
+<span class="c1"># intente operar con el valor obtenido</span>
+<span class="n">area</span> <span class="o">=</span> <span class="n">valor2</span> <span class="o">*</span> <span class="n">valor2</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;area = &#39;</span><span class="p">,</span> <span class="n">area</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># leer de la consola y guardar en la variable valor</span>
+<span class="n">valor</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Ingrese un valor entero positivo:&#39;</span><span class="p">)</span>
+<span class="c1"># imprimir el tipo que recibe y el valor</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;tipo: &#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">valor</span><span class="p">),</span> <span class="s1">&#39;contenido:&#39;</span><span class="p">,</span> <span class="n">valor</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">StdinNotImplementedError</span><span class="g g-Whitespace">                  </span>Traceback (most recent call last)
+<span class="nn">Input In [14],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># leer de la consola y guardar en la variable valor</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">valor</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Ingrese un valor entero positivo:&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># imprimir el tipo que recibe y el valor</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;tipo: &#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">valor</span><span class="p">),</span> <span class="s1">&#39;contenido:&#39;</span><span class="p">,</span> <span class="n">valor</span><span class="p">)</span>
+
+<span class="nn">File ~/.local/lib/python3.8/site-packages/ipykernel/kernelbase.py:1174,</span> in <span class="ni">Kernel.raw_input</span><span class="nt">(self, prompt)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1167</span> <span class="sd">&quot;&quot;&quot;Forward raw_input to frontends</span>
+<span class="g g-Whitespace">   </span><span class="mi">1168</span><span class="sd"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">1169</span><span class="sd"> Raises</span>
+<span class="g g-Whitespace">   </span><span class="mi">1170</span><span class="sd"> ------</span>
+<span class="g g-Whitespace">   </span><span class="mi">1171</span><span class="sd"> StdinNotImplementedError if active frontend doesn&#39;t support stdin.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1172</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1173</span> <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_allow_stdin</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1174</span>     <span class="k">raise</span> <span class="n">StdinNotImplementedError</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1175</span>         <span class="s2">&quot;raw_input was called, but this frontend does not support input requests.&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1176</span>     <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1177</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_input_request</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1178</span>     <span class="nb">str</span><span class="p">(</span><span class="n">prompt</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1179</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_parent_ident</span><span class="p">[</span><span class="s2">&quot;shell&quot;</span><span class="p">],</span>
+<span class="g g-Whitespace">   </span><span class="mi">1180</span>     <span class="bp">self</span><span class="o">.</span><span class="n">get_parent</span><span class="p">(</span><span class="s2">&quot;shell&quot;</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1181</span>     <span class="n">password</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1182</span> <span class="p">)</span>
+
+<span class="ne">StdinNotImplementedError</span>: raw_input was called, but this frontend does not support input requests.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ahora intente ejecutar el siguiente bloque y compare con el anterior, qué fue lo que sucedió?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ahora convierta el valor a float</span>
+<span class="n">fvalor</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">valor2</span><span class="p">)</span>
+<span class="c1"># intente operar con el valor convertido</span>
+<span class="n">area</span> <span class="o">=</span> <span class="n">fvalor</span><span class="o">*</span><span class="n">fvalor</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;area = &#39;</span><span class="p">,</span> <span class="n">area</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># celda de código para probar</span>
+<span class="c1"># solicite al usuario ingresar un valor real por la consola de texto</span>
+<span class="n">valor2</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Ingrese un valor real positivo (por ejemplo 0.25):&#39;</span><span class="p">)</span>
+<span class="c1"># observe el tipo de dato </span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;tipo: &#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">valor2</span><span class="p">),</span> <span class="s1">&#39;contenido:&#39;</span><span class="p">,</span> <span class="n">valor2</span><span class="p">)</span>
+<span class="c1"># intente operar con el valor obtenido</span>
+<span class="n">area</span> <span class="o">=</span> <span class="n">valor2</span> <span class="o">*</span> <span class="n">valor2</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;area = &#39;</span><span class="p">,</span> <span class="n">area</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tipo:  &lt;class &#39;str&#39;&gt; contenido: 0,25
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">/home/andres/Documentos/Book_Programacion/Lectura_2_elementos_basicos_Python.ipynb Cell 26&#39;</span> in <span class="ni">&lt;cell line: 7&gt;</span><span class="nt">()</span>
+      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/home/andres/Documentos/Book_Programacion/Lectura_2_elementos_basicos_Python.ipynb#ch0000026?line=4&#39;</span><span class="o">&gt;</span><span class="mi">5</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;tipo: &#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">valor2</span><span class="p">),</span> <span class="s1">&#39;contenido:&#39;</span><span class="p">,</span> <span class="n">valor2</span><span class="p">)</span>
+      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/home/andres/Documentos/Book_Programacion/Lectura_2_elementos_basicos_Python.ipynb#ch0000026?line=5&#39;</span><span class="o">&gt;</span><span class="mi">6</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="c1"># intente operar con el valor obtenido</span>
+<span class="o">----&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/home/andres/Documentos/Book_Programacion/Lectura_2_elementos_basicos_Python.ipynb#ch0000026?line=6&#39;</span><span class="o">&gt;</span><span class="mi">7</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">area</span> <span class="o">=</span> <span class="n">valor2</span> <span class="o">*</span> <span class="n">valor2</span>
+      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/home/andres/Documentos/Book_Programacion/Lectura_2_elementos_basicos_Python.ipynb#ch0000026?line=7&#39;</span><span class="o">&gt;</span><span class="mi">8</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;area = &#39;</span><span class="p">,</span> <span class="n">area</span><span class="p">)</span>
+
+<span class="ne">TypeError</span>: can&#39;t multiply sequence by non-int of type &#39;str&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="manejo-de-strings">
+<h3>manejo de strings<a class="headerlink" href="#manejo-de-strings" title="Permalink to this headline">#</a></h3>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Caracter</span>
+<span class="n">c</span> <span class="o">=</span> <span class="s1">&#39;a&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+
+<span class="c1"># Cadena de caracteres. Puede definirse con comilla &#39; &#39; o &quot; &quot;</span>
+<span class="n">cna_caracteres</span> <span class="o">=</span> <span class="s1">&#39;Fundamentos de programación para analítica de datos&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cna_caracteres</span><span class="p">)</span>
+
+<span class="c1"># Cadena de caracteres con cambios de línea</span>
+<span class="n">cna_caracteres</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;Fundamentos de programación.</span>
+<span class="s1">Maestría en analítica de datos&#39;&#39;&#39;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">cna_caracteres</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">cna_caracteres</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pruebe los tipos de dato en esta celda</span>
+<span class="c1"># Caracter</span>
+<span class="n">c</span> <span class="o">=</span> <span class="s1">&#39;a&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;str&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cadena de caracteres. Puede definirse con comilla &#39; &#39; o &quot; &quot;</span>
+<span class="n">cna_caracteres</span> <span class="o">=</span> <span class="s1">&#39;Fundamentos de programación para analítica de datos&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cna_caracteres</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fundamentos de programación para analítica de datos
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cadena de caracteres con cambios de línea</span>
+<span class="n">cna_caracteres</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;Fundamentos de programación.</span>
+<span class="s1">Maestría en analítica de datos&#39;&#39;&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cna_caracteres</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">cna_caracteres</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fundamentos de programación.
+Maestría en analítica de datos
+&lt;class &#39;str&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="otras-opciones-con-strings">
+<h3>Otras opciones con strings<a class="headerlink" href="#otras-opciones-con-strings" title="Permalink to this headline">#</a></h3>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># longitud de cadena de caracteres contando espacios</span>
+<span class="n">long_cnd</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">cna_caracteres</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">long_cnd</span><span class="p">)</span>
+
+<span class="c1"># Contatenar texto</span>
+<span class="n">cnt_texto</span> <span class="o">=</span> <span class="s1">&#39;Esta es una forma &#39;</span> <span class="o">+</span> <span class="s1">&#39;de &#39;</span> <span class="o">+</span> <span class="s1">&#39;hacer &#39;</span> <span class="o">+</span> <span class="s1">&#39;texto concatenado en Python &#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cnt_texto</span><span class="p">)</span>
+
+<span class="n">cnt_texto</span> <span class="o">+=</span> <span class="s1">&#39;y también en otros lenguajes&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cnt_texto</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;manzanas&#39;</span>
+<span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;limones&#39;</span>
+<span class="c1"># %s Define el tipo de dato cadena o caracter y %i entero </span>
+<span class="n">z</span> <span class="o">=</span> <span class="s1">&#39;A mi me gusta comer </span><span class="si">%s</span><span class="s1"> y </span><span class="si">%s</span><span class="s1">, por lo menos </span><span class="si">%i</span><span class="s1"> de cada una&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>¿Cómo concatenar valores que no son cadenas?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pruebe los tipos de dato en esta celda</span>
+<span class="c1"># longitud de cadena de caracteres contando espacios</span>
+<span class="n">long_cnd</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">cna_caracteres</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">long_cnd</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>59
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Contatenar texto</span>
+<span class="n">cnt_texto</span> <span class="o">=</span> <span class="s1">&#39;Esta es una forma &#39;</span> <span class="o">+</span> <span class="s1">&#39;de &#39;</span> <span class="o">+</span> <span class="s1">&#39;hacer &#39;</span> <span class="o">+</span> <span class="s1">&#39;texto concatenado en Python &#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cnt_texto</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Esta es una forma de hacer texto concatenado en Python 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;manzanas&#39;</span>
+<span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;limones&#39;</span>
+<span class="c1"># %s Define el tipo de dato cadena o caracter y %i entero </span>
+<span class="n">z</span> <span class="o">=</span> <span class="s1">&#39;A mi me gusta comer </span><span class="si">%s</span><span class="s1"> y </span><span class="si">%s</span><span class="s1">, por lo menos </span><span class="si">%i</span><span class="s1"> de cada una&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A mi me gusta comer manzanas y limones, por lo menos 3 de cada una
+</pre></div>
+</div>
+</div>
+</div>
+<p>En caso de de ser necesario usted puede convertir un tipo de dato a otro. No es necesario que declare una variable nueva para esto, también puede reasignar el tipo:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Conversión de entero a float</span>
+<span class="n">num</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;num tipo: &#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">num</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;valor de num: &#39;</span><span class="p">,</span> <span class="n">num</span><span class="p">)</span>
+
+<span class="n">num</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;num tipo: &#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">num</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;valor de num: &#39;</span><span class="p">,</span> <span class="n">num</span><span class="p">)</span>
+
+<span class="c1"># Conversión de caracter a entero</span>
+<span class="n">ctr</span> <span class="o">=</span> <span class="s1">&#39;10&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ctr tipo: &#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">ctr</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;valor de ctr: &#39;</span><span class="p">,</span> <span class="n">ctr</span><span class="p">)</span>
+
+<span class="n">ctr</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">ctr</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ctr tipo: &#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">ctr</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;valor de ctr: &#39;</span><span class="p">,</span> <span class="n">ctr</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Si quiere profundizar alrededor de las opciones con cadena de caracteres, acceda al siguiente link: <a class="reference external" href="https://realpython.com/python-strings/">Strings and Character Data in Python</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pruebe la conversión de tipos de datos en esta celda</span>
+<span class="c1"># Conversión de entero a float</span>
+<span class="n">num</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;num tipo: &#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">num</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;valor de num: &#39;</span><span class="p">,</span> <span class="n">num</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>num tipo:  &lt;class &#39;int&#39;&gt;
+valor de num:  5
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;num tipo: &#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">num</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;valor de num: &#39;</span><span class="p">,</span> <span class="n">num</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>num tipo:  &lt;class &#39;float&#39;&gt;
+valor de num:  5.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Conversión de caracter a entero</span>
+<span class="n">ctr</span> <span class="o">=</span> <span class="s1">&#39;10&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ctr tipo: &#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">ctr</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;valor de ctr: &#39;</span><span class="p">,</span> <span class="n">ctr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ctr tipo:  &lt;class &#39;str&#39;&gt;
+valor de ctr:  10
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ctr</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">ctr</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ctr tipo: &#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">ctr</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;valor de ctr: &#39;</span><span class="p">,</span> <span class="n">ctr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ctr tipo:  &lt;class &#39;int&#39;&gt;
+valor de ctr:  10
+</pre></div>
+</div>
+</div>
+</div>
+<p>En Python como en otros lengujes se pueden hacer evaluaciones lógicas entre variables. Se debe recordar el funcionamiento de las tablas de verdad. A continuación se mencionan como ejemplo las tablas de verdad con los diferentes operadores lógicos de conjunción, disyunción y negación.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>a</p></th>
+<th class="text-align:center head"><p>no a ¬(a)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>verdadero (V)</p></td>
+<td class="text-align:center"><p>Falso (F)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>falso (F)</p></td>
+<td class="text-align:center"><p>verdadero (V)</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>a</p></th>
+<th class="text-align:center head"><p>b</p></th>
+<th class="text-align:center head"><p>a y b</p></th>
+<th class="text-align:center head"><p>a o b</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>verdadero (V)</p></td>
+<td class="text-align:center"><p>verdadero (V)</p></td>
+<td class="text-align:center"><p>verdadero (V)</p></td>
+<td class="text-align:center"><p>verdadero (V)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>verdadero (V)</p></td>
+<td class="text-align:center"><p>falso (F)</p></td>
+<td class="text-align:center"><p>falso (F)</p></td>
+<td class="text-align:center"><p>verdadero (V)</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>falso (F)</p></td>
+<td class="text-align:center"><p>verdadero (V)</p></td>
+<td class="text-align:center"><p>falso (F)</p></td>
+<td class="text-align:center"><p>verdadero (V)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>falso (F)</p></td>
+<td class="text-align:center"><p>falso (F)</p></td>
+<td class="text-align:center"><p>falso (F)</p></td>
+<td class="text-align:center"><p>falso (F)</p></td>
+</tr>
+</tbody>
+</table>
+<p>Los operadores lógicos o booleanos básicos son <strong>not</strong> (no),  <strong>and</strong> (y) <strong>or</strong> (o).</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>Operador lógico</p></th>
+<th class="text-align:center head"><p>Expresión lógica</p></th>
+<th class="text-align:center head"><p>Significado</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>not (not), !</p></td>
+<td class="text-align:center"><p>no p (not p)</p></td>
+<td class="text-align:center"><p>negación de p</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>y (and), &amp;</p></td>
+<td class="text-align:center"><p>p y q (p and q)</p></td>
+<td class="text-align:center"><p>conjunción de p y q</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>o (o), $</p></td>
+<td class="text-align:center"><p>$</p></td>
+<td class="text-align:center"><p>p o q (p o q)</p></td>
+</tr>
+</tbody>
+</table>
+<p>Al final de cada linea imprima si es una conjunción o disyunción.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Evaluar falso y verdadero</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span> <span class="ow">and</span> <span class="n">v</span><span class="p">)</span>
+<span class="c1"># Evaluar falso o verdaero</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span> <span class="ow">or</span> <span class="n">v</span><span class="p">)</span>
+<span class="c1"># Evaluar verdadero y verdadero</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">v</span> <span class="ow">and</span> <span class="n">v</span><span class="p">)</span>
+<span class="c1"># Evualuar verdadero y no falso</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">v</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Tenga en cuenta que los operadores también tienen precedencia. De nuevo la recomendación es usar paréntesis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Evaluar falso y verdadero</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span> <span class="ow">and</span> <span class="n">v</span><span class="p">)</span>
+<span class="c1"># Evaluar falso o verdaero</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span> <span class="ow">or</span> <span class="n">v</span><span class="p">)</span>
+<span class="c1"># Evaluar verdadero y verdadero</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">v</span> <span class="ow">and</span> <span class="n">v</span><span class="p">)</span>
+<span class="c1"># Negaciíon de la negación</span>
+<span class="nb">print</span><span class="p">(</span><span class="ow">not</span> <span class="n">f</span><span class="p">)</span>
+<span class="c1"># Evualuar verdadero y no falso</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">v</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+True
+True
+True
+True
+</pre></div>
+</div>
+</div>
+</div>
+<p>A continuación se mencionan otro tipo de expresiones lógicas o booleanas en donde su valor final solo puede tomar <strong>verdadero</strong> (True) o <strong>falso</strong> (False).  Las expresiones lógicas se forman a partir de una posible combinatoria de constantes lógicas, variables lógicas y otras expresiones lógicas tales como <strong>not, and y or</strong> y los <em>operadores relacionales</em> (de relación o comparación) <span class="math notranslate nohighlight">\(=, &lt;, &gt;, &lt;=, &gt;=, !=\)</span> tomando la forma: <em>expresion_1</em> <strong>operador de relación</strong> <em>expresión_2</em>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Comparaciones entre números enteros</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">3</span> <span class="o">&lt;</span> <span class="mi">6</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">0</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">4</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">8</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">5</span> <span class="o">!=</span> <span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Valide las demás opciones que existen sobre los operadores lógicos en Python en el siguiente link: <a class="reference external" href="https://www.tutorialspoint.com/python/python_basic_operators.htm">Python - Basic Operators</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pruebe las expresiones entre números enteros en esta celda</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">3</span> <span class="o">&lt;</span> <span class="mi">6</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">0</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">4</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">8</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">5</span> <span class="o">!=</span> <span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+False
+False
+False
+False
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="entrada-proceso-y-salida">
+<h2><strong>4. Entrada, proceso y salida.</strong><a class="headerlink" href="#entrada-proceso-y-salida" title="Permalink to this headline">#</a></h2>
+<p>Recordando la estructura de un algoritmo, este se encuentra divido de forma general en tres partes: Entrada, Proceso y Salida. Como ejemplo, en un algoritmo que soluciona una receta de cocina se infiere que esta tendrá:</p>
+<p><em>Entrada:</em> Ingredientes y utensilios.</p>
+<p><em>Proceso:</em> Elaboración de la receta en la cocina.</p>
+<p><em>Salida:</em>  Terminación del plato (por ejemplo, cordero).</p>
+<p>Las <strong>entradas</strong> de cualquier algortimo estan sujetas al contexto del problema planteado. Estas le proporcionan al algoritmo los elementos necesarios para realizar su validación una vez este se ha construido.</p>
+<p>Las <strong>salidas</strong> corresponden al resultado posterior a la ejecución del algoritmo. Las salidas deben corroborarse contra el contexto del problema para ver si estas cumplen como solución total (algoritmo general) o de forma parcial (algoritmo de algun subproblema) a la solución del problema.</p>
+<p>Las <strong>entradas</strong> y <strong>salidas</strong> en Python de forma básica pueden ser representadas en variables. También pueden ser en archivos.</p>
+<p><strong>Ejemplo</strong>:  Calcular un vector  unitario <span class="math notranslate nohighlight">\(\vec{u}\)</span> que tenga el mismo sentido que <span class="math notranslate nohighlight">\( \vec{v} = &lt;-10, 20\)</span>. La fórmula de un vector unitario esta dada por: $<span class="math notranslate nohighlight">\( u =\frac{1}{||v||}v  \)</span>$</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Variables para las entradas</span>
+<span class="n">v_x</span> <span class="o">=</span> <span class="o">-</span><span class="mi">10</span>
+<span class="n">v_y</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="c1"># Variables para las salidas</span>
+<span class="n">u_x</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">u_y</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="c1"># Proceso</span>
+<span class="n">mod_v</span> <span class="o">=</span> <span class="p">(</span><span class="n">v_x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">v_y</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">u_x</span> <span class="o">=</span> <span class="n">v_x</span> <span class="o">/</span> <span class="n">mod_v</span>
+<span class="n">u_y</span> <span class="o">=</span> <span class="n">v_y</span> <span class="o">/</span> <span class="n">mod_v</span>
+<span class="c1"># Salidas</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;u = &lt;&#39;</span><span class="p">,</span><span class="n">u_x</span><span class="p">,</span><span class="s1">&#39;, &#39;</span><span class="p">,</span><span class="n">u_y</span><span class="p">,</span><span class="s1">&#39;&#39;</span> <span class="p">)</span>
+
+<span class="c1"># Entradas desde un archivo</span>
+<span class="n">archivo</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;hello.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+<span class="n">archivo</span><span class="o">.</span><span class="n">name</span>
+
+<span class="c1"># Entradas por teclado</span>
+<span class="n">teclado</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Ingrese un valor por teclado: &#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">teclado</span><span class="p">)</span>
+
+<span class="c1"># Convertir la entrada por teclado en el momento de lectura</span>
+<span class="n">teclado</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Ingrese un numérico por teclado: &#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">teclado</span><span class="p">),</span> <span class="n">teclado</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pruebe el algoritmo en esta celda</span>
+<span class="c1"># Entradas desde un archivo</span>
+<span class="n">archivo</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;hello.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+<span class="n">archivo</span><span class="o">.</span><span class="n">name</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;hello.txt&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="estructuras-condicionales">
+<h2><strong>5. Estructuras condicionales.</strong><a class="headerlink" href="#estructuras-condicionales" title="Permalink to this headline">#</a></h2>
+<p>Estas estructuras de permite modificar el orden en el cual se ejecutan las instrucciones de un algoritmo.</p>
+<p>Las <strong>estructuras condicionales</strong> como su nombre lo indica, evaluan una condición. Dentro de esa estructura condicional se pueden escribir un conjunto de instrucciones. Las instrucciones que se encuentren en su interior se ejecutarán si y solo si la condición evaluada resulta verdadera.</p>
+<p>El primer tipo de estructura condicional que puede utilizar se muestra a continuación.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">edad_maria</span> <span class="o">=</span> <span class="mi">56</span>
+<span class="n">edad_alberto</span> <span class="o">=</span> <span class="mi">47</span>
+
+<span class="c1"># Si María es mayor en edad que Alberto entonces:</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">edad_maria</span> <span class="o">&gt;</span> <span class="n">edad_alberto</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;María tiene más años que Alberto.&#39;</span><span class="p">)</span>
+<span class="c1"># De lo contrario:</span>
+<span class="k">else</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Alberto tiene mas años que María.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pruebe las estructuras condicionales en esta celda</span>
+<span class="n">edad_maria</span> <span class="o">=</span> <span class="mi">56</span>
+<span class="n">edad_alberto</span> <span class="o">=</span> <span class="mi">47</span>
+
+<span class="c1"># Si María es mayor en edad que Alberto entonces:</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">edad_maria</span> <span class="o">&lt;</span> <span class="n">edad_alberto</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;María tiene más años que Alberto.&#39;</span><span class="p">)</span>
+<span class="c1"># De lo contrario:</span>
+<span class="k">else</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Alberto tiene mas años que María.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Alberto tiene mas años que María.
+</pre></div>
+</div>
+</div>
+</div>
+<p>También se le podría incluir otra condición a evaluar (puede ser de conjunción, disyunción y/o negación).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">edad_maria</span> <span class="o">=</span> <span class="mi">56</span>
+<span class="n">edad_alberto</span> <span class="o">=</span> <span class="mi">47</span>
+<span class="n">altura_maria</span> <span class="o">=</span> <span class="mf">1.56</span>
+<span class="n">altura_alberto</span> <span class="o">=</span> <span class="mf">1.70</span>
+
+<span class="c1"># Si María es mayor en edad que Alberto entonces:</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">edad_maria</span> <span class="o">&gt;</span> <span class="n">edad_alberto</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;María tiene más años que Alberto&#39;</span><span class="p">)</span>
+  
+  <span class="k">if</span> <span class="p">(</span><span class="n">altura_maria</span> <span class="o">&gt;</span> <span class="n">altura_alberto</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Adicionalmente, es más alta que Alberto.&#39;</span><span class="p">)</span>
+  
+  <span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sin embargo Alberto es más alto.&#39;</span><span class="p">)</span>
+  
+<span class="c1"># De lo contrario:</span>
+<span class="k">else</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Alberto tiene mas años que María.&#39;</span><span class="p">)</span>
+  
+  <span class="k">if</span> <span class="p">(</span><span class="n">altura_maria</span> <span class="o">&lt;</span> <span class="n">altura_alberto</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Adicionalmente, es más alto que María.&#39;</span><span class="p">)</span>
+  
+  <span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sin embargo María es más alta.&#39;</span><span class="p">)</span>
+ 
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pruebe las estructura condicionales anidadas en esta celda</span>
+
+<span class="n">edad_maria</span> <span class="o">=</span> <span class="mi">56</span>
+<span class="n">edad_alberto</span> <span class="o">=</span> <span class="mi">47</span>
+<span class="n">altura_maria</span> <span class="o">=</span> <span class="mf">1.56</span>
+<span class="n">altura_alberto</span> <span class="o">=</span> <span class="mf">1.70</span>
+
+<span class="c1"># Si María es mayor en edad que Alberto entonces:</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">edad_maria</span> <span class="o">&lt;</span> <span class="n">edad_alberto</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;María tiene más años que Alberto&#39;</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">altura_maria</span> <span class="o">&gt;</span> <span class="n">altura_alberto</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Adicionalmente, es más alta que Alberto.&#39;</span><span class="p">)</span>
+
+  <span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sin embargo Alberto es más alto.&#39;</span><span class="p">)</span>
+
+<span class="c1"># De lo contrario:</span>
+<span class="k">else</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Alberto tiene mas años que María.&#39;</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">altura_maria</span> <span class="o">&lt;</span> <span class="n">altura_alberto</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Adicionalmente, es más alto que María.&#39;</span><span class="p">)</span>
+
+  <span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sin embargo María es más alta.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Alberto tiene mas años que María.
+Adicionalmente, es más alto que María.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#### Ingreso de información del usuario.</span>
+<span class="n">edad_maria</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Ingrese la edad de María en años: &quot;</span><span class="p">))</span>
+<span class="n">edad_alberto</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Ingrese la edad de Alberto en años: &quot;</span><span class="p">))</span>
+<span class="n">altura_maria</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Ingrese la altura de María en centímetros: &quot;</span><span class="p">))</span>
+<span class="n">altura_alberto</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Ingrese la altura de Alberto en centímetros: &quot;</span><span class="p">))</span>
+<span class="c1">####</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">altura_maria</span> <span class="o">==</span> <span class="n">altura_alberto</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-----------------------------------------------------------------------------------------&quot;</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;María y alberto tiene una estatura de </span><span class="si">{</span><span class="n">altura_alberto</span><span class="si">}</span><span class="s1">, la cual es la misma misma altura&#39;</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-----------------------------------------------------------------------------------------&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-----------------------------------------------------------------------------------------&quot;</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;María mide </span><span class="si">{</span><span class="n">altura_maria</span><span class="si">}</span><span class="s1"> y Alberto mide </span><span class="si">{</span><span class="n">altura_alberto</span><span class="si">}</span><span class="s1">, asi, tiene distinta estatura&#39;</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-----------------------------------------------------------------------------------------&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-----------------------------------------------------------------------------------------
+María mide 170 y Alberto mide 165, asi, tiene distinta estatura
+-----------------------------------------------------------------------------------------
+</pre></div>
+</div>
+</div>
+</div>
+<section id="ejercicio">
+<h3>Ejercicio:<a class="headerlink" href="#ejercicio" title="Permalink to this headline">#</a></h3>
+<p>Utilizando el ejemplo para captura de datos por teclado, solicite el ingreso de la altura y la edad para María y Alberto e incluya las condiciones necesarias que le permitan determinar si los dos tienen la misma altura.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Una posible solución (Puede ser mejorada)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="s2">&quot;-&quot;</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="mi">30</span><span class="o">*</span><span class="s2">&quot;-&quot;</span><span class="si">}</span><span class="s1"> Bienvenido al programa </span><span class="si">{</span><span class="mi">30</span><span class="o">*</span><span class="s2">&quot;-&quot;</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="s2">&quot;-&quot;</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Se le va solicitar los datos de altura y edad.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="s2">&quot;-&quot;</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="c1">#####</span>
+<span class="n">persona</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Ingrese 1 si usted es María o 2 si es Alberto: &quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">persona</span><span class="p">))</span> <span class="o">==</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">persona</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="nb">int</span><span class="p">(</span><span class="n">persona</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">):</span>
+  <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">persona</span><span class="p">)</span><span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bienvenida María&quot;</span><span class="p">)</span>
+    <span class="n">altura_maria</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;María ingresa tu altura en cm: &quot;</span><span class="p">))</span>
+    <span class="n">edad_maria</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;María ingresa tu edad en años: &quot;</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bienvenido Alberto&quot;</span><span class="p">)</span>
+    <span class="n">altura_alberto</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Alberto ingresa tu altura en centímetros: &quot;</span><span class="p">))</span>
+    <span class="n">edad_alberto</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Alberto ingresa tu edad en años: &quot;</span><span class="p">))</span>
+  <span class="k">else</span><span class="p">:</span> 
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bienvenido Alberto&quot;</span><span class="p">)</span>
+    <span class="n">altura_alberto</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Alberto ingresa tu altura en centímetros: &quot;</span><span class="p">))</span>
+    <span class="n">edad_alberto</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Alberto ingresa tu edad en años: &quot;</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bienvenida María&quot;</span><span class="p">)</span>
+    <span class="n">altura_maria</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;María ingresa tu altura en cm: &quot;</span><span class="p">))</span>
+    <span class="n">edad_maria</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;María ingresa tu edad en años: &quot;</span><span class="p">))</span>
+<span class="k">else</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Debe ingresar 1 si usted es María o 2 si usted es Alberto&quot;</span><span class="p">)</span>
+<span class="c1">#######</span>
+<span class="k">if</span> <span class="n">altura_maria</span> <span class="o">==</span> <span class="n">altura_alberto</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;****************************************************************************&quot;</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;La altura de María y Alberto es la misma. Ambos miden: </span><span class="si">{</span><span class="n">altura_alberto</span><span class="si">}</span><span class="s1"> cm.&#39;</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;****************************************************************************&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;****************************************************************************&quot;</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;María y ALberto tienen alturas distintas&quot;</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;****************************************************************************&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>----------------------------------------------------------------------------------------------------
+------------------------------ Bienvenido al programa ------------------------------
+----------------------------------------------------------------------------------------------------
+Se le va solicitar los datos de altura y edad.
+----------------------------------------------------------------------------------------------------
+Bienvenida María
+Bienvenido Alberto
+****************************************************************************
+María y ALberto tienen alturas distintas
+****************************************************************************
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="tarea-revisar-este-tutorial">
+<h3>Tarea: revisar este tutorial<a class="headerlink" href="#tarea-revisar-este-tutorial" title="Permalink to this headline">#</a></h3>
+<p>Puede ampliar sus conocimientos alrededor de las estructuras condicionales en el siguiente link: <a class="reference external" href="https://realpython.com/python-conditional-statements/">Conditional Statements in Python</a></p>
+</section>
+</section>
+<section id="estructuras-ciclicas">
+<h2><strong>6. Estructuras cíclicas</strong><a class="headerlink" href="#estructuras-ciclicas" title="Permalink to this headline">#</a></h2>
+<p>La estructura ciclica (también llamadas estructura con bucle o repeticiones)  permiten que se ejecute repetidamente un conjunto de instrucciones, bien sea bajo un número pre-determinado de veces o hasta que se verifique y se cumpla una determinada condición.</p>
+<p>Para esto existen dos tipos de estructuras: con <strong>for</strong> (número predeterminado) y <strong>while</strong> (con verificación y se cumplimiento de una condición).</p>
+<p>El <strong>ciclo for</strong> tiene la siguiente estructura:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="o">&lt;</span><span class="n">variable</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">&lt;</span><span class="n">inicio</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">fin</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">incremento</span><span class="o">&gt;</span><span class="p">):</span>
+       <span class="o">&lt;</span><span class="n">instrucciones</span><span class="o">...&gt;</span>    
+</pre></div>
+</div>
+<p>En donde <em><strong>variable</strong></em> corresponde al contador del ciclo, el cual inicia en el valor dado en <em><strong>inicio</strong></em> y termina con el valor dado en <em><strong>fin</strong></em>. Adicionalmente se puede indicar de forma <strong>opcional</strong>  el valor incremental de la variable cada vez que se ejecute el ciclo (por defecto es 1).  En total el ciclo se ejecuta <em><strong>fin-inicio</strong></em> veces. Las <em><strong>instrucciones</strong></em> que a partir de una sangría a la derecha dentro de la instrucción <strong>for</strong>, son las que se repiten. Una vez se han ejecutado todas las instrucciones del ciclo, la variable (contador) se incrementará de acuerdo al valor definido o por defecto en uno (si no especifica incremento).</p>
+<p>Revise el siguiente ejemplo:</p>
+<p>Problema: generar la tabla de multiplicar de un número entre dos y diez</p>
+<ul class="simple">
+<li><p><strong>Entrada</strong>: Número de dos a 10.</p></li>
+<li><p><strong>Salida</strong>: La tabla del número.</p></li>
+</ul>
+<p><strong>Proceso</strong>: imprimir la tabla de un número dado.</p>
+<ol class="simple">
+<li><p>leer numero de entrada.</p></li>
+<li><p>Configurar un ciclo de 1 a 10.</p></li>
+<li><p>Imprimir cada línea de la tabla .</p></li>
+</ol>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Ingrese un valor en el intervalo [2,10]: &#39;</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">):</span>  
+  <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;=&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="p">)</span>  
+</pre></div>
+</div>
+<p>Puede complementar sus conocimientos de estructuras cíclicas con for en el siguiente link: <a class="reference external" href="https://realpython.com/python-for-loop/">lPython “for” Loops (Definite Iteration)</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">##</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pruebe la estructura cíclica con for en esta celda</span>
+<span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Ingrese un valor en el intervalo [2,10]: &#39;</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">):</span>  
+  <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;=&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5 x 1 = 5
+5 x 2 = 10
+5 x 3 = 15
+5 x 4 = 20
+5 x 5 = 25
+5 x 6 = 30
+5 x 7 = 35
+5 x 8 = 40
+5 x 9 = 45
+5 x 10 = 50
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ahora use un doble ciclo para imprimir las tablas desde el 5 hasta el 12.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;=&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-------------&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pruebe la estructura cíclica con for anidado en esta celda</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;=&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-------------&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5 x 1 = 5
+5 x 2 = 10
+5 x 3 = 15
+5 x 4 = 20
+5 x 5 = 25
+5 x 6 = 30
+5 x 7 = 35
+5 x 8 = 40
+5 x 9 = 45
+5 x 10 = 50
+-------------
+6 x 1 = 6
+6 x 2 = 12
+6 x 3 = 18
+6 x 4 = 24
+6 x 5 = 30
+6 x 6 = 36
+6 x 7 = 42
+6 x 8 = 48
+6 x 9 = 54
+6 x 10 = 60
+-------------
+7 x 1 = 7
+7 x 2 = 14
+7 x 3 = 21
+7 x 4 = 28
+7 x 5 = 35
+7 x 6 = 42
+7 x 7 = 49
+7 x 8 = 56
+7 x 9 = 63
+7 x 10 = 70
+-------------
+8 x 1 = 8
+8 x 2 = 16
+8 x 3 = 24
+8 x 4 = 32
+8 x 5 = 40
+8 x 6 = 48
+8 x 7 = 56
+8 x 8 = 64
+8 x 9 = 72
+8 x 10 = 80
+-------------
+9 x 1 = 9
+9 x 2 = 18
+9 x 3 = 27
+9 x 4 = 36
+9 x 5 = 45
+9 x 6 = 54
+9 x 7 = 63
+9 x 8 = 72
+9 x 9 = 81
+9 x 10 = 90
+-------------
+10 x 1 = 10
+10 x 2 = 20
+10 x 3 = 30
+10 x 4 = 40
+10 x 5 = 50
+10 x 6 = 60
+10 x 7 = 70
+10 x 8 = 80
+10 x 9 = 90
+10 x 10 = 100
+-------------
+11 x 1 = 11
+11 x 2 = 22
+11 x 3 = 33
+11 x 4 = 44
+11 x 5 = 55
+11 x 6 = 66
+11 x 7 = 77
+11 x 8 = 88
+11 x 9 = 99
+11 x 10 = 110
+-------------
+12 x 1 = 12
+12 x 2 = 24
+12 x 3 = 36
+12 x 4 = 48
+12 x 5 = 60
+12 x 6 = 72
+12 x 7 = 84
+12 x 8 = 96
+12 x 9 = 108
+12 x 10 = 120
+-------------
+</pre></div>
+</div>
+</div>
+</div>
+<p>El <strong>ciclo while</strong> tiene la siguiente estructura:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="o">&lt;</span><span class="n">expresión</span> <span class="n">lógica</span><span class="o">&gt;</span><span class="p">:</span> 
+       <span class="o">&lt;</span><span class="n">instrucciones</span><span class="o">...&gt;</span>
+</pre></div>
+</div>
+<p>En donde <em><strong>expresión lógica</strong></em> corresponde a la condición del ciclo, si esta se cumple el ciclo se repite y en caso contrario, el ciclo se termina.</p>
+<p>En la programación de ciclos es importante identificar y diseñar de manera adecuada las siguientes partes:</p>
+<ol class="simple">
+<li><p><strong>Inicialización</strong>: corresponde a una variable, la cual hace parte de la condición del ciclo. Esta variable toma un valor antes de iniciar el ciclo.</p></li>
+<li><p><strong>Condición</strong>: Es la responsable de llevar el control del ciclo. Por medio de esta se determina cuando se repite y cuando termina el ciclo. Esta condición se evalua cada vez que se hace una repetición e involucra a la variable del ciclo.</p></li>
+<li><p><strong>Incremento</strong>: En general, corresponde a un cambio en el valor de la variable del ciclo. La clave es que la variable dentro del ciclo, en el momento apropiado, se modifique a algún valor que produzca un cambio en la condición. De tal manera que esta condición no se cumpla y termine el ciclo.</p></li>
+</ol>
+<p>Como ejemplo, se requiere un fragmento de código que permita el validar la nota que corresponde a la calificación de un estudiante de la Universidad Central. La nota es válida si y solo si se encuentra entre un rango de 0 a 5.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">nota</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Ingrese una calificación: &#39;</span><span class="p">))</span>            <span class="c1"># 1. inicialización</span>
+
+<span class="k">while</span> <span class="n">nota</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">nota</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>                                  <span class="c1"># 2. condición</span>
+  <span class="n">nota</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Error: ingrese un valor de 0 a 5: &#39;</span><span class="p">))</span>  <span class="c1"># 3. incremento o cambio de valor </span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;La nota es:&#39;</span><span class="p">,</span> <span class="n">nota</span><span class="p">)</span>                                   <span class="c1"># salida</span>
+
+</pre></div>
+</div>
+<p>Puede ampliar sus conocimientos en estructuras cíclicas con while en el siguiente link: <a class="reference external" href="https://realpython.com/python-while-loop/">Python “while” Loops (Indefinite Iteration)</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pruebe la estructura cíclica con while en esta celda</span>
+<span class="n">nota</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Ingrese una calificación: &#39;</span><span class="p">))</span>            <span class="c1"># 1. inicialización</span>
+
+<span class="k">while</span> <span class="n">nota</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">nota</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>                                  <span class="c1"># 2. condición</span>
+  <span class="n">nota</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Error: ingrese un valor de 0 a 5: &#39;</span><span class="p">))</span>  <span class="c1"># 3. incremento o cambio de valor </span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;La nota es:&#39;</span><span class="p">,</span> <span class="n">nota</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>La nota es: 4.3
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+2
+3
+4
+5
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">####</span>
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">):</span>
+  <span class="n">nota</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ingrese la nota </span><span class="si">{</span><span class="n">num</span><span class="si">}</span><span class="s2">:&quot;</span><span class="p">))</span>
+  <span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="n">nota</span>
+<span class="c1">####</span>
+<span class="n">prom</span> <span class="o">=</span> <span class="n">count</span><span class="o">/</span><span class="n">num</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">prom</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;La nota obtenida es: </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">prom</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s1">. Luego PERDIÓ el curso&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;La nota obtenida es: </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">prom</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s1">. Luego APROBÓ el curso&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>La nota obtenida es: 2.88. Luego PERDIÓ el curso
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ahora construya un programa en el cual se pueda tomar las 5 notas de un estudiante, calcular el promedio y saber si el estudiante aprobó la asignatura. Para aprobar la asignatura, el resultado del promedio de las 5 notas ingresadas debe ser mayor o igual a  3.0.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Construya el programa que da solución al enunciado anterior en esta celda</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;------------------------------------------------------------------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Este programa determina si usted aprobó o no la asignatura&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;------------------------------------------------------------------&quot;</span><span class="p">)</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># Inicializamos un contador.</span>
+<span class="n">notafin</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># Inicializamos un acumulador.</span>
+<span class="k">while</span> <span class="n">i</span><span class="o">&lt;=</span><span class="mi">5</span><span class="p">:</span>
+  <span class="n">nota</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Ingrese la </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1"> calificación: &#39;</span><span class="p">))</span>
+  <span class="n">i</span><span class="o">+=</span><span class="mi">1</span> <span class="c1">## i = i +1</span>
+  <span class="n">notafin</span><span class="o">+=</span><span class="n">nota</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">notafin</span><span class="o">/</span><span class="mi">5</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mf">3.0</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--------------------------------------------------------------&quot;</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Su nota final fué de </span><span class="si">{</span><span class="nb">round</span><span class="p">((</span><span class="n">notafin</span><span class="o">/</span><span class="mi">5</span><span class="p">),</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s1"> y por lo tanto aprobó el curso... :)&#39;</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--------------------------------------------------------------&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;------------------------------------------------------------------&quot;</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Su nota final fué de </span><span class="si">{</span><span class="nb">round</span><span class="p">((</span><span class="n">notafin</span><span class="o">/</span><span class="mi">5</span><span class="p">),</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s1"> y por lo tanto NO aprobó el curso... :(&#39;</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;------------------------------------------------------------------&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------------------------------------------------------------
+Este programa determina si usted aprobó o no la asignatura
+------------------------------------------------------------------
+--------------------------------------------------------------
+Su nota final fué de 3.0 y por lo tanto aprobó el curso... :)
+--------------------------------------------------------------
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Se considera que el usuario ingresa un número entero. #####</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;********************************************************************************************************************&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;********************************************************************************************************************&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Este programa determina si la fecha ingresada está entre el 01 de enero del 2000 y hasta el 31 de diciembre del 2020&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;********************************************************************************************************************&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;********************************************************************************************************************&quot;</span><span class="p">)</span>
+<span class="c1">####</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Debe ingresar tres números: El primero corresponde al dia, el segundo al número del mes y el tercero al año&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;********************************************************************************************************************&quot;</span><span class="p">)</span>
+<span class="c1">####</span>
+<span class="n">day</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Ingrese el número de día: &quot;</span><span class="p">))</span>
+<span class="n">moth</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Ingrese el número del mes: &quot;</span><span class="p">))</span>
+<span class="n">year</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Ingrese el número del año: &quot;</span><span class="p">))</span>
+<span class="c1">####</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;********************************************************************************************************************&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;La fecha ingresa es: día --&gt; </span><span class="si">{</span><span class="n">day</span><span class="si">}</span><span class="s1">, mes --&gt; </span><span class="si">{</span><span class="n">moth</span><span class="si">}</span><span class="s1">, año --&gt; </span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="c1">####</span>
+<span class="k">while</span> <span class="p">(</span><span class="n">year</span><span class="o">&lt;</span><span class="mi">2000</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">year</span><span class="o">&gt;</span><span class="mi">2020</span><span class="p">):</span>
+  <span class="n">year</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Error: Ingrese un año válido: &quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>********************************************************************************************************************
+********************************************************************************************************************
+Este programa determina si la fecha ingresada está entre el 01 de enero del 2000 y hasta el 31 de diciembre del 2020
+********************************************************************************************************************
+********************************************************************************************************************
+Debe ingresar tres números: El primero corresponde al dia, el segundo al número del mes y el tercero al año
+********************************************************************************************************************
+********************************************************************************************************************
+La fecha ingresa es: día --&gt; 22, mes --&gt; 6, año --&gt; 2000
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id1">
+<h2>Ejercicio:<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<p>En un determinado programa se ingresan 3 valores que corresponden a día, mes y año. Dados estos 3 valores el programa debe verificar si la fecha que conforman estos tres números es válida o no. Para ser válida se debe verificar que la fecha esté entre 1 de enero de 2000 y el 31 de diciembre de 2020. Al final convierta el programa en una función llamada: validar_fecha(dia, mes, año).</p>
+<p>Para este ejercicio tenga en cuenta que los meses tienen diferente cantidad de días y que en el año biciesto febrero tiene 29 días.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span><span class="mi">2021</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39; La división modulo 4 de </span><span class="si">{</span><span class="n">num</span><span class="si">}</span><span class="s1"> es </span><span class="si">{</span><span class="n">num</span><span class="o">%</span><span class="mi">4</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> La división modulo 4 de 2000 es 0
+
+ La división modulo 4 de 2001 es 1
+
+ La división modulo 4 de 2002 es 2
+
+ La división modulo 4 de 2003 es 3
+
+ La división modulo 4 de 2004 es 0
+
+ La división modulo 4 de 2005 es 1
+
+ La división modulo 4 de 2006 es 2
+
+ La división modulo 4 de 2007 es 3
+
+ La división modulo 4 de 2008 es 0
+
+ La división modulo 4 de 2009 es 1
+
+ La división modulo 4 de 2010 es 2
+
+ La división modulo 4 de 2011 es 3
+
+ La división modulo 4 de 2012 es 0
+
+ La división modulo 4 de 2013 es 1
+
+ La división modulo 4 de 2014 es 2
+
+ La división modulo 4 de 2015 es 3
+
+ La división modulo 4 de 2016 es 0
+
+ La división modulo 4 de 2017 es 1
+
+ La división modulo 4 de 2018 es 2
+
+ La división modulo 4 de 2019 es 3
+
+ La división modulo 4 de 2020 es 0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Se considera que el usuario ingresa un número entero. #####</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;********************************************************************************************************************&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;********************************************************************************************************************&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Este programa determina si la fecha ingresada está entre el 01 de enero del 2000 y hasta el 31 de diciembre del 2020&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;********************************************************************************************************************&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;********************************************************************************************************************&quot;</span><span class="p">)</span>
+<span class="c1">####</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Debe ingresar tres números: El primero corresponde al dia, el segundo al número del mes y el tercero al año&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;********************************************************************************************************************&quot;</span><span class="p">)</span>
+<span class="c1">####</span>
+<span class="n">day</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Ingrese el número de día: &quot;</span><span class="p">))</span>
+<span class="n">moth</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Ingrese el número del mes: &quot;</span><span class="p">))</span>
+<span class="n">year</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Ingrese el número del año: &quot;</span><span class="p">))</span>
+<span class="c1">####</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;********************************************************************************************************************&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;La fecha ingresa es: día --&gt; </span><span class="si">{</span><span class="n">day</span><span class="si">}</span><span class="s1">, mes --&gt; </span><span class="si">{</span><span class="n">moth</span><span class="si">}</span><span class="s1">, año --&gt; </span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="c1">#### Debe ingresar un número con las condicones numéricas dadas.</span>
+<span class="k">while</span> <span class="p">(</span><span class="n">day</span><span class="o">&gt;</span><span class="mi">31</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">day</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">):</span>
+  <span class="n">day</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Error: Ingrese el día con un valor entre 1 y 31 &quot;</span><span class="p">))</span>
+<span class="k">while</span> <span class="p">(</span><span class="n">moth</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">moth</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">12</span><span class="p">:</span>
+  <span class="n">moth</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Error: Ingrese el mes con un valor entre 1 y 12 &quot;</span><span class="p">))</span>
+<span class="k">while</span> <span class="p">(</span><span class="n">year</span><span class="o">&lt;</span><span class="mi">2000</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">year</span><span class="o">&gt;</span><span class="mi">2020</span><span class="p">):</span>
+  <span class="n">year</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Error: Ingrese el año con un valor entre 2020 y 2020&quot;</span><span class="p">))</span>
+<span class="c1">#### Condiciones de día 31 meses abril, junio, septiembre y noviembre</span>
+<span class="k">while</span> <span class="p">(</span><span class="n">day</span> <span class="o">==</span> <span class="mi">31</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">moth</span><span class="o">==</span><span class="mi">2</span> <span class="ow">or</span> <span class="n">moth</span> <span class="o">==</span> <span class="mi">4</span> <span class="ow">or</span> <span class="n">moth</span> <span class="o">==</span> <span class="mi">6</span> <span class="ow">or</span> <span class="n">moth</span> <span class="o">==</span> <span class="mi">9</span> <span class="ow">or</span> <span class="n">moth</span> <span class="o">==</span> <span class="mi">11</span><span class="p">):</span>
+  <span class="n">moth</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Error: El mes ingresado no tiene día 31. Ingrese un mes válido entre 1 y 12: &quot;</span><span class="p">))</span>
+<span class="c1">### Condicion día 30 de febrero no disponible.</span>
+<span class="k">while</span> <span class="p">(</span><span class="n">day</span> <span class="o">==</span> <span class="mi">30</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">moth</span> <span class="o">==</span> <span class="mi">2</span><span class="p">):</span>
+  <span class="n">moth</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Error: Febrero no tiene día 30. Ingrese un mes válido entre 1 y 12: &quot;</span><span class="p">))</span>
+<span class="c1">### </span>
+<span class="k">while</span> <span class="p">(</span><span class="n">year</span><span class="o">%</span><span class="k">4</span> !=0) and (day==29) and (moth==2):
+  <span class="n">year</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Error: El año ingreado no es bisiestro. Ingrese un año bisiesto entre el año 2000 y 2020: &quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;********************************************************************************************************************&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;La fecha: día --&gt; </span><span class="si">{</span><span class="n">day</span><span class="si">}</span><span class="s1">, mes --&gt; </span><span class="si">{</span><span class="n">moth</span><span class="si">}</span><span class="s1">, año --&gt; </span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s1">, es una fecha correcta&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;********************************************************************************************************************&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>********************************************************************************************************************
+********************************************************************************************************************
+Este programa determina si la fecha ingresada está entre el 01 de enero del 2000 y hasta el 31 de diciembre del 2020
+********************************************************************************************************************
+********************************************************************************************************************
+Debe ingresar tres números: El primero corresponde al dia, el segundo al número del mes y el tercero al año
+********************************************************************************************************************
+********************************************************************************************************************
+La fecha ingresa es: día --&gt; 5, mes --&gt; 6, año --&gt; 2020
+********************************************************************************************************************
+La fecha: día --&gt; 5, mes --&gt; 6, año --&gt; 2020, es una fecha correcta
+********************************************************************************************************************
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span><span class="mi">2021</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">i</span><span class="o">%</span><span class="mi">4</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+1
+2
+3
+0
+1
+2
+3
+0
+1
+2
+3
+0
+1
+2
+3
+0
+1
+2
+3
+0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="problemas-a-resolver">
+<h2>Problemas a resolver:<a class="headerlink" href="#problemas-a-resolver" title="Permalink to this headline">#</a></h2>
+<p>Los siguientes ejercicios tienen como objetivo prácticar la elaboración de algoritmos para resolver los problemas propuestos. Intente realizarlos sin buscar la solución en internet. El segundo punto esta diseñado para resolverlo de manera incremental.</p>
+<ol class="simple">
+<li><p>Haga un programa que recibe 3 valores numéricos válidos y se encarga de mostrar los tres valores ordenados de menor a mayor.</p></li>
+<li><p>Dada la longitud de 3 lados (l1, l2, l3) de un triángulo determine su tipo, es decir si este es equilatero, isósceles o escaleno.</p>
+<ul class="simple">
+<li><p>Ahora resuelva el problema anterior, pero suponga que no tenemos los 3 lados sino los vértices en 2D: (x1, y1, x2, y2, x3, y3)</p></li>
+<li><p>Ahora resuelva el tipo de triángulo pero suponga que tenemos los vértices en 3D (x1, y1, z1; x2, y2, z2; x3, y3, z3)</p></li>
+<li><p>Suponga que ahora se quiere saber si el triángulo formado por los tres vértices en 3D es un triángulo rectángulo</p></li>
+</ul>
+</li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># pruebe los programas en esta celda</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="Lectura_1_Intro_Markdown.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Introducción a los notebooks y al lenguaje Markdown</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Lectura_3_Defi_Function_Python.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Funciones en Python.</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Luis Andres Campos.<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

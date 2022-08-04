@@ -1,0 +1,17 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+chapters:
+- file: Clases_Python
+- file: Lectura_1_Intro_Markdown
+- file: Lectura_2_elementos_basicos_Python
+- file: Lectura_3_Defi_Function_Python
+- file: Lectura_4_estruc_Datos_Python
+- file: Lectura_5_Pandas_Series_DataFrame
+- file: Lectura_6.0_Mas_de_Pandas
+- file: Lectura_6.1_operacionesBásicasDataframes
+- file: Lectura_7_CruceDatos_TratamientoInformación
+- file: Lectura_8_procesamientoDeCadenasDeTexto
+- file: Lectura_12_Intro_Plotly

@@ -1,0 +1,37 @@
+===================================================================================================
+============ El procedimiento para publicar el jupyter-book en Github es la siguiente: ============
+===================================================================================================
+
+    1. Cree un nuevo repositorio en Github sin README.md
+    2. Clone el repositorio en su máquina local:
+
+        a. git clone https://github.com/<my-org>/<my-repository-name>
+
+    3. Copie todos los archivos y ficheros dentro del nuevo repositorio clonado. Si su libro creado
+       en el local lo hizo con: jupyter-book create mylocalbook y su nuevo repositorio es llamado
+       myonlinebook, haga esto en la linea de comandos:
+
+        a. cp -r mylocalbook/* myonlinebook
+    
+    4. Seguido, necesitamos sinconizar los repos local y remoto, haga esto de la siguiente manera:
+
+        cd myonlinebook
+        git add ./*
+        git commit -m "adding my first book!"
+
+
+===================================================================================================
+======================== Publicar el book online con Github Pages =================================
+===================================================================================================
+
+Para usar páginas de Github con el HTML, se debe usar el paquete ghp-import, que es un paquete ligero
+de Python que facilita la inserción de código HTML en un repositorio Github.
+
+Siga estos pasos:
+
+    a. pip install ghp-import
+    b. 
+
+
+        
+     

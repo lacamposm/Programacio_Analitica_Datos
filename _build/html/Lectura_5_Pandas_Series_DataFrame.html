@@ -1,0 +1,1681 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Introducción Libreria Pandas &#8212; Programación Python</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Más sobre la libreria pandas" href="Lectura_6.0_Mas_de_Pandas.html" />
+    <link rel="prev" title="Estructuras de datos en python." href="Lectura_4_estruc_Datos_Python.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo_python.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Programación Python</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Introducción al book.
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Clases_Python.html">
+   Clases en
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Python
+    </span>
+   </code>
+   (En construcción)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lectura_1_Intro_Markdown.html">
+   Introducción a los notebooks y al lenguaje Markdown
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lectura_2_elementos_basicos_Python.html">
+   Introducción a Python - elementos básicos del lenguaje
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lectura_3_Defi_Function_Python.html">
+   Funciones en Python.
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lectura_4_estruc_Datos_Python.html">
+   Estructuras de datos en python.
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Introducción Libreria
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Pandas
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lectura_6.0_Mas_de_Pandas.html">
+   Más sobre la libreria
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     pandas
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lectura_6.1_operacionesB%C3%A1sicasDataframes.html">
+   Operaciones básicas con dataframes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lectura_7_CruceDatos_TratamientoInformaci%C3%B3n.html">
+   Tratamiento de datos.
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lectura_8_procesamientoDeCadenasDeTexto.html">
+   Manipulación de cadenas de texto.
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lectura_12_Intro_Plotly.html">
+   Introducción a la librería
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Plotly
+    </span>
+   </code>
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/Lectura_5_Pandas_Series_DataFrame.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FLectura_5_Pandas_Series_DataFrame.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/Lectura_5_Pandas_Series_DataFrame.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Introducción Libreria
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Pandas
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#libreria-pandas">
+   Librería
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     pandas
+    </span>
+   </code>
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#series">
+     Series
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dataframes">
+     Dataframes.
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conclusiones">
+     Conclusiones:
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#para-tener-en-cuenta">
+     Para tener en cuenta:
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Introducción Libreria Pandas</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Introducción Libreria
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Pandas
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#libreria-pandas">
+   Librería
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     pandas
+    </span>
+   </code>
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#series">
+     Series
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dataframes">
+     Dataframes.
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conclusiones">
+     Conclusiones:
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#para-tener-en-cuenta">
+     Para tener en cuenta:
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="introduccion-libreria-pandas">
+<h1>Introducción Libreria <code class="docutils literal notranslate"><span class="pre">Pandas</span></code><a class="headerlink" href="#introduccion-libreria-pandas" title="Permalink to this headline">#</a></h1>
+<p><strong>Tema:</strong></p>
+<ul class="simple">
+<li><p><strong>Series de Pandas</strong>: Definición y algunos métodos</p></li>
+<li><p><strong>DataFrames de Pandas</strong>: Definición y construcción.</p></li>
+</ul>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="libreria-pandas">
+<h1>Librería <code class="docutils literal notranslate"><span class="pre">pandas</span></code><a class="headerlink" href="#libreria-pandas" title="Permalink to this headline">#</a></h1>
+<p>Será nuestra librería base para trabajar con los <code class="docutils literal notranslate"><span class="pre">dataframe</span></code>, es decir, una estructura de datos bidimensional, donde las columnas serán las variables o características y las filas serán los registro. Es una librería que trabaja a la par con muchas de las librerías de <strong>Python</strong>. Puede consultar más información en la página oficial de <a class="reference external" href="https://pandas.pydata.org/docs/index.html"><code class="docutils literal notranslate"><span class="pre">pandas.</span></code></a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Librerías requeridas</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="series">
+<h2>Series<a class="headerlink" href="#series" title="Permalink to this headline">#</a></h2>
+<p>Vamos a explorar la estructura de serie en <code class="docutils literal notranslate"><span class="pre">pandas</span></code>. Debemos al final estar
+familiarizados en cómo almacenar y manipular datos indexados unidimensionales.</p>
+<p>La serie es una de las estructuras de datos esenciales en <code class="docutils literal notranslate"><span class="pre">pandas</span></code>. Todos los elementos se almacenan en la serie y hay etiquetas con las que se puede recuperarlos. Una forma sencilla de pensar una serie en <code class="docutils literal notranslate"><span class="pre">pandas</span></code> son las columnas de datos. El primero es el índice especial, muy parecido a las llaves o keys de un diccionario. Mientras que el segundo son los datos reales. Es importante tener en cuenta que la columna de datos tiene una etiqueta propia y se puede recuperar.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">estudiantes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Maria&quot;</span><span class="p">,</span> <span class="s2">&quot;Juan&quot;</span><span class="p">,</span> <span class="s2">&quot;Alejandra&quot;</span><span class="p">]</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">estudiantes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0        Maria
+1         Juan
+2    Alejandra
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>El resultado es una serie de <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, los índices son dados automaticamente siguiendo en orden de los números naturales. Además <code class="docutils literal notranslate"><span class="pre">pandas</span></code> identificó el tipo de datos de esta serie como “object” y estandariza el tipo de dato buscando el que mejor corresponda.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">estudiantes</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Maria&quot;</span><span class="p">:</span><span class="s2">&quot;Química&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;Juan&quot;</span><span class="p">:</span> <span class="s2">&quot;Sociales&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;Alejandra&quot;</span><span class="p">:</span> <span class="s2">&quot;Matemáticas&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## En el caso de tener un diccionario las claves o keys serán los índices y los valores la asignación a dicho índice</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">estudiantes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Maria            Química
+Juan            Sociales
+Alejandra    Matemáticas
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">serie</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">estudiantes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">serie</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">serie</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">serie</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;Química&#39;, &#39;Sociales&#39;, &#39;Matemáticas&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Con este método podemos obtener los índices de la Serie de Pandas.</span>
+<span class="n">serie</span><span class="o">.</span><span class="n">index</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;Maria&#39;, &#39;Juan&#39;, &#39;Alejandra&#39;], dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">serie</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;El índice </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1"> tiene el valor </span><span class="si">{</span><span class="n">serie</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>El índice Maria tiene el valor Química
+El índice Juan tiene el valor Sociales
+El índice Alejandra tiene el valor Matemáticas
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># El índice se genera automaticamente desde 0 hasta el número de entradas en la lista.</span>
+<span class="n">numeros</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">numeros</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    1
+1    2
+2    3
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># En las series de pandas puede usted mismo asignar los valores a los índices.</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">numeros</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Uno&quot;</span><span class="p">,</span><span class="s2">&quot;Dos&quot;</span><span class="p">,</span><span class="s2">&quot;Tres&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Uno     1
+Dos     2
+Tres    3
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">serie_1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">&quot;Química&quot;</span><span class="p">,</span> <span class="s2">&quot;Matemáticas&quot;</span><span class="p">,</span> <span class="s2">&quot;Química&quot;</span><span class="p">,</span><span class="s2">&quot;Sociales&quot;</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Maria&quot;</span><span class="p">,</span> <span class="s2">&quot;Juan&quot;</span><span class="p">,</span> <span class="s2">&quot;Carlos&quot;</span><span class="p">,</span><span class="s2">&quot;Alison&quot;</span><span class="p">])</span>
+<span class="n">serie_1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Maria         Química
+Juan      Matemáticas
+Carlos        Química
+Alison       Sociales
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">serie_2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">&quot;Química&quot;</span><span class="p">,</span> <span class="s2">&quot;Matemáticas&quot;</span><span class="p">,</span> <span class="s2">&quot;Química&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Maria&quot;</span><span class="p">,</span> <span class="s2">&quot;Juan&quot;</span><span class="p">,</span> <span class="s2">&quot;Carlos&quot;</span><span class="p">,</span><span class="s2">&quot;Alison&quot;</span><span class="p">])</span>
+<span class="n">serie_2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Maria         Química
+Juan      Matemáticas
+Carlos        Química
+Alison           None
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">serie_2</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Maria     False
+Juan      False
+Carlos    False
+Alison     True
+dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">serie_3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="kc">None</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Maria&quot;</span><span class="p">,</span> <span class="s2">&quot;Juan&quot;</span><span class="p">,</span> <span class="s2">&quot;Carlos&quot;</span><span class="p">,</span><span class="s2">&quot;Alison&quot;</span><span class="p">])</span>
+<span class="n">serie_3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Maria     1.0
+Juan      2.0
+Carlos    3.0
+Alison    NaN
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">serie_3</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Maria     False
+Juan      False
+Carlos    False
+Alison     True
+dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">notas_clase</span> <span class="o">=</span> <span class="p">{</span><span class="mi">99</span><span class="p">:</span> <span class="s1">&#39;Matemáticas&#39;</span><span class="p">,</span>
+              <span class="mi">100</span><span class="p">:</span> <span class="s1">&#39;Química&#39;</span><span class="p">,</span>
+              <span class="mi">101</span><span class="p">:</span> <span class="s1">&#39;Inglés&#39;</span><span class="p">,</span>
+              <span class="mi">102</span><span class="p">:</span> <span class="s1">&#39;Sociales&#39;</span><span class="p">}</span>
+<span class="n">serie_4</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">notas_clase</span><span class="p">)</span>
+<span class="c1">#serie_4[0] # Se generará un error, pues no tenemos el índice 0.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">serie_4</span><span class="p">[</span><span class="mi">99</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Matemáticas&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Nota:</em></p>
+<p>Para el caso en que los índices NO sean los dados por default (es decir iniciando desde el 0 y hasta n-1, donde n en el número de ingresos de la Serie), se puede hacer el llamado por la etiqueta del índice o por la ubicación numérica.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">serie_1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Maria         Química
+Juan      Matemáticas
+Carlos        Química
+Alison       Sociales
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">serie_1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">serie_1</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Química&#39;, &#39;Matemáticas&#39;, &#39;Química&#39;, &#39;Sociales&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">serie_1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">serie_1</span><span class="p">))]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Química&#39;, &#39;Matemáticas&#39;, &#39;Química&#39;, &#39;Sociales&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">serie_1</span><span class="p">[</span><span class="s2">&quot;Maria&quot;</span><span class="p">],</span> <span class="n">serie_1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;Química&#39;, &#39;Química&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Recordemos la serie_1</span>
+<span class="n">serie_1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Maria         Química
+Juan      Matemáticas
+Carlos        Química
+Alison       Sociales
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## el método pd.Series.unique(), permite obtener los valores únicos en la serie.</span>
+<span class="n">serie_1</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Química&#39;, &#39;Matemáticas&#39;, &#39;Sociales&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">serie_2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Maria         Química
+Juan      Matemáticas
+Carlos        Química
+Alison           None
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Podemos anexar a una Serie otra Serie</span>
+<span class="n">serie_1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">serie_2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Maria         Química
+Juan      Matemáticas
+Carlos        Química
+Alison       Sociales
+Maria         Química
+Juan      Matemáticas
+Carlos        Química
+Alison           None
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Podemos hacer el llamado de los elementos en la Serie, se retornarán los elementos que coinciden con ese índice</span>
+<span class="n">serie_1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">serie_2</span><span class="p">)[</span><span class="s1">&#39;Carlos&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Carlos    Química
+Carlos    Química
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Observe que el método .unique(), proporciona la información sobre si tenemos presencia de valores faltantes.</span>
+<span class="n">pegado</span> <span class="o">=</span> <span class="n">serie_1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">serie_2</span><span class="p">)</span>
+<span class="n">pegado</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Química&#39;, &#39;Matemáticas&#39;, &#39;Sociales&#39;, None], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Reemplazar un valor en un índice.</span>
+<span class="n">pegado</span><span class="p">[</span><span class="s2">&quot;Maria&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Artes&quot;</span>
+<span class="n">pegado</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Maria           Artes
+Juan      Matemáticas
+Carlos        Química
+Alison       Sociales
+Maria           Artes
+Juan      Matemáticas
+Carlos        Química
+Alison           None
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Eliminar un índice</span>
+<span class="n">pegado</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;Carlos&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Maria           Artes
+Juan      Matemáticas
+Alison       Sociales
+Maria           Artes
+Juan      Matemáticas
+Alison           None
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Eliminar una lista de índices</span>
+<span class="n">pegado</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;Carlos&quot;</span><span class="p">,</span><span class="s2">&quot;Juan&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Maria        Artes
+Alison    Sociales
+Maria        Artes
+Alison        None
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Note que la Serie original con los métodos anteriores no se ve afectada.</span>
+<span class="n">pegado</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Maria           Artes
+Juan      Matemáticas
+Carlos        Química
+Alison       Sociales
+Maria           Artes
+Juan      Matemáticas
+Carlos        Química
+Alison           None
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Ingresar un nuevo registro.</span>
+<span class="n">pegado</span><span class="p">[</span><span class="s2">&quot;Persona_sin_nombre&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Culinaría&quot;</span>
+<span class="n">pegado</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Maria                       Artes
+Juan                  Matemáticas
+Carlos                    Química
+Alison                   Sociales
+Maria                       Artes
+Juan                  Matemáticas
+Carlos                    Química
+Alison                       None
+Persona_sin_nombre      Culinaría
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Observe que en esta caso tenemos un error, esto debido a que no podemos ingresar un nuevo registro de manera numérica.</span>
+<span class="c1"># pegado[10] = &quot;Culinaría&quot; ## Error en esta linea</span>
+<span class="n">pegado</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Maria                       Artes
+Juan                  Matemáticas
+Carlos                    Química
+Alison                   Sociales
+Maria                       Artes
+Juan                  Matemáticas
+Carlos                    Química
+Alison                       None
+Persona_sin_nombre      Culinaría
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Eliminar los registros faltantes.</span>
+<span class="n">pegado</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Maria                       Artes
+Juan                  Matemáticas
+Carlos                    Química
+Alison                   Sociales
+Maria                       Artes
+Juan                  Matemáticas
+Carlos                    Química
+Persona_sin_nombre      Culinaría
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Eliminar los registros duplicados (por default se queda con el primer registro encontrado.)</span>
+<span class="n">pegado</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Maria                       Artes
+Juan                  Matemáticas
+Carlos                    Química
+Alison                   Sociales
+Alison                       None
+Persona_sin_nombre      Culinaría
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Serie booleana</span>
+<span class="n">pegado</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Maria                 False
+Juan                  False
+Carlos                False
+Alison                False
+Maria                 False
+Juan                  False
+Carlos                False
+Alison                 True
+Persona_sin_nombre    False
+dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="dataframes">
+<h2>Dataframes.<a class="headerlink" href="#dataframes" title="Permalink to this headline">#</a></h2>
+<p>DataFrame es el corazón de la biblioteca de <code class="docutils literal notranslate"><span class="pre">pandas</span></code>. La estructura de datos DataFrame es el objeto principal en el que se trabaja en el análisis de datos y tareas de limpieza.</p>
+<p>El DataFrame es conceptualmente un objeto de serie bidimensional, donde hay un índice y múltiples columnas, cada columna con una etiqueta. De hecho, la distinción entre una columna y una fila es realmente sólo una
+distinción conceptual. Un  DataFrame es una matriz etiquetada de dos ejes.</p>
+<p>Ahora, seguir la guía de <a class="reference external" href="https://towardsdatascience.com/pandas-dataframe-a-lightweight-intro-680e3a212b96">towards data science: dataframes</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">registro1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span><span class="s2">&quot;Nombre&quot;</span><span class="p">:</span> <span class="s1">&#39;Alicia&#39;</span><span class="p">,</span>
+                     <span class="s2">&quot;Asignatura&quot;</span><span class="p">:</span> <span class="s1">&#39;Física&#39;</span><span class="p">,</span>
+                     <span class="s2">&quot;Puntuación&quot;</span><span class="p">:</span> <span class="mi">85</span><span class="p">})</span>
+<span class="n">registro2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span><span class="s1">&#39;Nombre&#39;</span><span class="p">:</span> <span class="s1">&#39;Andrés&#39;</span><span class="p">,</span>
+                       <span class="s1">&#39;Asignatura&#39;</span><span class="p">:</span> <span class="s1">&#39;Química&#39;</span><span class="p">,</span>
+                       <span class="s1">&#39;Puntuación&#39;</span><span class="p">:</span> <span class="mi">82</span><span class="p">})</span>
+<span class="n">registro3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span><span class="s1">&#39;Nombre&#39;</span><span class="p">:</span> <span class="s1">&#39;Helen&#39;</span><span class="p">,</span>
+                       <span class="s2">&quot;Asignatura&quot;</span><span class="p">:</span> <span class="s1">&#39;Biología&#39;</span><span class="p">,</span>
+                       <span class="s2">&quot;Puntuación&quot;</span><span class="p">:</span> <span class="mi">90</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Al igual que una Serie, en caso de no espeficar el index, este será la enumeración que se da en las Series.</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">registro1</span><span class="p">,</span><span class="n">registro2</span><span class="p">,</span><span class="n">registro3</span><span class="p">])</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Nombre</th>
+      <th>Asignatura</th>
+      <th>Puntuación</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Alicia</td>
+      <td>Física</td>
+      <td>85</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Andrés</td>
+      <td>Química</td>
+      <td>82</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Helen</td>
+      <td>Biología</td>
+      <td>90</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">registro1</span><span class="p">,</span><span class="n">registro2</span><span class="p">,</span><span class="n">registro3</span><span class="p">],</span> 
+             <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;estudiante1&quot;</span><span class="p">,</span><span class="s2">&quot;estudiante2&quot;</span><span class="p">,</span><span class="s2">&quot;estudiante3&quot;</span><span class="p">])</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Nombre</th>
+      <th>Asignatura</th>
+      <th>Puntuación</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>estudiante1</th>
+      <td>Alicia</td>
+      <td>Física</td>
+      <td>85</td>
+    </tr>
+    <tr>
+      <th>estudiante2</th>
+      <td>Andrés</td>
+      <td>Química</td>
+      <td>82</td>
+    </tr>
+    <tr>
+      <th>estudiante3</th>
+      <td>Helen</td>
+      <td>Biología</td>
+      <td>90</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Note el tipo que de objeto que tenemos en una Serie</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">registro1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas.core.series.Series
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas.core.frame.DataFrame
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Podemos formar un dataframe apartir de una lista con diccionarios, cada uno será un registro del dataframe.</span>
+<span class="n">estudiantes</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;Nombre&#39;</span><span class="p">:</span> <span class="s1">&#39;Alicia&#39;</span><span class="p">,</span><span class="s2">&quot;Asignatura&quot;</span><span class="p">:</span> <span class="s1">&#39;Física&#39;</span><span class="p">,</span> <span class="s1">&#39;Puntuación&#39;</span><span class="p">:</span> <span class="mi">85</span><span class="p">},</span>
+               <span class="p">{</span><span class="s1">&#39;Nombre&#39;</span><span class="p">:</span> <span class="s1">&#39;Andrés&#39;</span><span class="p">,</span><span class="s2">&quot;Asignatura&quot;</span><span class="p">:</span> <span class="s1">&#39;Química&#39;</span><span class="p">,</span> <span class="s1">&#39;Puntuación&#39;</span><span class="p">:</span> <span class="mi">82</span><span class="p">},</span>
+               <span class="p">{</span><span class="s1">&#39;Nombre&#39;</span><span class="p">:</span> <span class="s1">&#39;Helen&#39;</span><span class="p">,</span><span class="s2">&quot;Asignatura&quot;</span><span class="p">:</span> <span class="s1">&#39;Biología&#39;</span><span class="p">,</span> <span class="s1">&#39;Puntuación&#39;</span><span class="p">:</span> <span class="mi">90</span><span class="p">}]</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">estudiantes</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;estudiante1&quot;</span><span class="p">,</span><span class="s2">&quot;estudiante2&quot;</span><span class="p">,</span><span class="s2">&quot;estudiante3&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Nombre</th>
+      <th>Asignatura</th>
+      <th>Puntuación</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>estudiante1</th>
+      <td>Alicia</td>
+      <td>Física</td>
+      <td>85</td>
+    </tr>
+    <tr>
+      <th>estudiante2</th>
+      <td>Andrés</td>
+      <td>Química</td>
+      <td>82</td>
+    </tr>
+    <tr>
+      <th>estudiante3</th>
+      <td>Helen</td>
+      <td>Biología</td>
+      <td>90</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Podemos formar un dataframe apartir de una diccionario con keys los nombres de las columnas y una lista con los registros.</span>
+<span class="n">datos</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Estudiantes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Luis&quot;</span><span class="p">,</span><span class="s2">&quot;Andres&quot;</span><span class="p">,</span><span class="s2">&quot;Sandra&quot;</span><span class="p">,</span><span class="s2">&quot;Patricia&quot;</span><span class="p">,</span> <span class="s2">&quot;Elizabeth&quot;</span><span class="p">],</span>
+         <span class="s2">&quot;Notas&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">2.5</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mf">4.9</span><span class="p">,</span><span class="mf">4.3</span><span class="p">],</span>
+         <span class="s2">&quot;Resultado&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;no_aprobo&quot;</span><span class="p">,</span> <span class="s2">&quot;aprobo&quot;</span><span class="p">,</span> <span class="s2">&quot;aprobo&quot;</span><span class="p">,</span> <span class="s2">&quot;aprobo&quot;</span><span class="p">,</span> <span class="s2">&quot;aprobo&quot;</span><span class="p">]}</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">datos</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Estudiantes</th>
+      <th>Notas</th>
+      <th>Resultado</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Luis</td>
+      <td>2.5</td>
+      <td>no_aprobo</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Andres</td>
+      <td>3.0</td>
+      <td>aprobo</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Sandra</td>
+      <td>4.0</td>
+      <td>aprobo</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Patricia</td>
+      <td>4.9</td>
+      <td>aprobo</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Elizabeth</td>
+      <td>4.3</td>
+      <td>aprobo</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Podemos ingresar una columna en el pandas DataFrame.</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Nueva&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Nombre</th>
+      <th>Asignatura</th>
+      <th>Puntuación</th>
+      <th>Nueva</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>estudiante1</th>
+      <td>Alicia</td>
+      <td>Física</td>
+      <td>85</td>
+      <td>50</td>
+    </tr>
+    <tr>
+      <th>estudiante2</th>
+      <td>Andrés</td>
+      <td>Química</td>
+      <td>82</td>
+      <td>50</td>
+    </tr>
+    <tr>
+      <th>estudiante3</th>
+      <td>Helen</td>
+      <td>Biología</td>
+      <td>90</td>
+      <td>50</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Es posible anexar un registro nuevo a un Pandas DataFrame, esto no modifica el data frame original.</span>
+<span class="n">df</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;Nombre&quot;</span><span class="p">:</span><span class="s2">&quot;Luisa&quot;</span><span class="p">,</span><span class="s2">&quot;Asignatura&quot;</span><span class="p">:</span><span class="s2">&quot;Artes&quot;</span><span class="p">,</span><span class="s2">&quot;Puntuación&quot;</span><span class="p">:</span><span class="s2">&quot;100&quot;</span><span class="p">,</span><span class="s2">&quot;Nueva&quot;</span><span class="p">:</span><span class="s2">&quot;45&quot;</span><span class="p">},</span><span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Nombre</th>
+      <th>Asignatura</th>
+      <th>Puntuación</th>
+      <th>Nueva</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Alicia</td>
+      <td>Física</td>
+      <td>85</td>
+      <td>50</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Andrés</td>
+      <td>Química</td>
+      <td>82</td>
+      <td>50</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Helen</td>
+      <td>Biología</td>
+      <td>90</td>
+      <td>50</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Luisa</td>
+      <td>Artes</td>
+      <td>100</td>
+      <td>45</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Podemos anexar un dataFrame a otro donde se encuentren las mismas columnas</span>
+<span class="n">df</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Nombre</th>
+      <th>Asignatura</th>
+      <th>Puntuación</th>
+      <th>Nueva</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>estudiante1</th>
+      <td>Alicia</td>
+      <td>Física</td>
+      <td>85</td>
+      <td>50</td>
+    </tr>
+    <tr>
+      <th>estudiante2</th>
+      <td>Andrés</td>
+      <td>Química</td>
+      <td>82</td>
+      <td>50</td>
+    </tr>
+    <tr>
+      <th>estudiante3</th>
+      <td>Helen</td>
+      <td>Biología</td>
+      <td>90</td>
+      <td>50</td>
+    </tr>
+    <tr>
+      <th>estudiante1</th>
+      <td>Alicia</td>
+      <td>Física</td>
+      <td>85</td>
+      <td>50</td>
+    </tr>
+    <tr>
+      <th>estudiante2</th>
+      <td>Andrés</td>
+      <td>Química</td>
+      <td>82</td>
+      <td>50</td>
+    </tr>
+    <tr>
+      <th>estudiante3</th>
+      <td>Helen</td>
+      <td>Biología</td>
+      <td>90</td>
+      <td>50</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Podemos recuperar el tamaño del DataFrame, al ser una lista podemos solicitar el número de registros (indice 0)</span>
+<span class="c1">## así como el número de columnas (índice 1)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>((3, 4), 3, 4)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="conclusiones">
+<h2>Conclusiones:<a class="headerlink" href="#conclusiones" title="Permalink to this headline">#</a></h2>
+<p>Revisamos como importar la librería <code class="docutils literal notranslate"><span class="pre">pandas</span></code>. Se conocieron los objetos de datos: <code class="docutils literal notranslate"><span class="pre">Series</span></code> y <code class="docutils literal notranslate"><span class="pre">dataframes</span></code>. Para cada uno de ellos se mostró la forma de construirlos y algunas consultas básica.</p>
+</section>
+<section id="para-tener-en-cuenta">
+<h2>Para tener en cuenta:<a class="headerlink" href="#para-tener-en-cuenta" title="Permalink to this headline">#</a></h2>
+<p>Las Series de <code class="docutils literal notranslate"><span class="pre">pandas</span></code> tienen muchos más métodos de los presentados acá, vale la pena que explore muchos de ellos. Puede ver una información detallada <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.html">acá.</a></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="Lectura_4_estruc_Datos_Python.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Estructuras de datos en python.</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Lectura_6.0_Mas_de_Pandas.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Más sobre la libreria <code class="docutils literal notranslate"><span class="pre">pandas</span></code></p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Luis Andres Campos.<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
