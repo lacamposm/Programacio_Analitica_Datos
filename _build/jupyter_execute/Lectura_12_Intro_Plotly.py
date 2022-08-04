@@ -428,7 +428,7 @@ fig.show()
 # 
 # El grupo se pregunta si puede ayudarlos a trazar sus datos en relación con las estadísticas sobre los atributos corporales de los pingüinos. También sospechan que existe algún patrón relacionado con las especies, pero no están seguros de cómo trazar este elemento adicional.
 # 
-# Debe crear un scatterplot con colores personalizados por especie y enfrentar las varibles `Culmen Length (mm)` en el eje $x$ y `Culmen Depth (mm)` en el eje $y$.
+# Debe crear un scatterplot con colores personalizados por especie y enfrentar las varibles `Culmen Length (mm)` en el eje x y `Culmen Depth (mm)` en el eje y.
 
 # In[20]:
 
@@ -936,11 +936,11 @@ fig.show()
 
 # #### _Ejercicio 8._
 # 
-# Haciendo uso del DataFrame `renueves2`, se desea comprender la distribución de cada industria sin tener que desplazarse para ver. Para ello, debe crear un histograma de los ingresos de la empresa (`Revenue`) por industria como un subplot apilado y con el eje $x$ compartido para permitir una comparación significativa de las industrias.
+# Haciendo uso del DataFrame `renueves2`, se desea comprender la distribución de cada industria sin tener que desplazarse para ver. Para ello, debe crear un histograma de los ingresos de la empresa (`Revenue`) por industria como un subplot apilado y con el eje x compartido para permitir una comparación significativa de las industrias.
 # 
 # Puede seguir estos si lo desea:
 # 
-# 1. Crear una la cuadrícula de subplots con 3 filas y 1 columna que compartan el eje $x$.
+# 1. Crear una la cuadrícula de subplots con 3 filas y 1 columna que compartan el eje x.
 # 2. Via un ciclo `for` recorra las industrias deseadas, agregando en cada paso un histograma con el nombre de la industria.
 
 # In[39]:

@@ -674,7 +674,7 @@ archivo.name
 #   print('Alberto tiene mas años que María.')
 # ```
 
-# In[34]:
+# In[29]:
 
 
 # Pruebe las estructuras condicionales en esta celda
@@ -719,7 +719,7 @@ else:
 #  
 # ```
 
-# In[35]:
+# In[30]:
 
 
 # Pruebe las estructura condicionales anidadas en esta celda
@@ -750,7 +750,7 @@ else:
     print('Sin embargo María es más alta.')
 
 
-# In[29]:
+# In[31]:
 
 
 #### Ingreso de información del usuario.
@@ -773,7 +773,7 @@ else:
 # 
 # Utilizando el ejemplo para captura de datos por teclado, solicite el ingreso de la altura y la edad para María y Alberto e incluya las condiciones necesarias que le permitan determinar si los dos tienen la misma altura.
 
-# In[30]:
+# In[32]:
 
 
 ### Una posible solución (Puede ser mejorada)
@@ -850,7 +850,7 @@ else:
 # ```
 # Puede complementar sus conocimientos de estructuras cíclicas con for en el siguiente link: [lPython "for" Loops (Definite Iteration)](https://realpython.com/python-for-loop/)
 
-# In[31]:
+# In[33]:
 
 
 ##
@@ -858,7 +858,7 @@ for i in range(1,10,1):
   print(i)
 
 
-# In[32]:
+# In[34]:
 
 
 # Pruebe la estructura cíclica con for en esta celda
@@ -876,7 +876,7 @@ for y in range(1,11):
 #     print('-------------')
 # ```
 
-# In[33]:
+# In[35]:
 
 
 # Pruebe la estructura cíclica con for anidado en esta celda
@@ -915,7 +915,7 @@ for x in range(5,13,1):
 # ```
 # Puede ampliar sus conocimientos en estructuras cíclicas con while en el siguiente link: [Python "while" Loops (Indefinite Iteration)](https://realpython.com/python-while-loop/)
 
-# In[34]:
+# In[36]:
 
 
 # Pruebe la estructura cíclica con while en esta celda
@@ -926,14 +926,14 @@ while nota < 0 or nota > 5:                                  # 2. condición
 print('La nota es:', nota)
 
 
-# In[35]:
+# In[ ]:
 
 
 for i in range(1,6):
   print(i)
 
 
-# In[36]:
+# In[37]:
 
 
 ####
@@ -951,7 +951,7 @@ else:
 
 # Ahora construya un programa en el cual se pueda tomar las 5 notas de un estudiante, calcular el promedio y saber si el estudiante aprobó la asignatura. Para aprobar la asignatura, el resultado del promedio de las 5 notas ingresadas debe ser mayor o igual a  3.0.
 
-# In[37]:
+# In[38]:
 
 
 # Construya el programa que da solución al enunciado anterior en esta celda
@@ -974,7 +974,7 @@ else:
   print("------------------------------------------------------------------")
 
 
-# In[38]:
+# In[ ]:
 
 
 ### Se considera que el usuario ingresa un número entero. #####
@@ -1051,7 +1051,7 @@ print(f'La fecha: día --> {day}, mes --> {moth}, año --> {year}, es una fecha 
 print(f"********************************************************************************************************************")
 
 
-# In[41]:
+# In[ ]:
 
 
 for i in range(2000,2021,1):
@@ -1068,9 +1068,3 @@ for i in range(2000,2021,1):
 #    * Ahora resuelva el tipo de triángulo pero suponga que tenemos los vértices en 3D (x1, y1, z1; x2, y2, z2; x3, y3, z3) 
 #    * Suponga que ahora se quiere saber si el triángulo formado por los tres vértices en 3D es un triángulo rectángulo
 # 
-
-# In[42]:
-
-
-# pruebe los programas en esta celda
-

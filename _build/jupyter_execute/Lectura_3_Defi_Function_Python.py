@@ -11,7 +11,7 @@
 # In[1]:
 
 
-get_ipython().system('python --version')
+get_ipython().system('python3 --version')
 
 
 # ## Definición de función
@@ -235,28 +235,28 @@ def ask_ok(prompt, retries=4, reminder='Please try again!'):
 ask_ok()
 
 
-# In[14]:
+# In[15]:
 
 
 # Llamado 1, solo parámetro prompt
 ask_ok('Do you really want to quit?')
 
 
-# In[ ]:
+# In[16]:
 
 
 # Llamado 2, parámetro prompt y retries.
 ask_ok('OK to overwrite the file?', 2)
 
 
-# In[ ]:
+# In[17]:
 
 
 # Llamado 3, todos los parámetros.
 ask_ok('OK to overwrite the file?', 2, 'Come on, only yes or no!')
 
 
-# In[15]:
+# In[18]:
 
 
 ## Los default arguments value son evaluados en el momento de la definición de la función, en el ámbito de la definición.
@@ -270,13 +270,13 @@ i = 6
 f()
 
 
-# In[16]:
+# In[19]:
 
 
 f(7)
 
 
-# In[17]:
+# In[20]:
 
 
 ## La siguiente función acumula los argumentos que se le pasan en subsiguientes llamadas:
@@ -289,7 +289,7 @@ print(f(2))
 print(f(3))
 
 
-# In[18]:
+# In[21]:
 
 
 ## Si no se quiere que el valor por omisión sea compartido entre subsiguientes llamadas, se pueden escribir la función así:
@@ -304,7 +304,7 @@ print(f(2))
 print(f(3))
 
 
-# In[19]:
+# In[22]:
 
 
 f(2,[4,5,8])
@@ -312,7 +312,7 @@ f(2,[4,5,8])
 
 # ### Keyword arguments
 
-# In[20]:
+# In[23]:
 
 
 ## Las funciones también puede ser llamadas usando keywords arguments de la forma kwarg=value. 
@@ -326,43 +326,43 @@ def parrot(voltage, state='a stiff', action='voom', type='Norwegian Blue'):
 ## Esta función puede llamarse de cualquiera de las siguientes maneras:
 
 
-# In[21]:
+# In[24]:
 
 
 parrot(1000)                                          # 1 Argumento posicional
 
 
-# In[22]:
+# In[25]:
 
 
 parrot(voltage=1000)                                  # 1 keyword argument.
 
 
-# In[23]:
+# In[26]:
 
 
 parrot(voltage=1000000, action='VOOOOOM')           # 2 keyword arguments.
 
 
-# In[24]:
+# In[27]:
 
 
 parrot(action='VOOOOOM', voltage=1000000)            # 2 keyword arguments.
 
 
-# In[25]:
+# In[28]:
 
 
 parrot('a million', 'bereft of life', 'jump')       # 3 Argumento posicional.
 
 
-# In[26]:
+# In[29]:
 
 
 parrot('a thousand', state='pushing up the daisies')  # 1 posicional, 1 keyword.
 
 
-# In[27]:
+# In[30]:
 
 
 ## Llamadas invalidas.
@@ -372,14 +372,14 @@ parrot('a thousand', state='pushing up the daisies')  # 1 posicional, 1 keyword.
 #parrot(actor='John Cleese')  # unknown keyword argumen
 
 
-# In[28]:
+# In[31]:
 
 
 ## Error posicional.
 parrot('a thousand', 'pushing up the daisies', voltage = "100000")
 
 
-# In[29]:
+# In[32]:
 
 
 ## Ningún argumento puede recibir más de un valor al mismo tiempo. Aquí hay un ejemplo que falla debido a esta restricción:
@@ -389,7 +389,7 @@ def function(a):
 function(0, a=0)
 
 
-# In[30]:
+# In[33]:
 
 
 ## Note que *arguments es una tupla y **keywords es un diccionario que almacena todos los keyword arguments
@@ -410,7 +410,7 @@ def cheeseshop(kind, *arguments, **keywords):
     print("-" * 40)
 
 
-# In[31]:
+# In[34]:
 
 
 ## Note que *arguments es una tupla y **keywords es un diccionario que almacena todos los argumentos nombrados
@@ -426,7 +426,7 @@ cheeseshop("Limburger", "It's very runny, sir.",
 
 # ### Arbitrary Argument Lists
 
-# In[32]:
+# In[35]:
 
 
 ## La función concatena string via /
@@ -436,20 +436,20 @@ def concat(*args, sep="/"):
 concat("earth", "mars", "venus")
 
 
-# In[33]:
+# In[36]:
 
 
 ## Se debe usar como keyword argument si está despues de *args
 concat("earth", "mars", "venus", sep=".")
 
 
-# In[34]:
+# In[37]:
 
 
 concat("earth", "mars", "venus", ".")
 
 
-# In[35]:
+# In[38]:
 
 
 ## Debe ser posicional también
@@ -486,7 +486,7 @@ concat(sep=".","earth", "mars", "venus")
 # x, y = pintarSeno(0, 6.28)
 # ```
 
-# In[36]:
+# In[39]:
 
 
 # celda para librerias
@@ -494,31 +494,31 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-# In[37]:
+# In[40]:
 
 
 np.linspace()
 
 
-# In[ ]:
+# In[41]:
 
 
 help(np.linspace)
 
 
-# In[38]:
+# In[42]:
 
 
 np.linspace(0,5,)
 
 
-# In[ ]:
+# In[43]:
 
 
 np.sin(np.linspace(0,5))
 
 
-# In[40]:
+# In[44]:
 
 
 # celda para definir función
@@ -527,7 +527,7 @@ def pintarSeno(xInicial, xFinal) :
     return np.linspace(xInicial, xFinal), np.sin(np.linspace(xInicial, xFinal))
 
 
-# In[41]:
+# In[45]:
 
 
 # celda para llamar función
@@ -544,7 +544,7 @@ x, y  = pintarSeno(0, 6.28)
 # ```
 # 
 
-# In[42]:
+# In[46]:
 
 
 # celda para definir función
@@ -555,7 +555,7 @@ def pintarSeno(xInicial, xFinal) :
     return np.linspace(xInicial, xFinal), np.sin(np.linspace(xInicial, xFinal))
 
 
-# In[43]:
+# In[47]:
 
 
 # celda para llamar función
@@ -617,7 +617,7 @@ x, y = pintarSeno(6.28,0)
 # ```
 # 
 
-# In[44]:
+# In[48]:
 
 
 # celda para probar
@@ -639,73 +639,73 @@ def tt(k, m=3, *arguments, **keywords):
         print(kw, ":", keywords[kw])
 
 
-# In[ ]:
+# In[49]:
 
 
 tt()
 
 
-# In[46]:
+# In[50]:
 
 
 tt(5)
 
 
-# In[47]:
+# In[51]:
 
 
 tt(8,9)
 
 
-# In[48]:
+# In[52]:
 
 
 tt(8,9,3)
 
 
-# In[49]:
+# In[53]:
 
 
 tt(8,9,3,5,8)
 
 
-# In[50]:
+# In[54]:
 
 
 tt(1,2,3,4,5,6,7,x=8,y=9,z=10,a=11)
 
 
-# In[51]:
+# In[56]:
 
 
 tt(x=8, y=9, z=10, a=11)
 
 
-# In[52]:
+# In[57]:
 
 
 tt(x=8, y=9, z=10, a=11, k=2)
 
 
-# In[53]:
+# In[58]:
 
 
 tt(t=1, u=2, v=3)
 
 
-# In[54]:
+# In[59]:
 
 
 tt(1, 2, s='NA')
 
 
-# In[55]:
+# In[60]:
 
 
 tt(1, m=2, s='SA', k=3)
 
 
-# In[56]:
+# In[61]:
 
 
 tt(1,2,3,4,5,6,7,x=8,y=9,z=10,a=11, x=6)
@@ -718,7 +718,7 @@ tt(1,2,3,4,5,6,7,x=8,y=9,z=10,a=11, x=6)
 #     - con muchos parámetros y de diferente tipo
 # 
 
-# In[75]:
+# In[62]:
 
 
 def prom(*args):
@@ -734,7 +734,7 @@ def prom(*args):
   return round(acum/len(args),2)
 
 
-# In[74]:
+# In[63]:
 
 
 prom(5,4,1,2.5,6,7,8)
@@ -751,14 +751,14 @@ prom(5,4,1,2.5,6,7,8)
 # 
 # 
 
-# In[ ]:
+# In[64]:
 
 
 # celda de código para probar
 print (tt.__doc__)
 
 
-# In[1]:
+# In[65]:
 
 
 import pandas as pd
@@ -803,7 +803,7 @@ import pandas as pd
 # x, y = pintarSeno(10, 20)
 # ```
 
-# In[33]:
+# In[67]:
 
 
 # celda para probar
@@ -853,7 +853,7 @@ x, y = pintarSeno(0, 20)
 # 
 # 
 
-# In[ ]:
+# In[68]:
 
 
 def ff():
@@ -861,19 +861,19 @@ def ff():
     a = 10
 
 
-# In[ ]:
+# In[69]:
 
 
 ff()
 
 
-# In[ ]:
+# In[70]:
 
 
 a
 
 
-# In[ ]:
+# In[71]:
 
 
 b = 13 ## Variable global
@@ -881,7 +881,7 @@ c = 3 ## Variable global
 ff()
 
 
-# In[ ]:
+# In[72]:
 
 
 print('outside:',b, c, a) # Variable local
@@ -913,7 +913,7 @@ print('outside:',b, c, a) # Variable local
 # ```
 # 
 
-# In[ ]:
+# In[74]:
 
 
 def ff1():
@@ -926,25 +926,25 @@ def ff2():
     d = 14
 
 
-# In[ ]:
+# In[75]:
 
 
 ff1()
 
 
-# In[ ]:
+# In[76]:
 
 
 ff2()
 
 
-# In[ ]:
+# In[77]:
 
 
 print('outside(1):',b,c)
 
 
-# In[ ]:
+# In[78]:
 
 
 print('outside(2):',b,c,d)
@@ -969,7 +969,7 @@ print('outside(2):',b,c,d)
 # ```
 # 
 
-# In[ ]:
+# In[80]:
 
 
 # celda de código para probar
@@ -982,14 +982,14 @@ def ff1():
     print('inside ff1:', a)
 
 
-# In[ ]:
+# In[81]:
 
 
 a  = 39
 ff1()
 
 
-# In[ ]:
+# In[82]:
 
 
 print('outside:', a)
@@ -1015,7 +1015,7 @@ print('outside:', a)
 # ```
 # 
 
-# In[ ]:
+# In[83]:
 
 
 # celda de código para probar
@@ -1048,7 +1048,7 @@ print(name)
 # ```
 # 
 
-# In[28]:
+# In[84]:
 
 
 # celda de código para probar
@@ -1081,7 +1081,7 @@ print(name)
 # ```
 # 
 
-# In[ ]:
+# In[85]:
 
 
 # celda de código para probar
@@ -1135,7 +1135,7 @@ print(x)
 # print('Fin del programa con éxito!!')
 # ```
 
-# In[ ]:
+# In[86]:
 
 
 print('El presente programa muestra la tabla de multiplicar de un número entre 1 y 10, de lo contrario dice que el número no es válido')
@@ -1168,7 +1168,7 @@ print('Fin del programa con éxito!!')
 # 
 # 3. Aumentar la capacidad de la función 'pintarSeno'  con los parámetros opcionales como se especificó arriba.
 
-# In[142]:
+# In[87]:
 
 
 # EJERCICIO 1.
@@ -1202,13 +1202,13 @@ def validarFecha(day, moth, year):
   print(f"********************************************************************************************************************")
 
 
-# In[143]:
+# In[88]:
 
 
 validarFecha(20,13,2005)
 
 
-# In[36]:
+# In[89]:
 
 
 #  EJECICIO 3.
@@ -1233,7 +1233,7 @@ def pintarSeno(xInicial, xFinal, color = "m", ancho_linea = 1, tamano = (14,8), 
 x, y = pintarSeno(10, 20, color="#FF0000", ancho_linea=10, tamano=(10,1), titulo = "MI TITULO PERSONAL!!!!", eje_x= "HOLA ", eje_y = "HOLAAAAAAAA")
 
 
-# In[30]:
+# In[ ]:
 
 
 #  EJECICIO 3.
@@ -1260,7 +1260,7 @@ def pintarSeno(xInicial, xFinal, **keywords):
 pintarSeno(10, 20, color="g", ancho_linea=5, tamano=(20,5), titulo = "OTRA OPCIÓN", eje_x= " HOLAAAAAA", eje_y = ":) :)  :)")
 
 
-# In[31]:
+# In[90]:
 
 
 # celda para probar

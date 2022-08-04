@@ -30,7 +30,10 @@ de Python que facilita la inserción de código HTML en un repositorio Github.
 Siga estos pasos:
 
     a. pip install ghp-import
-    b. 
+    b. Desde el fichero donde estén todos los archivos realizar en consola:
+
+        b.1  git push origin main
+        b.2  ghp-import -n -p -f _build/html
 
 
         
