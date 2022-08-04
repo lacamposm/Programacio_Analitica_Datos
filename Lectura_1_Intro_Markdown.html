@@ -1,0 +1,986 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Introducción a los notebooks y al lenguaje Markdown &#8212; Programación Python</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Introducción a Python - elementos básicos del lenguaje" href="Lectura_2_elementos_basicos_Python.html" />
+    <link rel="prev" title="Clases en Python (En construcción)" href="Clases_Python.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo_python.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Programación Python</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Introducción al book.
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Clases_Python.html">
+   Clases en
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Python
+    </span>
+   </code>
+   (En construcción)
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Introducción a los notebooks y al lenguaje Markdown
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lectura_2_elementos_basicos_Python.html">
+   Introducción a Python - elementos básicos del lenguaje
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lectura_3_Defi_Function_Python.html">
+   Funciones en Python.
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lectura_4_estruc_Datos_Python.html">
+   Estructuras de datos en python.
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lectura_5_Pandas_Series_DataFrame.html">
+   Introducción Libreria
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Pandas
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lectura_6.0_Mas_de_Pandas.html">
+   Más sobre la libreria
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     pandas
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lectura_6.1_operacionesB%C3%A1sicasDataframes.html">
+   Operaciones básicas con dataframes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lectura_7_CruceDatos_TratamientoInformaci%C3%B3n.html">
+   Tratamiento de datos.
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lectura_8_procesamientoDeCadenasDeTexto.html">
+   Manipulación de cadenas de texto.
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lectura_12_Intro_Plotly.html">
+   Introducción a la librería
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Plotly
+    </span>
+   </code>
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/Lectura_1_Intro_Markdown.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FLectura_1_Intro_Markdown.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/Lectura_1_Intro_Markdown.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#que-es-markdown">
+   ¿Qué es Markdown?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#por-que-usar-markdown">
+   ¿Por qué usar Markdown?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#desarrollo-de-la-sesion">
+   Desarrollo de la sesión
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#encabezados-en-celdas-de-texto">
+   1. Encabezados en celdas de texto:
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#realce-de-texto">
+     2. Realce de texto
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#listas">
+     3. Listas
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#listas-desordenadas">
+     Listas desordenadas:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Listas desordenadas:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sangria-del-parrafo">
+     4. Sangría del párrafo
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#documentar-codigo">
+   5. Documentar código
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#uso-de-caracteres-especiales-unicode">
+   6. Uso de caracteres especiales Unicode
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#use-latex-para-las-ecuaciones">
+     7. Use latex para las ecuaciones:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#editar-tablas">
+     8. Editar tablas
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tarea-de-buscar-y-practicar">
+     9. Tarea de buscar y practicar
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creditos">
+   <em>
+    Créditos
+   </em>
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Introducción a los notebooks y al lenguaje Markdown</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#que-es-markdown">
+   ¿Qué es Markdown?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#por-que-usar-markdown">
+   ¿Por qué usar Markdown?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#desarrollo-de-la-sesion">
+   Desarrollo de la sesión
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#encabezados-en-celdas-de-texto">
+   1. Encabezados en celdas de texto:
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#realce-de-texto">
+     2. Realce de texto
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#listas">
+     3. Listas
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#listas-desordenadas">
+     Listas desordenadas:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Listas desordenadas:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sangria-del-parrafo">
+     4. Sangría del párrafo
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#documentar-codigo">
+   5. Documentar código
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#uso-de-caracteres-especiales-unicode">
+   6. Uso de caracteres especiales Unicode
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#use-latex-para-las-ecuaciones">
+     7. Use latex para las ecuaciones:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#editar-tablas">
+     8. Editar tablas
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tarea-de-buscar-y-practicar">
+     9. Tarea de buscar y practicar
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creditos">
+   <em>
+    Créditos
+   </em>
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="introduccion-a-los-notebooks-y-al-lenguaje-markdown">
+<h1>Introducción a los notebooks y al lenguaje Markdown<a class="headerlink" href="#introduccion-a-los-notebooks-y-al-lenguaje-markdown" title="Permalink to this headline">#</a></h1>
+<p><strong>Temas:</strong></p>
+<ul class="simple">
+<li><p>Introducción a los notebooks</p></li>
+<li><p>Introducción al lenguaje de Markdown</p></li>
+</ul>
+<section id="que-es-markdown">
+<h2>¿Qué es Markdown?<a class="headerlink" href="#que-es-markdown" title="Permalink to this headline">#</a></h2>
+<p>Markdown es un lenguaje de marcado ligero que puede usar para agregar elementos de formato a documentos de texto sin formato. Creado por John Gruber en 2004, Markdown es ahora uno de los lenguajes de marcado más populares del mundo.</p>
+<p>Usar Markdown es diferente a usar un editor WYSIWYG . En una aplicación como Microsoft Word, hace clic en botones para dar formato a palabras y frases, y los cambios son visibles inmediatamente. Markdown no es así. Cuando crea un archivo con formato de Markdown, agrega la sintaxis de Markdown al texto para indicar qué palabras y frases deben verse diferentes.</p>
+<p>Por ejemplo, para denotar un encabezado, agregue un hashtag (por ejemplo, # Encabezado). O para poner una frase en negrilla, agregue dos asteriscos antes y después (p. ej., <strong>Este texto en negrilla</strong>). Puede llevar un tiempo acostumbrarse a ver la sintaxis de Markdown en su texto.</p>
+<p>Puede agregar elementos de formato Markdown a un archivo de texto sin formato utilizando una aplicación de edición de texto. O puede usar una de las muchas aplicaciones de Markdown para los sistemas operativos macOS, Windows, Linux, iOS y Android. También hay varias aplicaciones basadas en web diseñadas específicamente para escribir en Markdown.</p>
+<p>Según la aplicación que utilice, es posible que no pueda obtener una vista previa del documento formateado en tiempo real. Pero eso está bien. Según Gruber , la sintaxis de Markdown está diseñada para ser legible y discreta, por lo que el texto de los archivos de Markdown se puede leer incluso si no se procesa.</p>
+<p>El objetivo principal del diseño de la sintaxis de formato de Markdown es hacer que sea lo más legible posible. La idea es que un documento con formato de Markdown se pueda publicar tal cual, como texto sin formato, sin que parezca que ha sido marcado con etiquetas o instrucciones de formato.</p>
+</section>
+<section id="por-que-usar-markdown">
+<h2>¿Por qué usar Markdown?<a class="headerlink" href="#por-que-usar-markdown" title="Permalink to this headline">#</a></h2>
+<p>¿Por qué escribir con Markdown cuando puede presionar botones en una interfaz para formatear su texto? Resulta que hay un par de razones diferentes por las que las personas usan Markdown en lugar de otros editores.</p>
+<p>Markdown se puede utilizar para todo. La gente lo usa para crear sitios web , documentos , notas , libros , presentaciones , mensajes de correo electrónico y documentación técnica .</p>
+<p>Markdown es portátil. Los archivos que contienen texto con formato Markdown se pueden abrir con prácticamente cualquier aplicación. Si decide que no le gusta la aplicación Markdown que está usando actualmente, puede importar sus archivos Markdown a otra aplicación Markdown. Eso está en marcado contraste con las aplicaciones de procesamiento de textos como Microsoft Word que bloquean su contenido en un formato de archivo propietario.</p>
+<p>Markdown es independiente de la plataforma. Puede crear texto con formato Markdown en cualquier dispositivo que ejecute cualquier sistema operativo.</p>
+<p>Markdown es una prueba de futuro. Incluso si la aplicación que está utilizando deja de funcionar en algún momento en el futuro, aún podrá leer su texto con formato Markdown utilizando una aplicación de edición de texto. Esta es una consideración importante cuando se trata de libros, tesis universitarias y otros documentos importantes que deben conservarse indefinidamente.</p>
+<p>El descuento está en todas partes. Los sitios web como Reddit y GitHub son compatibles con Markdown, y muchas aplicaciones de escritorio y basadas en la web lo admiten.</p>
+</section>
+<section id="desarrollo-de-la-sesion">
+<h2>Desarrollo de la sesión<a class="headerlink" href="#desarrollo-de-la-sesion" title="Permalink to this headline">#</a></h2>
+<p>A continuación se muestran diferentes ejemplos del uso del lenguaje de <strong>markdown</strong> para los notebooks de <code class="docutils literal notranslate"><span class="pre">Python</span></code>. El ejercicio consiste en ingresar a cada celda en modo de edición (haciendo doble-clic) y revise cómo se escribe, cómo se ve y luego practique desarrollando sus propios ejemplos.</p>
+</section>
+<section id="encabezados-en-celdas-de-texto">
+<h2>1. Encabezados en celdas de texto:<a class="headerlink" href="#encabezados-en-celdas-de-texto" title="Permalink to this headline">#</a></h2>
+<p>Para crear un encabezado, agregue hashtag (#) adelante de una palabra o frase. El número de signos numéricos que utilice debe corresponder al nivel del encabezado. Por ejemplo, para crear un título de nivel tres  utilice tres signos numéricos (p. ej., ### Subtítulo).</p>
+<p><em><strong>Ejemplos:</strong></em></p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>## TÍTULO DE PRIMER NIVEL
+Con código html
+<span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>TÍTULO DE PRIMER NIVEL<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span> 
+
+## Título segundo nivel
+Con código html 
+<span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Título segundo nivel<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span> 
+
+### Título tercer nivel
+Con código html 
+<span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Título tercer nivel<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+
+### Título cuarto nivel
+Con código html 
+<span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>Título cuarto nivel<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
+
+Logramos llegar hasta el nivel 6.
+
+### Título de sexto nivel
+Con código html
+<span class="p">&lt;</span><span class="nt">h6</span><span class="p">&gt;</span>Título de sexto nivel<span class="p">&lt;</span><span class="nt">h6</span><span class="p">/&gt;</span>
+</pre></div>
+</div>
+<section id="realce-de-texto">
+<h3>2. Realce de texto<a class="headerlink" href="#realce-de-texto" title="Permalink to this headline">#</a></h3>
+<p>Con respecto al resaltado del texto…</p>
+<ul class="simple">
+<li><p>Poner texto en negrilla: <strong>texto en negrita</strong> texto normal o <strong>texto en negrilla</strong></p></li>
+<li><p>Poner texto en cursiva: <em>texto cursiva</em> texto normal o <em>texto en cursiva</em></p></li>
+<li><p>¿Cómo logra texto en cursiva y negrilla?</p></li>
+<li><p>Texto tachado ~~tachado~~</p></li>
+<li><p>Intercalar texto mono-espacio y fin de linea:</p></li>
+</ul>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span>`texto mono`<span class="p">&lt;</span><span class="nt">br</span><span class="p">&gt;</span> texto normal
+* Tamaño de la letra:  <span class="p">&lt;</span><span class="nt">font</span> <span class="na">size </span><span class="o">=</span> <span class="s">5</span><span class="p">&gt;</span> El parametro `size` determina el tamaño <span class="p">&lt;/</span><span class="nt">font</span><span class="p">&gt;</span>
+*   Color en el texto cuando sea necesario <span class="p">&lt;</span><span class="nt">font</span> <span class="na">color</span><span class="o">=</span><span class="s">yellow</span><span class="p">&gt;</span>color Amarillo<span class="p">&lt;/</span><span class="nt">font</span><span class="p">&gt;</span> o texto color <span class="p">&lt;</span><span class="nt">font</span> <span class="na">color</span><span class="o">=</span><span class="s">green</span><span class="p">&gt;</span>color verde<span class="p">&lt;/</span><span class="nt">font</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">suma</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+  <span class="nb">sum</span> <span class="o">=</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span>
+  <span class="k">return</span> <span class="nb">sum</span>
+
+<span class="n">suma</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="listas">
+<h3>3. Listas<a class="headerlink" href="#listas" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="listas-desordenadas">
+<h3>Listas desordenadas:<a class="headerlink" href="#listas-desordenadas" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>puedo iniciar guión o con asterisco: Definimos algo</p></li>
+<li><p>Otro item de la lista principal: Definimos otra cosa.</p></li>
+</ul>
+<ul class="simple">
+<li><p>item 1 de la lista</p></li>
+<li><p>item 2 de la lista</p></li>
+</ul>
+</section>
+<section id="id1">
+<h3>Listas desordenadas:<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<p>Ahora revisemos listas numeradas</p>
+<ol class="simple">
+<li><p>Primer elemento de la lista</p></li>
+<li><p>Algo más que decir</p></li>
+<li><p>Segundo elemento de la lista</p>
+<ol class="simple">
+<li><p>sub lista - elemento 1</p></li>
+<li><p>sub lista - elemento 2</p></li>
+</ol>
+</li>
+<li><p>Podemos dejar el mismo número</p></li>
+<li><p>inserto nuevo elemento</p></li>
+<li><p>La lista sigue numerando automáticamente…</p></li>
+</ol>
+</section>
+<section id="sangria-del-parrafo">
+<h3>4. Sangría del párrafo<a class="headerlink" href="#sangria-del-parrafo" title="Permalink to this headline">#</a></h3>
+<p>También tenemos la posibilidad de sangrar el texto cuando sea necesario</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>&gt; este es un ejemplo
+&gt;&gt; se puede aún más
+&gt;&gt;&gt; tantas veces cómo sea necesario!
+</pre></div>
+</div>
+</section>
+</section>
+<section id="documentar-codigo">
+<h2>5. Documentar código<a class="headerlink" href="#documentar-codigo" title="Permalink to this headline">#</a></h2>
+<p>Cuándo se necesita usar bloques de código con realce de sintaxis dentro de una celda de texto, por ejemplo para explicar un proceso algorítmico:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">suma</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+  <span class="nb">sum</span> <span class="o">=</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span>
+  <span class="k">return</span> <span class="nb">sum</span>
+
+<span class="n">suma</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># código de python</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;string&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span># This is formatted as code
+def f1(xx):
+    s = &#39;string&#39;
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tiene formato de código</span>
+<span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;algo&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;otra cosa&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-Javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// comentario javascript</span><span class="w"></span>
+<span class="k">if</span><span class="p">(</span><span class="nx">x</span><span class="o">=</span><span class="mf">1</span><span class="p">;</span><span class="w"> </span><span class="nx">x</span><span class="o">&lt;</span><span class="mf">10</span><span class="p">;</span><span class="w"> </span><span class="nx">x</span><span class="o">++</span><span class="p">){</span><span class="w"></span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Hola mundo&quot;</span><span class="p">)</span><span class="w">  </span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Este es otro bloque de código, por ejemplo para otra tarea:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># comentario python</span>
+<span class="k">def</span> <span class="nf">minimun</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="n">A</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ordena arreglo&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-Json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;firstName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;John&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;lastName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Smith&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;age&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="uso-de-caracteres-especiales-unicode">
+<h2>6. Uso de caracteres especiales Unicode<a class="headerlink" href="#uso-de-caracteres-especiales-unicode" title="Permalink to this headline">#</a></h2>
+<p>Carácteres Unicode ejemplos: ☀ ☂ ☎ ☯ ☃ 🥅 😍</p>
+<p>Uso de código decimal y hexadecimal: π π ƕ ƕ ☂ 🌞</p>
+<p>Para un listado completo de todos los caracteres buscar en: <a class="reference external" href="https://unicode-table.com/es/">unicode-table.com/es/</a></p>
+<p>Para lograr escaparnos de los caracteres que son de uso del lenguaje usamos: <code class="docutils literal notranslate"><span class="pre">\</span></code>
+<br></br>
+<em><strong>Algunos ejemplos…</strong></em></p>
+<ul class="simple">
+<li><p>Contra barra y espacio: \ \</p></li>
+<li><p>Asterisco y barra baja: *  _</p></li>
+<li><p>Paréntesis: {} [] ()</p></li>
+<li><p>Sostenido: #</p></li>
+<li><p>Otros: + - . ! : \</p></li>
+</ul>
+<p>Para finalizar una línea de separación</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">***</span>
+</pre></div>
+</div>
+<p>También se puede hacer con guíones:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---</span>
+</pre></div>
+</div>
+<section id="use-latex-para-las-ecuaciones">
+<h3>7. Use latex para las ecuaciones:<a class="headerlink" href="#use-latex-para-las-ecuaciones" title="Permalink to this headline">#</a></h3>
+<p>A continuación ejemplos de codificación en latex para mostrar ecuaciones con calidad.</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\sum \int \frac{\sqrt{x}}{a^2}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\sum_{i=1}^n \alpha_i + \frac{num}{1- e^{2\pi n}}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\sin^2 x + \cos^2 x = 1\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(S = \mathrm{k_B}\ln\Omega\)</span></p></li>
+<li><div class="math notranslate nohighlight">
+\[\begin{split}\left[\begin{matrix}   a &amp; b &amp; c \\   d &amp; e &amp; f \\   g &amp; h &amp; i \end{matrix}\right]\end{split}\]</div>
+</li>
+<li><div class="math notranslate nohighlight">
+\[\mathbf{K}=\int_V \mathbf{B}^\intercal \mathbf{D B}\mathrm{d}x \mathrm{d}y \mathrm{d}z\]</div>
+</li>
+<li><div class="math notranslate nohighlight">
+\[\sum_{k=1}^N \sqrt{k_i^2+1}\]</div>
+</li>
+<li><div class="math notranslate nohighlight">
+\[\left({1+\displaystyle\frac{1}{n}}\right)^n\]</div>
+</li>
+<li><div class="math notranslate nohighlight">
+\[y(x_{i}) = 4 + x_{i}^{2}\]</div>
+</li>
+</ul>
+<p>Existe gran cantidad de documentación de <strong>latex</strong> en la red:</p>
+<ul class="simple">
+<li><p>En este sitio puede iniciar a practicar con algunas fórmulas <a class="reference external" href="http://minisconlatex.blogspot.com/2010/11/ecuaciones.html">latex formulas</a></p></li>
+<li><p>Un manual en línea para escribir ecuaciones de latex: <a class="reference external" href="https://manualdelatex.com/tutoriales/ecuaciones">manual de latex</a></p></li>
+</ul>
+<p>También puede practicar en un editor en línea <a class="reference external" href="https://www.codecogs.com/latex/eqneditor.php?lang=es-es">Editor de ecuaciones</a></p>
+</section>
+<hr class="docutils" />
+<section id="editar-tablas">
+<h3>8. Editar tablas<a class="headerlink" href="#editar-tablas" title="Permalink to this headline">#</a></h3>
+<p>Siguiendo algunas convenciones simples, como se muestra en el siguiente ejemplo, puede generar tablas interesantes</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Operación</p></th>
+<th class="text-align:center head"><p>Siginificado</p></th>
+<th class="text-align:right head"><p>Resultado</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>5032 + 7624 + 365</p></td>
+<td class="text-align:center"><p>sumar valores</p></td>
+<td class="text-align:right"><p>13021</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>18213 - 9567.5</p></td>
+<td class="text-align:center"><p>restar valores</p></td>
+<td class="text-align:right"><p>8645.5</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>13.3 * 8.52</p></td>
+<td class="text-align:center"><p>multiplicación</p></td>
+<td class="text-align:right"><p>113.316</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>35698.7 / 798.23</p></td>
+<td class="text-align:center"><p>división</p></td>
+<td class="text-align:right"><p>44.72232314</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>23 / 8</p></td>
+<td class="text-align:center"><p>División</p></td>
+<td class="text-align:right"><p>2.875</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>23 // 8</p></td>
+<td class="text-align:center"><p>División entera</p></td>
+<td class="text-align:right"><p>2</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>23 % 8</p></td>
+<td class="text-align:center"><p>Módulo de la división</p></td>
+<td class="text-align:right"><p>7</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>13**2</p></td>
+<td class="text-align:center"><p>Potenciación</p></td>
+<td class="text-align:right"><p>169</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>h1</p></th>
+<th class="text-align:center head"><p>h2</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>hola</p></td>
+<td class="text-align:center"><p>mundo</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>columna 1</p></th>
+<th class="text-align:right head"><p>columna 2</p></th>
+<th class="text-align:center head"><p>columna 3</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>1</p></td>
+<td class="text-align:right"><p>2</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(x_i\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="tarea-de-buscar-y-practicar">
+<h3>9. Tarea de buscar y practicar<a class="headerlink" href="#tarea-de-buscar-y-practicar" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Inserte una imagen</p></li>
+<li><p>Agregue código html embebido</p></li>
+<li><p>Utilice hiper-vínculos</p></li>
+<li><p>Pruebe markdown en otros sitios, por ejemplo: <a class="reference external" href="https://dillinger.io/">Dillinger</a></p></li>
+<li><p>Revisar:</p></li>
+</ul>
+<ol class="simple">
+<li><p><a class="reference external" href="https://markdown-it.github.io/">markdown</a></p></li>
+<li><p><a class="reference external" href="https://colab.research.google.com/notebooks/basic_features_overview.ipynb">colab getting started</a></p></li>
+</ol>
+</section>
+</section>
+<section id="creditos">
+<h2><em>Créditos</em><a class="headerlink" href="#creditos" title="Permalink to this headline">#</a></h2>
+<p><a class="reference external" href="https://www.markdownguide.org/getting-started/">Markdown guide.</a></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="Clases_Python.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Clases en <code class="docutils literal notranslate"><span class="pre">Python</span></code> (En construcción)</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Lectura_2_elementos_basicos_Python.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Introducción a Python - elementos básicos del lenguaje</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Luis Andres Campos.<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

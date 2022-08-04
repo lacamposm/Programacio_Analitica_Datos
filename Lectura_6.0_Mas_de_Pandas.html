@@ -1,0 +1,6422 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Más sobre la libreria pandas &#8212; Programación Python</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Operaciones básicas con dataframes" href="Lectura_6.1_operacionesB%C3%A1sicasDataframes.html" />
+    <link rel="prev" title="Introducción Libreria Pandas" href="Lectura_5_Pandas_Series_DataFrame.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo_python.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Programación Python</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Introducción al book.
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Clases_Python.html">
+   Clases en
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Python
+    </span>
+   </code>
+   (En construcción)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lectura_1_Intro_Markdown.html">
+   Introducción a los notebooks y al lenguaje Markdown
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lectura_2_elementos_basicos_Python.html">
+   Introducción a Python - elementos básicos del lenguaje
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lectura_3_Defi_Function_Python.html">
+   Funciones en Python.
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lectura_4_estruc_Datos_Python.html">
+   Estructuras de datos en python.
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lectura_5_Pandas_Series_DataFrame.html">
+   Introducción Libreria
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Pandas
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Más sobre la libreria
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     pandas
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lectura_6.1_operacionesB%C3%A1sicasDataframes.html">
+   Operaciones básicas con dataframes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lectura_7_CruceDatos_TratamientoInformaci%C3%B3n.html">
+   Tratamiento de datos.
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lectura_8_procesamientoDeCadenasDeTexto.html">
+   Manipulación de cadenas de texto.
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lectura_12_Intro_Plotly.html">
+   Introducción a la librería
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     Plotly
+    </span>
+   </code>
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/Lectura_6.0_Mas_de_Pandas.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FLectura_6.0_Mas_de_Pandas.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/Lectura_6.0_Mas_de_Pandas.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Más sobre la libreria
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     pandas
+    </span>
+   </code>
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#archivos-excel">
+     <em>
+      Archivos excel.
+     </em>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#archivos-json">
+   Archivos JSON.
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ejercicio-1">
+     Ejercicio 1
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#desde-una-url">
+     <em>
+      Desde una URL.
+     </em>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#informacion-del-dataframe">
+     <em>
+      Información del
+      <code class="docutils literal notranslate">
+       <span class="pre">
+        dataframe
+       </span>
+      </code>
+     </em>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#sub-dataframes">
+       <em>
+        Sub dataframes.
+       </em>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#loc-y-iloc">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       .loc
+      </span>
+     </code>
+     y
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       .iloc
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mascaras">
+     <em>
+      Máscaras.
+     </em>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#nan">
+     <em>
+      NaN
+     </em>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pandas-crosstab">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       pandas.crosstab
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conclusiones">
+     <em>
+      Conclusiones.
+     </em>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Más sobre la libreria pandas</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Más sobre la libreria
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     pandas
+    </span>
+   </code>
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#archivos-excel">
+     <em>
+      Archivos excel.
+     </em>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#archivos-json">
+   Archivos JSON.
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ejercicio-1">
+     Ejercicio 1
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#desde-una-url">
+     <em>
+      Desde una URL.
+     </em>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#informacion-del-dataframe">
+     <em>
+      Información del
+      <code class="docutils literal notranslate">
+       <span class="pre">
+        dataframe
+       </span>
+      </code>
+     </em>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#sub-dataframes">
+       <em>
+        Sub dataframes.
+       </em>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#loc-y-iloc">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       .loc
+      </span>
+     </code>
+     y
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       .iloc
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mascaras">
+     <em>
+      Máscaras.
+     </em>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#nan">
+     <em>
+      NaN
+     </em>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pandas-crosstab">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       pandas.crosstab
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conclusiones">
+     <em>
+      Conclusiones.
+     </em>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="mas-sobre-la-libreria-pandas">
+<h1>Más sobre la libreria <code class="docutils literal notranslate"><span class="pre">pandas</span></code><a class="headerlink" href="#mas-sobre-la-libreria-pandas" title="Permalink to this headline">#</a></h1>
+<p>La información vienen comunmente en formatos excel, csv, txt, o quizá esté en alguna url. Aunque estos pueden estar en otro formato (JSON, API’S) nos centraremos en los tres primeros.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="o">-</span><span class="n">l</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>total 2456
+drwxrwxr-x 5 andres-campos andres-campos   4096 ago  4 12:03 <span class=" -Color -Color-Bold -Color-Bold-Blue">_build</span>/
+-rw-rw-r-- 1 andres-campos andres-campos   9205 ago  4 12:03 Clases_Python.ipynb
+-rw-rw-r-- 1 andres-campos andres-campos   1121 ago  4 12:03 _config.yml
+drwxrwxr-x 5 andres-campos andres-campos   4096 ago  4 12:03 <span class=" -Color -Color-Bold -Color-Bold-Blue">datas</span>/
+-rw-rw-r-- 1 andres-campos andres-campos      0 ago  4 12:03 hello.txt
+-rw-rw-r-- 1 andres-campos andres-campos    754 ago  4 12:03 intro.md
+-rw-rw-r-- 1 andres-campos andres-campos 593599 ago  4 12:03 Lectura_12_Intro_Plotly.ipynb
+-rw-rw-r-- 1 andres-campos andres-campos  12578 ago  4 12:03 Lectura_1_Intro_Markdown.ipynb
+-rw-rw-r-- 1 andres-campos andres-campos  74882 ago  4 12:03 Lectura_2_elementos_basicos_Python.ipynb
+-rw-rw-r-- 1 andres-campos andres-campos 219115 ago  4 12:03 Lectura_3_Defi_Function_Python.ipynb
+-rw-rw-r-- 1 andres-campos andres-campos  74751 ago  4 12:03 Lectura_4_estruc_Datos_Python.ipynb
+-rw-rw-r-- 1 andres-campos andres-campos  48871 ago  4 12:03 Lectura_5_Pandas_Series_DataFrame.ipynb
+-rw-rw-r-- 1 andres-campos andres-campos 212741 ago  4 12:03 Lectura_6.0_Mas_de_Pandas.ipynb
+-rw-rw-r-- 1 andres-campos andres-campos 709101 ago  4 12:03 Lectura_6.1_operacionesBásicasDataframes.ipynb
+-rw-rw-r-- 1 andres-campos andres-campos 253887 ago  4 12:03 Lectura_7_CruceDatos_TratamientoInformación.ipynb
+-rw-rw-r-- 1 andres-campos andres-campos 159094 ago  4 12:03 Lectura_8_procesamientoDeCadenasDeTexto.ipynb
+-rw-rw-r-- 1 andres-campos andres-campos  83564 ago  4 12:03 <span class=" -Color -Color-Bold -Color-Bold-Magenta">logo_python.png</span>
+-rw-rw-r-- 1 andres-campos andres-campos   1533 ago  4 12:03 push_book_Github.txt
+-rw-rw-r-- 1 andres-campos andres-campos    275 ago  1 12:14 README.md
+-rw-rw-r-- 1 andres-campos andres-campos   5524 ago  4 12:03 references.bib
+-rw-rw-r-- 1 andres-campos andres-campos     30 ago  4 12:03 requirements.txt
+-rw-rw-r-- 1 andres-campos andres-campos    552 ago  4 12:03 _toc.yml
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Librerías requeridas</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1">## pd.set_option(&#39;display.max_columns&#39;, None) ## Número de columnas máximo a mostrar. </span>
+                                              <span class="c1">## None se reemplaza por el # máximo de columnas.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Función .head() muestra los 5 primeros elementos</span>
+<span class="n">df_csv</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;datas/downloaded_medals.csv&#39;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s2">&quot;,&quot;</span><span class="p">)</span>
+<span class="n">df_csv</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>City</th>
+      <th>Discipline</th>
+      <th>Event</th>
+      <th>Event gender</th>
+      <th>Medal</th>
+      <th>NOC</th>
+      <th>Sport</th>
+      <th>Year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>Chamonix</td>
+      <td>Figure skating</td>
+      <td>individual</td>
+      <td>M</td>
+      <td>Silver</td>
+      <td>AUT</td>
+      <td>Skating</td>
+      <td>1924</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>Chamonix</td>
+      <td>Figure skating</td>
+      <td>individual</td>
+      <td>W</td>
+      <td>Gold</td>
+      <td>AUT</td>
+      <td>Skating</td>
+      <td>1924</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>Chamonix</td>
+      <td>Figure skating</td>
+      <td>pairs</td>
+      <td>X</td>
+      <td>Gold</td>
+      <td>AUT</td>
+      <td>Skating</td>
+      <td>1924</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>Chamonix</td>
+      <td>Bobsleigh</td>
+      <td>four-man</td>
+      <td>M</td>
+      <td>Bronze</td>
+      <td>BEL</td>
+      <td>Bobsleigh</td>
+      <td>1924</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>Chamonix</td>
+      <td>Ice Hockey</td>
+      <td>ice hockey</td>
+      <td>M</td>
+      <td>Gold</td>
+      <td>CAN</td>
+      <td>Ice Hockey</td>
+      <td>1924</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_csv</span> <span class="o">=</span> <span class="n">df_csv</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Unnamed: 0&#39;</span><span class="p">])</span> <span class="c1">## Borrar columna</span>
+<span class="n">df_csv</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>City</th>
+      <th>Discipline</th>
+      <th>Event</th>
+      <th>Event gender</th>
+      <th>Medal</th>
+      <th>NOC</th>
+      <th>Sport</th>
+      <th>Year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Chamonix</td>
+      <td>Figure skating</td>
+      <td>individual</td>
+      <td>M</td>
+      <td>Silver</td>
+      <td>AUT</td>
+      <td>Skating</td>
+      <td>1924</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Chamonix</td>
+      <td>Figure skating</td>
+      <td>individual</td>
+      <td>W</td>
+      <td>Gold</td>
+      <td>AUT</td>
+      <td>Skating</td>
+      <td>1924</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Chamonix</td>
+      <td>Figure skating</td>
+      <td>pairs</td>
+      <td>X</td>
+      <td>Gold</td>
+      <td>AUT</td>
+      <td>Skating</td>
+      <td>1924</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Chamonix</td>
+      <td>Bobsleigh</td>
+      <td>four-man</td>
+      <td>M</td>
+      <td>Bronze</td>
+      <td>BEL</td>
+      <td>Bobsleigh</td>
+      <td>1924</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Chamonix</td>
+      <td>Ice Hockey</td>
+      <td>ice hockey</td>
+      <td>M</td>
+      <td>Gold</td>
+      <td>CAN</td>
+      <td>Ice Hockey</td>
+      <td>1924</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Función .tail() muestra los 5 últimos elementos</span>
+<span class="n">df_csv</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;datas/downloaded_medals.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">df_csv</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>City</th>
+      <th>Discipline</th>
+      <th>Event</th>
+      <th>Event gender</th>
+      <th>Medal</th>
+      <th>NOC</th>
+      <th>Sport</th>
+      <th>Year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2306</th>
+      <td>Turin</td>
+      <td>Snowboard</td>
+      <td>Half-pipe</td>
+      <td>M</td>
+      <td>Silver</td>
+      <td>USA</td>
+      <td>Skiing</td>
+      <td>2006</td>
+    </tr>
+    <tr>
+      <th>2307</th>
+      <td>Turin</td>
+      <td>Snowboard</td>
+      <td>Half-pipe</td>
+      <td>W</td>
+      <td>Gold</td>
+      <td>USA</td>
+      <td>Skiing</td>
+      <td>2006</td>
+    </tr>
+    <tr>
+      <th>2308</th>
+      <td>Turin</td>
+      <td>Snowboard</td>
+      <td>Half-pipe</td>
+      <td>W</td>
+      <td>Silver</td>
+      <td>USA</td>
+      <td>Skiing</td>
+      <td>2006</td>
+    </tr>
+    <tr>
+      <th>2309</th>
+      <td>Turin</td>
+      <td>Snowboard</td>
+      <td>Snowboard Cross</td>
+      <td>M</td>
+      <td>Gold</td>
+      <td>USA</td>
+      <td>Skiing</td>
+      <td>2006</td>
+    </tr>
+    <tr>
+      <th>2310</th>
+      <td>Turin</td>
+      <td>Snowboard</td>
+      <td>Snowboard Cross</td>
+      <td>W</td>
+      <td>Silver</td>
+      <td>USA</td>
+      <td>Skiing</td>
+      <td>2006</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<section id="archivos-excel">
+<h2><em>Archivos excel.</em><a class="headerlink" href="#archivos-excel" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Archivos Excel</span>
+<span class="n">df_Excel</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelFile</span><span class="p">(</span><span class="s1">&#39;datas/downloaded_medals.xls&#39;</span><span class="p">)</span>
+<span class="n">df_Excel</span><span class="o">.</span><span class="n">sheet_names</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Sheet1&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_Excel</span> <span class="o">=</span> <span class="n">df_Excel</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s2">&quot;Sheet1&quot;</span><span class="p">)</span>
+<span class="n">df_Excel</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>City</th>
+      <th>Discipline</th>
+      <th>Event</th>
+      <th>Event gender</th>
+      <th>Medal</th>
+      <th>NOC</th>
+      <th>Sport</th>
+      <th>Year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>Chamonix</td>
+      <td>Figure skating</td>
+      <td>individual</td>
+      <td>M</td>
+      <td>Silver</td>
+      <td>AUT</td>
+      <td>Skating</td>
+      <td>1924</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>Chamonix</td>
+      <td>Figure skating</td>
+      <td>individual</td>
+      <td>W</td>
+      <td>Gold</td>
+      <td>AUT</td>
+      <td>Skating</td>
+      <td>1924</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>Chamonix</td>
+      <td>Figure skating</td>
+      <td>pairs</td>
+      <td>X</td>
+      <td>Gold</td>
+      <td>AUT</td>
+      <td>Skating</td>
+      <td>1924</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>Chamonix</td>
+      <td>Bobsleigh</td>
+      <td>four-man</td>
+      <td>M</td>
+      <td>Bronze</td>
+      <td>BEL</td>
+      <td>Bobsleigh</td>
+      <td>1924</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>Chamonix</td>
+      <td>Ice Hockey</td>
+      <td>ice hockey</td>
+      <td>M</td>
+      <td>Gold</td>
+      <td>CAN</td>
+      <td>Ice Hockey</td>
+      <td>1924</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="archivos-json">
+<h1>Archivos JSON.<a class="headerlink" href="#archivos-json" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_json</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="s2">&quot;datas/downloaded_medals.json&quot;</span><span class="p">)</span>
+<span class="n">df_json</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>City</th>
+      <th>Discipline</th>
+      <th>Event</th>
+      <th>Event gender</th>
+      <th>Medal</th>
+      <th>NOC</th>
+      <th>Sport</th>
+      <th>Year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Chamonix</td>
+      <td>Figure skating</td>
+      <td>individual</td>
+      <td>M</td>
+      <td>Silver</td>
+      <td>AUT</td>
+      <td>Skating</td>
+      <td>1924</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Chamonix</td>
+      <td>Figure skating</td>
+      <td>individual</td>
+      <td>W</td>
+      <td>Gold</td>
+      <td>AUT</td>
+      <td>Skating</td>
+      <td>1924</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Chamonix</td>
+      <td>Figure skating</td>
+      <td>pairs</td>
+      <td>X</td>
+      <td>Gold</td>
+      <td>AUT</td>
+      <td>Skating</td>
+      <td>1924</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Chamonix</td>
+      <td>Bobsleigh</td>
+      <td>four-man</td>
+      <td>M</td>
+      <td>Bronze</td>
+      <td>BEL</td>
+      <td>Bobsleigh</td>
+      <td>1924</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Chamonix</td>
+      <td>Ice Hockey</td>
+      <td>ice hockey</td>
+      <td>M</td>
+      <td>Gold</td>
+      <td>CAN</td>
+      <td>Ice Hockey</td>
+      <td>1924</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<section id="ejercicio-1">
+<h2>Ejercicio 1<a class="headerlink" href="#ejercicio-1" title="Permalink to this headline">#</a></h2>
+<p>Importar el archivo <code class="docutils literal notranslate"><span class="pre">'Winter</span> <span class="pre">Olympic</span> <span class="pre">Medals.xlsx'</span></code> y definir en cada caso un dataframe para cada hoja. Además en cada caso, mostrar su cabeza y su cola.</p>
+<p><strong>Respuesta:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#celda de código para probar.</span>
+<span class="n">df_Excel_1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelFile</span><span class="p">(</span><span class="s1">&#39;datas/Winter Olympic Medals.xlsx&#39;</span><span class="p">)</span>
+<span class="n">df_Excel_1</span><span class="o">.</span><span class="n">sheet_names</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Data&#39;, &#39;Ranks&#39;, &#39;Sources&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_excel</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;datas/Winter Olympic Medals.xlsx&#39;</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Data&#39;</span><span class="p">,</span> <span class="s1">&#39;Ranks&#39;</span><span class="p">,</span> <span class="s1">&#39;Sources&#39;</span><span class="p">])</span>
+<span class="n">df_aux</span> <span class="o">=</span> <span class="n">df_excel</span><span class="p">[</span><span class="s2">&quot;Data&quot;</span><span class="p">]</span>
+<span class="n">df_aux</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Sport</th>
+      <th>Event</th>
+      <th>Country</th>
+      <th>Gender</th>
+      <th>Medal Rank</th>
+      <th>Medal</th>
+      <th>Name of Athlete or Team</th>
+      <th>Age of Athlete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1924</td>
+      <td>Bobsled</td>
+      <td>Men's Four/Five</td>
+      <td>Switzerland</td>
+      <td>Men</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Switzerland-1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1924</td>
+      <td>Bobsled</td>
+      <td>Men's Four/Five</td>
+      <td>Britain</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Britain-1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1924</td>
+      <td>Bobsled</td>
+      <td>Men's Four/Five</td>
+      <td>Belgium</td>
+      <td>Men</td>
+      <td>3</td>
+      <td>bronze</td>
+      <td>Belgium-1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1924</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 18 Kilometers</td>
+      <td>Norway</td>
+      <td>Men</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Thorleif Haug</td>
+      <td>29.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1924</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 18 Kilometers</td>
+      <td>Norway</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Johan GrÃ¸ttumsbraaten</td>
+      <td>24.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="desde-una-url">
+<h2><em>Desde una URL.</em><a class="headerlink" href="#desde-una-url" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Dependerá de donde y como estén los datos.</span>
+<span class="n">df_url</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;https://query.data.world/s/zilmgkqzxjhjrfn2pllc4dhikcvrzt&#39;</span><span class="p">)</span>
+<span class="n">df_url</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Sport</th>
+      <th>Event</th>
+      <th>Country</th>
+      <th>Gender</th>
+      <th>Medal Rank</th>
+      <th>Medal</th>
+      <th>Name of Athlete or Team</th>
+      <th>Age of Athlete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1924</td>
+      <td>Bobsled</td>
+      <td>Men's Four/Five</td>
+      <td>Switzerland</td>
+      <td>Men</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Switzerland-1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1924</td>
+      <td>Bobsled</td>
+      <td>Men's Four/Five</td>
+      <td>Britain</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Britain-1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1924</td>
+      <td>Bobsled</td>
+      <td>Men's Four/Five</td>
+      <td>Belgium</td>
+      <td>Men</td>
+      <td>3</td>
+      <td>bronze</td>
+      <td>Belgium-1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1924</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 18 Kilometers</td>
+      <td>Norway</td>
+      <td>Men</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Thorleif Haug</td>
+      <td>29.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1924</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 18 Kilometers</td>
+      <td>Norway</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Johan GrÃ¸ttumsbraaten</td>
+      <td>24.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://winterolympicsmedals.com/medals.csv&quot;</span>
+<span class="n">df_url_1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">df_url_1</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>City</th>
+      <th>Sport</th>
+      <th>Discipline</th>
+      <th>NOC</th>
+      <th>Event</th>
+      <th>Event gender</th>
+      <th>Medal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1924</td>
+      <td>Chamonix</td>
+      <td>Skating</td>
+      <td>Figure skating</td>
+      <td>AUT</td>
+      <td>individual</td>
+      <td>M</td>
+      <td>Silver</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1924</td>
+      <td>Chamonix</td>
+      <td>Skating</td>
+      <td>Figure skating</td>
+      <td>AUT</td>
+      <td>individual</td>
+      <td>W</td>
+      <td>Gold</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1924</td>
+      <td>Chamonix</td>
+      <td>Skating</td>
+      <td>Figure skating</td>
+      <td>AUT</td>
+      <td>pairs</td>
+      <td>X</td>
+      <td>Gold</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1924</td>
+      <td>Chamonix</td>
+      <td>Bobsleigh</td>
+      <td>Bobsleigh</td>
+      <td>BEL</td>
+      <td>four-man</td>
+      <td>M</td>
+      <td>Bronze</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1924</td>
+      <td>Chamonix</td>
+      <td>Ice Hockey</td>
+      <td>Ice Hockey</td>
+      <td>CAN</td>
+      <td>ice hockey</td>
+      <td>M</td>
+      <td>Gold</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="informacion-del-dataframe">
+<h2><em>Información del <code class="docutils literal notranslate"><span class="pre">dataframe</span></code></em><a class="headerlink" href="#informacion-del-dataframe" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Copiamos un dataframe</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df_url</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Sport</th>
+      <th>Event</th>
+      <th>Country</th>
+      <th>Gender</th>
+      <th>Medal Rank</th>
+      <th>Medal</th>
+      <th>Name of Athlete or Team</th>
+      <th>Age of Athlete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1924</td>
+      <td>Bobsled</td>
+      <td>Men's Four/Five</td>
+      <td>Switzerland</td>
+      <td>Men</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Switzerland-1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1924</td>
+      <td>Bobsled</td>
+      <td>Men's Four/Five</td>
+      <td>Britain</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Britain-1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1924</td>
+      <td>Bobsled</td>
+      <td>Men's Four/Five</td>
+      <td>Belgium</td>
+      <td>Men</td>
+      <td>3</td>
+      <td>bronze</td>
+      <td>Belgium-1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1924</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 18 Kilometers</td>
+      <td>Norway</td>
+      <td>Men</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Thorleif Haug</td>
+      <td>29.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1924</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 18 Kilometers</td>
+      <td>Norway</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Johan GrÃ¸ttumsbraaten</td>
+      <td>24.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Nombres columnas</span>
+<span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;Year&#39;, &#39;Sport&#39;, &#39;Event&#39;, &#39;Country&#39;, &#39;Gender&#39;, &#39;Medal Rank&#39;, &#39;Medal&#39;,
+       &#39;Name of Athlete or Team&#39;, &#39;Age of Athlete&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Tipos de datos en el dataframe</span>
+<span class="n">df</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Year                         int64
+Sport                       object
+Event                       object
+Country                     object
+Gender                      object
+Medal Rank                   int64
+Medal                       object
+Name of Athlete or Team     object
+Age of Athlete             float64
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 2865 entries, 0 to 2864
+Data columns (total 9 columns):
+ #   Column                   Non-Null Count  Dtype  
+---  ------                   --------------  -----  
+ 0   Year                     2865 non-null   int64  
+ 1   Sport                    2865 non-null   object 
+ 2   Event                    2865 non-null   object 
+ 3   Country                  2865 non-null   object 
+ 4   Gender                   2865 non-null   object 
+ 5   Medal Rank               2865 non-null   int64  
+ 6   Medal                    2865 non-null   object 
+ 7   Name of Athlete or Team  2865 non-null   object 
+ 8   Age of Athlete           2173 non-null   float64
+dtypes: float64(1), int64(2), object(6)
+memory usage: 201.6+ KB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">T</span> <span class="c1"># df.describe.transpose()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>25%</th>
+      <th>50%</th>
+      <th>75%</th>
+      <th>max</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Year</th>
+      <td>2865.0</td>
+      <td>1986.488656</td>
+      <td>23.489775</td>
+      <td>1924.0</td>
+      <td>1972.0</td>
+      <td>1992.0</td>
+      <td>2006.0</td>
+      <td>2014.0</td>
+    </tr>
+    <tr>
+      <th>Medal Rank</th>
+      <td>2865.0</td>
+      <td>1.995812</td>
+      <td>0.815773</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>Age of Athlete</th>
+      <td>2173.0</td>
+      <td>25.152324</td>
+      <td>4.271764</td>
+      <td>14.0</td>
+      <td>22.0</td>
+      <td>25.0</td>
+      <td>28.0</td>
+      <td>42.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Year&quot;</span><span class="p">:</span><span class="s2">&quot;Año&quot;</span><span class="p">,</span> <span class="s2">&quot;Sport&quot;</span><span class="p">:</span><span class="s2">&quot;Deporte&quot;</span><span class="p">,</span> <span class="s2">&quot;Country&quot;</span><span class="p">:</span><span class="s2">&quot;País&quot;</span><span class="p">,</span> <span class="s2">&quot;Event&quot;</span><span class="p">:</span><span class="s2">&quot;Evento&quot;</span><span class="p">,</span><span class="s2">&quot;Gender&quot;</span><span class="p">:</span><span class="s2">&quot;Género&quot;</span><span class="p">,</span><span class="s2">&quot;Medal&quot;</span><span class="p">:</span><span class="s2">&quot;Medalla&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;Age of Athlete&quot;</span><span class="p">:</span><span class="s2">&quot;Edad_Atleta&quot;</span><span class="p">,</span><span class="s2">&quot;Name of Athlete or Team&quot;</span><span class="p">:</span><span class="s2">&quot;Nombre_atleta_o_Equipo&quot;</span><span class="p">})</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Año</th>
+      <th>Deporte</th>
+      <th>Evento</th>
+      <th>País</th>
+      <th>Género</th>
+      <th>Medal Rank</th>
+      <th>Medalla</th>
+      <th>Nombre_atleta_o_Equipo</th>
+      <th>Edad_Atleta</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1924</td>
+      <td>Bobsled</td>
+      <td>Men's Four/Five</td>
+      <td>Switzerland</td>
+      <td>Men</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Switzerland-1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1924</td>
+      <td>Bobsled</td>
+      <td>Men's Four/Five</td>
+      <td>Britain</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Britain-1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1924</td>
+      <td>Bobsled</td>
+      <td>Men's Four/Five</td>
+      <td>Belgium</td>
+      <td>Men</td>
+      <td>3</td>
+      <td>bronze</td>
+      <td>Belgium-1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1924</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 18 Kilometers</td>
+      <td>Norway</td>
+      <td>Men</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Thorleif Haug</td>
+      <td>29.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1924</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 18 Kilometers</td>
+      <td>Norway</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Johan GrÃ¸ttumsbraaten</td>
+      <td>24.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<section id="sub-dataframes">
+<h3><em>Sub dataframes.</em><a class="headerlink" href="#sub-dataframes" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Serie de pandas</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Edad_Atleta&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0        NaN
+1        NaN
+2        NaN
+3       29.0
+4       24.0
+        ... 
+2860    30.0
+2861    31.0
+2862    27.0
+2863     NaN
+2864     NaN
+Name: Edad_Atleta, Length: 2865, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Evento&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0           Men&#39;s Four/Five
+1           Men&#39;s Four/Five
+2           Men&#39;s Four/Five
+3       Men&#39;s 18 Kilometers
+4       Men&#39;s 18 Kilometers
+               ...         
+2860    Men&#39;s 50 Kilometers
+2861    Men&#39;s 50 Kilometers
+2862    Men&#39;s 50 Kilometers
+2863       Men&#39;s Ice Hockey
+2864       Men&#39;s Ice Hockey
+Name: Evento, Length: 2865, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Género&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Men&#39;, &#39;Mixed&#39;, &#39;Women&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">subset</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;Año&#39;</span><span class="p">,</span> <span class="s1">&#39;Deporte&#39;</span><span class="p">,</span> <span class="s1">&#39;Evento&#39;</span><span class="p">]]</span>
+<span class="n">subset</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Año</th>
+      <th>Deporte</th>
+      <th>Evento</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1924</td>
+      <td>Bobsled</td>
+      <td>Men's Four/Five</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1924</td>
+      <td>Bobsled</td>
+      <td>Men's Four/Five</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1924</td>
+      <td>Bobsled</td>
+      <td>Men's Four/Five</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1924</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 18 Kilometers</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1924</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 18 Kilometers</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2860</th>
+      <td>2014</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 50 Kilometers</td>
+    </tr>
+    <tr>
+      <th>2861</th>
+      <td>2014</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 50 Kilometers</td>
+    </tr>
+    <tr>
+      <th>2862</th>
+      <td>2014</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 50 Kilometers</td>
+    </tr>
+    <tr>
+      <th>2863</th>
+      <td>2014</td>
+      <td>Ice Hockey</td>
+      <td>Men's Ice Hockey</td>
+    </tr>
+    <tr>
+      <th>2864</th>
+      <td>2014</td>
+      <td>Ice Hockey</td>
+      <td>Men's Ice Hockey</td>
+    </tr>
+  </tbody>
+</table>
+<p>2865 rows × 3 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Deporte&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Speedskating                527
+Cross-Country Skiing        471
+Alpine Skiing               428
+Figure Skating              235
+Biathlon                    225
+Short-Track Speedskating    144
+Ski Jumping                 135
+Bobsled                     133
+Luge                        129
+Nordic Combined             102
+Freestyle Skiing            102
+Snowboarding                 90
+Ice Hockey                   81
+Curling                      33
+Skeleton                     30
+Name: Deporte, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Deporte&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Speedskating                0.183944
+Cross-Country Skiing        0.164398
+Alpine Skiing               0.149389
+Figure Skating              0.082024
+Biathlon                    0.078534
+Short-Track Speedskating    0.050262
+Ski Jumping                 0.047120
+Bobsled                     0.046422
+Luge                        0.045026
+Nordic Combined             0.035602
+Freestyle Skiing            0.035602
+Snowboarding                0.031414
+Ice Hockey                  0.028272
+Curling                     0.011518
+Skeleton                    0.010471
+Name: Deporte, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Género&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Men      59.720768
+Women    36.474695
+Mixed     3.804538
+Name: Género, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 2865 entries, 0 to 2864
+Data columns (total 9 columns):
+ #   Column                  Non-Null Count  Dtype  
+---  ------                  --------------  -----  
+ 0   Año                     2865 non-null   int64  
+ 1   Deporte                 2865 non-null   object 
+ 2   Evento                  2865 non-null   object 
+ 3   País                    2865 non-null   object 
+ 4   Género                  2865 non-null   object 
+ 5   Medal Rank              2865 non-null   int64  
+ 6   Medalla                 2865 non-null   object 
+ 7   Nombre_atleta_o_Equipo  2865 non-null   object 
+ 8   Edad_Atleta             2173 non-null   float64
+dtypes: float64(1), int64(2), object(6)
+memory usage: 201.6+ KB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">numeric</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Edad_Atleta&quot;</span><span class="p">]</span>
+<span class="n">other_features</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">numeric</span><span class="p">]</span> <span class="c1">## list comprehension</span>
+<span class="n">other_features</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Año&#39;,
+ &#39;Deporte&#39;,
+ &#39;Evento&#39;,
+ &#39;País&#39;,
+ &#39;Género&#39;,
+ &#39;Medal Rank&#39;,
+ &#39;Medalla&#39;,
+ &#39;Nombre_atleta_o_Equipo&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_categoric</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">other_features</span><span class="p">]</span>
+<span class="n">df_categoric</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Año</th>
+      <th>Deporte</th>
+      <th>Evento</th>
+      <th>País</th>
+      <th>Género</th>
+      <th>Medal Rank</th>
+      <th>Medalla</th>
+      <th>Nombre_atleta_o_Equipo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1924</td>
+      <td>Bobsled</td>
+      <td>Men's Four/Five</td>
+      <td>Switzerland</td>
+      <td>Men</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Switzerland-1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1924</td>
+      <td>Bobsled</td>
+      <td>Men's Four/Five</td>
+      <td>Britain</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Britain-1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1924</td>
+      <td>Bobsled</td>
+      <td>Men's Four/Five</td>
+      <td>Belgium</td>
+      <td>Men</td>
+      <td>3</td>
+      <td>bronze</td>
+      <td>Belgium-1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1924</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 18 Kilometers</td>
+      <td>Norway</td>
+      <td>Men</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Thorleif Haug</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1924</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 18 Kilometers</td>
+      <td>Norway</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Johan GrÃ¸ttumsbraaten</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
+<section id="loc-y-iloc">
+<h2><code class="docutils literal notranslate"><span class="pre">.loc</span></code> y <code class="docutils literal notranslate"><span class="pre">.iloc</span></code><a class="headerlink" href="#loc-y-iloc" title="Permalink to this headline">#</a></h2>
+<p>Si deseamos seleccionar un subdataframe, con registros y columnas particulares podemos hacerlos con estos 2 métodos. <code class="docutils literal notranslate"><span class="pre">.loc</span></code> es la localización en texto (elas columnas) y <code class="docutils literal notranslate"><span class="pre">.iloc()</span></code> será vía indexación numérica.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Año</th>
+      <th>Deporte</th>
+      <th>Evento</th>
+      <th>País</th>
+      <th>Género</th>
+      <th>Medal Rank</th>
+      <th>Medalla</th>
+      <th>Nombre_atleta_o_Equipo</th>
+      <th>Edad_Atleta</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1924</td>
+      <td>Bobsled</td>
+      <td>Men's Four/Five</td>
+      <td>Switzerland</td>
+      <td>Men</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Switzerland-1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1924</td>
+      <td>Bobsled</td>
+      <td>Men's Four/Five</td>
+      <td>Britain</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Britain-1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1924</td>
+      <td>Bobsled</td>
+      <td>Men's Four/Five</td>
+      <td>Belgium</td>
+      <td>Men</td>
+      <td>3</td>
+      <td>bronze</td>
+      <td>Belgium-1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1924</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 18 Kilometers</td>
+      <td>Norway</td>
+      <td>Men</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Thorleif Haug</td>
+      <td>29.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1924</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 18 Kilometers</td>
+      <td>Norway</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Johan GrÃ¸ttumsbraaten</td>
+      <td>24.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="c1">## Registro 4 de la tabla.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Año                                         1924
+Deporte                     Cross-Country Skiing
+Evento                       Men&#39;s 18 Kilometers
+País                                      Norway
+Género                                       Men
+Medal Rank                                     2
+Medalla                                   silver
+Nombre_atleta_o_Equipo    Johan GrÃ¸ttumsbraaten
+Edad_Atleta                                 24.0
+Name: 4, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas.core.series.Series
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="mi">8</span><span class="p">]</span> <span class="c1">## 8 Primeros registros del dataframe</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Año</th>
+      <th>Deporte</th>
+      <th>Evento</th>
+      <th>País</th>
+      <th>Género</th>
+      <th>Medal Rank</th>
+      <th>Medalla</th>
+      <th>Nombre_atleta_o_Equipo</th>
+      <th>Edad_Atleta</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1924</td>
+      <td>Bobsled</td>
+      <td>Men's Four/Five</td>
+      <td>Switzerland</td>
+      <td>Men</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Switzerland-1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1924</td>
+      <td>Bobsled</td>
+      <td>Men's Four/Five</td>
+      <td>Britain</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Britain-1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1924</td>
+      <td>Bobsled</td>
+      <td>Men's Four/Five</td>
+      <td>Belgium</td>
+      <td>Men</td>
+      <td>3</td>
+      <td>bronze</td>
+      <td>Belgium-1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1924</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 18 Kilometers</td>
+      <td>Norway</td>
+      <td>Men</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Thorleif Haug</td>
+      <td>29.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1924</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 18 Kilometers</td>
+      <td>Norway</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Johan GrÃ¸ttumsbraaten</td>
+      <td>24.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1924</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 18 Kilometers</td>
+      <td>Finland</td>
+      <td>Men</td>
+      <td>3</td>
+      <td>bronze</td>
+      <td>Tapani Niku</td>
+      <td>28.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1924</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 50 Kilometers</td>
+      <td>Norway</td>
+      <td>Men</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Thorleif Haug</td>
+      <td>29.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1924</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 50 Kilometers</td>
+      <td>Norway</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Thoralf StrÃ¸mstad</td>
+      <td>27.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>1924</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 50 Kilometers</td>
+      <td>Norway</td>
+      <td>Men</td>
+      <td>3</td>
+      <td>bronze</td>
+      <td>Johan GrÃ¸ttumsbraaten</td>
+      <td>24.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">10</span><span class="p">:</span><span class="mi">20</span><span class="p">]</span> <span class="c1"># Registros desde el 11 y hasta el 20</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Año</th>
+      <th>Deporte</th>
+      <th>Evento</th>
+      <th>País</th>
+      <th>Género</th>
+      <th>Medal Rank</th>
+      <th>Medalla</th>
+      <th>Nombre_atleta_o_Equipo</th>
+      <th>Edad_Atleta</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>10</th>
+      <td>1924</td>
+      <td>Curling</td>
+      <td>Men's Curling</td>
+      <td>Sweden</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Sweden</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>1924</td>
+      <td>Curling</td>
+      <td>Men's Curling</td>
+      <td>France</td>
+      <td>Men</td>
+      <td>3</td>
+      <td>bronze</td>
+      <td>France</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>1924</td>
+      <td>Figure Skating</td>
+      <td>Men's Singles</td>
+      <td>Sweden</td>
+      <td>Men</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Gillis GrafstrÃ¶m</td>
+      <td>30.0</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>1924</td>
+      <td>Figure Skating</td>
+      <td>Men's Singles</td>
+      <td>Austria</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Willy BÃ¶ckl</td>
+      <td>30.0</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>1924</td>
+      <td>Figure Skating</td>
+      <td>Men's Singles</td>
+      <td>Switzerland</td>
+      <td>Men</td>
+      <td>3</td>
+      <td>bronze</td>
+      <td>Georges Gautschi</td>
+      <td>19.0</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>1924</td>
+      <td>Figure Skating</td>
+      <td>Mixed Pairs</td>
+      <td>Austria</td>
+      <td>Mixed</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Austria</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>1924</td>
+      <td>Figure Skating</td>
+      <td>Mixed Pairs</td>
+      <td>Finland</td>
+      <td>Mixed</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Finland</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>1924</td>
+      <td>Figure Skating</td>
+      <td>Mixed Pairs</td>
+      <td>France</td>
+      <td>Mixed</td>
+      <td>3</td>
+      <td>bronze</td>
+      <td>France-1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>1924</td>
+      <td>Figure Skating</td>
+      <td>Women's Singles</td>
+      <td>Austria</td>
+      <td>Women</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Herma Planck-Szabo</td>
+      <td>21.0</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>1924</td>
+      <td>Figure Skating</td>
+      <td>Women's Singles</td>
+      <td>United States</td>
+      <td>Women</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Beatrix Loughran</td>
+      <td>23.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pares</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Año&#39;</span><span class="p">]))</span> <span class="k">if</span> <span class="n">i</span><span class="o">%</span><span class="k">2</span>==0]
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">pares</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Año</th>
+      <th>Deporte</th>
+      <th>Evento</th>
+      <th>País</th>
+      <th>Género</th>
+      <th>Medal Rank</th>
+      <th>Medalla</th>
+      <th>Nombre_atleta_o_Equipo</th>
+      <th>Edad_Atleta</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1924</td>
+      <td>Bobsled</td>
+      <td>Men's Four/Five</td>
+      <td>Switzerland</td>
+      <td>Men</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Switzerland-1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1924</td>
+      <td>Bobsled</td>
+      <td>Men's Four/Five</td>
+      <td>Belgium</td>
+      <td>Men</td>
+      <td>3</td>
+      <td>bronze</td>
+      <td>Belgium-1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1924</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 18 Kilometers</td>
+      <td>Norway</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Johan GrÃ¸ttumsbraaten</td>
+      <td>24.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1924</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 50 Kilometers</td>
+      <td>Norway</td>
+      <td>Men</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Thorleif Haug</td>
+      <td>29.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>1924</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 50 Kilometers</td>
+      <td>Norway</td>
+      <td>Men</td>
+      <td>3</td>
+      <td>bronze</td>
+      <td>Johan GrÃ¸ttumsbraaten</td>
+      <td>24.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2856</th>
+      <td>2014</td>
+      <td>Speedskating</td>
+      <td>Men's Team Pursuit</td>
+      <td>Poland</td>
+      <td>Men</td>
+      <td>3</td>
+      <td>bronze</td>
+      <td>Poland</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2858</th>
+      <td>2014</td>
+      <td>Bobsled</td>
+      <td>Men's Four</td>
+      <td>Latvia</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Latvia</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2860</th>
+      <td>2014</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 50 Kilometers</td>
+      <td>Russia</td>
+      <td>Men</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Alexander Legkov</td>
+      <td>30.0</td>
+    </tr>
+    <tr>
+      <th>2862</th>
+      <td>2014</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 50 Kilometers</td>
+      <td>Russia</td>
+      <td>Men</td>
+      <td>3</td>
+      <td>bronze</td>
+      <td>Ilia Chernousov</td>
+      <td>27.0</td>
+    </tr>
+    <tr>
+      <th>2864</th>
+      <td>2014</td>
+      <td>Ice Hockey</td>
+      <td>Men's Ice Hockey</td>
+      <td>Sweden</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Sweden</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>1433 rows × 9 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">impares</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Año&#39;</span><span class="p">]))</span> <span class="k">if</span> <span class="n">i</span><span class="o">%</span><span class="k">2</span>==1]
+<span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">impares</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Año</th>
+      <th>Deporte</th>
+      <th>Evento</th>
+      <th>País</th>
+      <th>Género</th>
+      <th>Medal Rank</th>
+      <th>Medalla</th>
+      <th>Nombre_atleta_o_Equipo</th>
+      <th>Edad_Atleta</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>1924</td>
+      <td>Bobsled</td>
+      <td>Men's Four/Five</td>
+      <td>Britain</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Britain-1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1924</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 18 Kilometers</td>
+      <td>Norway</td>
+      <td>Men</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Thorleif Haug</td>
+      <td>29.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1924</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 18 Kilometers</td>
+      <td>Finland</td>
+      <td>Men</td>
+      <td>3</td>
+      <td>bronze</td>
+      <td>Tapani Niku</td>
+      <td>28.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1924</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 50 Kilometers</td>
+      <td>Norway</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Thoralf StrÃ¸mstad</td>
+      <td>27.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1924</td>
+      <td>Curling</td>
+      <td>Men's Curling</td>
+      <td>Britain</td>
+      <td>Men</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Britain</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2855</th>
+      <td>2014</td>
+      <td>Speedskating</td>
+      <td>Men's Team Pursuit</td>
+      <td>South Korea</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>South Korea</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2857</th>
+      <td>2014</td>
+      <td>Bobsled</td>
+      <td>Men's Four</td>
+      <td>Russia</td>
+      <td>Men</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Russia</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2859</th>
+      <td>2014</td>
+      <td>Bobsled</td>
+      <td>Men's Four</td>
+      <td>United States</td>
+      <td>Men</td>
+      <td>3</td>
+      <td>bronze</td>
+      <td>United States</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2861</th>
+      <td>2014</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 50 Kilometers</td>
+      <td>Russia</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Maxim Vylegzhanin</td>
+      <td>31.0</td>
+    </tr>
+    <tr>
+      <th>2863</th>
+      <td>2014</td>
+      <td>Ice Hockey</td>
+      <td>Men's Ice Hockey</td>
+      <td>Canada</td>
+      <td>Men</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Canada</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>1432 rows × 9 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s2">&quot;Deporte&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Deporte</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Bobsled</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Bobsled</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Bobsled</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Cross-Country Skiing</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Cross-Country Skiing</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2860</th>
+      <td>Cross-Country Skiing</td>
+    </tr>
+    <tr>
+      <th>2861</th>
+      <td>Cross-Country Skiing</td>
+    </tr>
+    <tr>
+      <th>2862</th>
+      <td>Cross-Country Skiing</td>
+    </tr>
+    <tr>
+      <th>2863</th>
+      <td>Ice Hockey</td>
+    </tr>
+    <tr>
+      <th>2864</th>
+      <td>Ice Hockey</td>
+    </tr>
+  </tbody>
+</table>
+<p>2865 rows × 1 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,[</span><span class="s2">&quot;Deporte&quot;</span><span class="p">,</span><span class="s2">&quot;Evento&quot;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Deporte</th>
+      <th>Evento</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Bobsled</td>
+      <td>Men's Four/Five</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Bobsled</td>
+      <td>Men's Four/Five</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Bobsled</td>
+      <td>Men's Four/Five</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 18 Kilometers</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 18 Kilometers</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2860</th>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 50 Kilometers</td>
+    </tr>
+    <tr>
+      <th>2861</th>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 50 Kilometers</td>
+    </tr>
+    <tr>
+      <th>2862</th>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 50 Kilometers</td>
+    </tr>
+    <tr>
+      <th>2863</th>
+      <td>Ice Hockey</td>
+      <td>Men's Ice Hockey</td>
+    </tr>
+    <tr>
+      <th>2864</th>
+      <td>Ice Hockey</td>
+      <td>Men's Ice Hockey</td>
+    </tr>
+  </tbody>
+</table>
+<p>2865 rows × 2 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">j</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">((</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0, &#39;Año&#39;)
+(1, &#39;Deporte&#39;)
+(2, &#39;Evento&#39;)
+(3, &#39;País&#39;)
+(4, &#39;Género&#39;)
+(5, &#39;Medal Rank&#39;)
+(6, &#39;Medalla&#39;)
+(7, &#39;Nombre_atleta_o_Equipo&#39;)
+(8, &#39;Edad_Atleta&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">pares</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Año</th>
+      <th>Deporte</th>
+      <th>Nombre_atleta_o_Equipo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1924</td>
+      <td>Bobsled</td>
+      <td>Switzerland-1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1924</td>
+      <td>Bobsled</td>
+      <td>Belgium-1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1924</td>
+      <td>Cross-Country Skiing</td>
+      <td>Johan GrÃ¸ttumsbraaten</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1924</td>
+      <td>Cross-Country Skiing</td>
+      <td>Thorleif Haug</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>1924</td>
+      <td>Cross-Country Skiing</td>
+      <td>Johan GrÃ¸ttumsbraaten</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2856</th>
+      <td>2014</td>
+      <td>Speedskating</td>
+      <td>Poland</td>
+    </tr>
+    <tr>
+      <th>2858</th>
+      <td>2014</td>
+      <td>Bobsled</td>
+      <td>Latvia</td>
+    </tr>
+    <tr>
+      <th>2860</th>
+      <td>2014</td>
+      <td>Cross-Country Skiing</td>
+      <td>Alexander Legkov</td>
+    </tr>
+    <tr>
+      <th>2862</th>
+      <td>2014</td>
+      <td>Cross-Country Skiing</td>
+      <td>Ilia Chernousov</td>
+    </tr>
+    <tr>
+      <th>2864</th>
+      <td>2014</td>
+      <td>Ice Hockey</td>
+      <td>Sweden</td>
+    </tr>
+  </tbody>
+</table>
+<p>1433 rows × 3 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="mascaras">
+<h2><em>Máscaras.</em><a class="headerlink" href="#mascaras" title="Permalink to this headline">#</a></h2>
+<p>Supongamos que deseamos obtener los regístros que cumplen cierta condición. Por ejemplo, todos aquellos donde el género sea mujer, las personas menores de 30 años, aquellos que ganaron plata, o quizá mujeres que ganaron plata y son menores de 30 años.</p>
+<p>Para hacer esto necesitamos una serie de <code class="docutils literal notranslate"><span class="pre">pandas</span></code> de tipo booleano, que determina que registros cumplen la condición deseada.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Año</th>
+      <th>Deporte</th>
+      <th>Evento</th>
+      <th>País</th>
+      <th>Género</th>
+      <th>Medal Rank</th>
+      <th>Medalla</th>
+      <th>Nombre_atleta_o_Equipo</th>
+      <th>Edad_Atleta</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1924</td>
+      <td>Bobsled</td>
+      <td>Men's Four/Five</td>
+      <td>Switzerland</td>
+      <td>Men</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Switzerland-1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1924</td>
+      <td>Bobsled</td>
+      <td>Men's Four/Five</td>
+      <td>Britain</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Britain-1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1924</td>
+      <td>Bobsled</td>
+      <td>Men's Four/Five</td>
+      <td>Belgium</td>
+      <td>Men</td>
+      <td>3</td>
+      <td>bronze</td>
+      <td>Belgium-1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1924</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 18 Kilometers</td>
+      <td>Norway</td>
+      <td>Men</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Thorleif Haug</td>
+      <td>29.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1924</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 18 Kilometers</td>
+      <td>Norway</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Johan GrÃ¸ttumsbraaten</td>
+      <td>24.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Año&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1950</span><span class="p">)</span>
+<span class="n">mask</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0       False
+1       False
+2       False
+3       False
+4       False
+        ...  
+2860     True
+2861     True
+2862     True
+2863     True
+2864     True
+Name: Año, Length: 2865, dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Tenemos todos los registros de quienes ganaron medalla después del Año 1948</span>
+<span class="n">df</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Año</th>
+      <th>Deporte</th>
+      <th>Evento</th>
+      <th>País</th>
+      <th>Género</th>
+      <th>Medal Rank</th>
+      <th>Medalla</th>
+      <th>Nombre_atleta_o_Equipo</th>
+      <th>Edad_Atleta</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>251</th>
+      <td>1952</td>
+      <td>Alpine Skiing</td>
+      <td>Men's Downhill</td>
+      <td>Italy</td>
+      <td>Men</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Zeno ColÃ²</td>
+      <td>31.0</td>
+    </tr>
+    <tr>
+      <th>252</th>
+      <td>1952</td>
+      <td>Alpine Skiing</td>
+      <td>Men's Downhill</td>
+      <td>Austria</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Othmar Schneider</td>
+      <td>23.0</td>
+    </tr>
+    <tr>
+      <th>253</th>
+      <td>1952</td>
+      <td>Alpine Skiing</td>
+      <td>Men's Downhill</td>
+      <td>Austria</td>
+      <td>Men</td>
+      <td>3</td>
+      <td>bronze</td>
+      <td>Christian Pravda</td>
+      <td>24.0</td>
+    </tr>
+    <tr>
+      <th>254</th>
+      <td>1952</td>
+      <td>Alpine Skiing</td>
+      <td>Men's Giant Slalom</td>
+      <td>Norway</td>
+      <td>Men</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Stein Eriksen</td>
+      <td>24.0</td>
+    </tr>
+    <tr>
+      <th>255</th>
+      <td>1952</td>
+      <td>Alpine Skiing</td>
+      <td>Men's Giant Slalom</td>
+      <td>Austria</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Christian Pravda</td>
+      <td>24.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2860</th>
+      <td>2014</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 50 Kilometers</td>
+      <td>Russia</td>
+      <td>Men</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Alexander Legkov</td>
+      <td>30.0</td>
+    </tr>
+    <tr>
+      <th>2861</th>
+      <td>2014</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 50 Kilometers</td>
+      <td>Russia</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Maxim Vylegzhanin</td>
+      <td>31.0</td>
+    </tr>
+    <tr>
+      <th>2862</th>
+      <td>2014</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 50 Kilometers</td>
+      <td>Russia</td>
+      <td>Men</td>
+      <td>3</td>
+      <td>bronze</td>
+      <td>Ilia Chernousov</td>
+      <td>27.0</td>
+    </tr>
+    <tr>
+      <th>2863</th>
+      <td>2014</td>
+      <td>Ice Hockey</td>
+      <td>Men's Ice Hockey</td>
+      <td>Canada</td>
+      <td>Men</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Canada</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2864</th>
+      <td>2014</td>
+      <td>Ice Hockey</td>
+      <td>Men's Ice Hockey</td>
+      <td>Sweden</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Sweden</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>2614 rows × 9 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask_1</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Edad_Atleta&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">menores_de_20</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">mask_1</span><span class="p">]</span>
+<span class="n">menores_de_20</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Año</th>
+      <th>Deporte</th>
+      <th>Evento</th>
+      <th>País</th>
+      <th>Género</th>
+      <th>Medal Rank</th>
+      <th>Medalla</th>
+      <th>Nombre_atleta_o_Equipo</th>
+      <th>Edad_Atleta</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>14</th>
+      <td>1924</td>
+      <td>Figure Skating</td>
+      <td>Men's Singles</td>
+      <td>Switzerland</td>
+      <td>Men</td>
+      <td>3</td>
+      <td>bronze</td>
+      <td>Georges Gautschi</td>
+      <td>19.0</td>
+    </tr>
+    <tr>
+      <th>60</th>
+      <td>1928</td>
+      <td>Figure Skating</td>
+      <td>Men's Singles</td>
+      <td>Belgium</td>
+      <td>Men</td>
+      <td>3</td>
+      <td>bronze</td>
+      <td>Robert Van Zeebroeck</td>
+      <td>18.0</td>
+    </tr>
+    <tr>
+      <th>64</th>
+      <td>1928</td>
+      <td>Figure Skating</td>
+      <td>Women's Singles</td>
+      <td>Norway</td>
+      <td>Women</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Sonja Henie</td>
+      <td>15.0</td>
+    </tr>
+    <tr>
+      <th>65</th>
+      <td>1928</td>
+      <td>Figure Skating</td>
+      <td>Women's Singles</td>
+      <td>Austria</td>
+      <td>Women</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Fritzi Burger</td>
+      <td>17.0</td>
+    </tr>
+    <tr>
+      <th>74</th>
+      <td>1928</td>
+      <td>Skeleton</td>
+      <td>Men's Skeleton</td>
+      <td>United States</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Jack Heaton</td>
+      <td>19.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2814</th>
+      <td>2014</td>
+      <td>Alpine Skiing</td>
+      <td>Women's Slalom</td>
+      <td>United States</td>
+      <td>Women</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Mikaela Shiffrin</td>
+      <td>18.0</td>
+    </tr>
+    <tr>
+      <th>2827</th>
+      <td>2014</td>
+      <td>Short-Track Speedskating</td>
+      <td>Women's 1,000 Meters</td>
+      <td>China</td>
+      <td>Women</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Kexin Fan</td>
+      <td>20.0</td>
+    </tr>
+    <tr>
+      <th>2828</th>
+      <td>2014</td>
+      <td>Short-Track Speedskating</td>
+      <td>Women's 1,000 Meters</td>
+      <td>South Korea</td>
+      <td>Women</td>
+      <td>3</td>
+      <td>bronze</td>
+      <td>Suk Hee Shim</td>
+      <td>17.0</td>
+    </tr>
+    <tr>
+      <th>2830</th>
+      <td>2014</td>
+      <td>Short-Track Speedskating</td>
+      <td>Men's 500 Meters</td>
+      <td>China</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Dajing Wu</td>
+      <td>19.0</td>
+    </tr>
+    <tr>
+      <th>2837</th>
+      <td>2014</td>
+      <td>Alpine Skiing</td>
+      <td>Men's Slalom</td>
+      <td>Norway</td>
+      <td>Men</td>
+      <td>3</td>
+      <td>bronze</td>
+      <td>Henrik Kristoffersen</td>
+      <td>19.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>299 rows × 9 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">menores_de_20</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>25%</th>
+      <th>50%</th>
+      <th>75%</th>
+      <th>max</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Año</th>
+      <td>299.0</td>
+      <td>1983.471572</td>
+      <td>22.087115</td>
+      <td>1924.0</td>
+      <td>1968.0</td>
+      <td>1984.0</td>
+      <td>2002.0</td>
+      <td>2014.0</td>
+    </tr>
+    <tr>
+      <th>Medal Rank</th>
+      <td>299.0</td>
+      <td>2.023411</td>
+      <td>0.812726</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>Edad_Atleta</th>
+      <td>299.0</td>
+      <td>18.856187</td>
+      <td>1.332123</td>
+      <td>14.0</td>
+      <td>18.0</td>
+      <td>19.0</td>
+      <td>20.0</td>
+      <td>20.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">menores_de_20</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>index</th>
+      <th>Año</th>
+      <th>Deporte</th>
+      <th>Evento</th>
+      <th>País</th>
+      <th>Género</th>
+      <th>Medal Rank</th>
+      <th>Medalla</th>
+      <th>Nombre_atleta_o_Equipo</th>
+      <th>Edad_Atleta</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>14</td>
+      <td>1924</td>
+      <td>Figure Skating</td>
+      <td>Men's Singles</td>
+      <td>Switzerland</td>
+      <td>Men</td>
+      <td>3</td>
+      <td>bronze</td>
+      <td>Georges Gautschi</td>
+      <td>19.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>60</td>
+      <td>1928</td>
+      <td>Figure Skating</td>
+      <td>Men's Singles</td>
+      <td>Belgium</td>
+      <td>Men</td>
+      <td>3</td>
+      <td>bronze</td>
+      <td>Robert Van Zeebroeck</td>
+      <td>18.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>64</td>
+      <td>1928</td>
+      <td>Figure Skating</td>
+      <td>Women's Singles</td>
+      <td>Norway</td>
+      <td>Women</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Sonja Henie</td>
+      <td>15.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>65</td>
+      <td>1928</td>
+      <td>Figure Skating</td>
+      <td>Women's Singles</td>
+      <td>Austria</td>
+      <td>Women</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Fritzi Burger</td>
+      <td>17.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>74</td>
+      <td>1928</td>
+      <td>Skeleton</td>
+      <td>Men's Skeleton</td>
+      <td>United States</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Jack Heaton</td>
+      <td>19.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>294</th>
+      <td>2814</td>
+      <td>2014</td>
+      <td>Alpine Skiing</td>
+      <td>Women's Slalom</td>
+      <td>United States</td>
+      <td>Women</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Mikaela Shiffrin</td>
+      <td>18.0</td>
+    </tr>
+    <tr>
+      <th>295</th>
+      <td>2827</td>
+      <td>2014</td>
+      <td>Short-Track Speedskating</td>
+      <td>Women's 1,000 Meters</td>
+      <td>China</td>
+      <td>Women</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Kexin Fan</td>
+      <td>20.0</td>
+    </tr>
+    <tr>
+      <th>296</th>
+      <td>2828</td>
+      <td>2014</td>
+      <td>Short-Track Speedskating</td>
+      <td>Women's 1,000 Meters</td>
+      <td>South Korea</td>
+      <td>Women</td>
+      <td>3</td>
+      <td>bronze</td>
+      <td>Suk Hee Shim</td>
+      <td>17.0</td>
+    </tr>
+    <tr>
+      <th>297</th>
+      <td>2830</td>
+      <td>2014</td>
+      <td>Short-Track Speedskating</td>
+      <td>Men's 500 Meters</td>
+      <td>China</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Dajing Wu</td>
+      <td>19.0</td>
+    </tr>
+    <tr>
+      <th>298</th>
+      <td>2837</td>
+      <td>2014</td>
+      <td>Alpine Skiing</td>
+      <td>Men's Slalom</td>
+      <td>Norway</td>
+      <td>Men</td>
+      <td>3</td>
+      <td>bronze</td>
+      <td>Henrik Kristoffersen</td>
+      <td>19.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>299 rows × 10 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">menores_de_20</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Año</th>
+      <th>Deporte</th>
+      <th>Evento</th>
+      <th>País</th>
+      <th>Género</th>
+      <th>Medal Rank</th>
+      <th>Medalla</th>
+      <th>Nombre_atleta_o_Equipo</th>
+      <th>Edad_Atleta</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1924</td>
+      <td>Figure Skating</td>
+      <td>Men's Singles</td>
+      <td>Switzerland</td>
+      <td>Men</td>
+      <td>3</td>
+      <td>bronze</td>
+      <td>Georges Gautschi</td>
+      <td>19.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1928</td>
+      <td>Figure Skating</td>
+      <td>Men's Singles</td>
+      <td>Belgium</td>
+      <td>Men</td>
+      <td>3</td>
+      <td>bronze</td>
+      <td>Robert Van Zeebroeck</td>
+      <td>18.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1928</td>
+      <td>Figure Skating</td>
+      <td>Women's Singles</td>
+      <td>Norway</td>
+      <td>Women</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Sonja Henie</td>
+      <td>15.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1928</td>
+      <td>Figure Skating</td>
+      <td>Women's Singles</td>
+      <td>Austria</td>
+      <td>Women</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Fritzi Burger</td>
+      <td>17.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1928</td>
+      <td>Skeleton</td>
+      <td>Men's Skeleton</td>
+      <td>United States</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Jack Heaton</td>
+      <td>19.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>294</th>
+      <td>2014</td>
+      <td>Alpine Skiing</td>
+      <td>Women's Slalom</td>
+      <td>United States</td>
+      <td>Women</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Mikaela Shiffrin</td>
+      <td>18.0</td>
+    </tr>
+    <tr>
+      <th>295</th>
+      <td>2014</td>
+      <td>Short-Track Speedskating</td>
+      <td>Women's 1,000 Meters</td>
+      <td>China</td>
+      <td>Women</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Kexin Fan</td>
+      <td>20.0</td>
+    </tr>
+    <tr>
+      <th>296</th>
+      <td>2014</td>
+      <td>Short-Track Speedskating</td>
+      <td>Women's 1,000 Meters</td>
+      <td>South Korea</td>
+      <td>Women</td>
+      <td>3</td>
+      <td>bronze</td>
+      <td>Suk Hee Shim</td>
+      <td>17.0</td>
+    </tr>
+    <tr>
+      <th>297</th>
+      <td>2014</td>
+      <td>Short-Track Speedskating</td>
+      <td>Men's 500 Meters</td>
+      <td>China</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Dajing Wu</td>
+      <td>19.0</td>
+    </tr>
+    <tr>
+      <th>298</th>
+      <td>2014</td>
+      <td>Alpine Skiing</td>
+      <td>Men's Slalom</td>
+      <td>Norway</td>
+      <td>Men</td>
+      <td>3</td>
+      <td>bronze</td>
+      <td>Henrik Kristoffersen</td>
+      <td>19.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>299 rows × 9 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Podemos juntar ambas condiciones</span>
+<span class="n">menores_ano_cincuenta</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">mask</span><span class="o">&amp;</span><span class="n">mask_1</span><span class="p">]</span>
+<span class="n">menores_ano_cincuenta</span> <span class="o">=</span> <span class="n">menores_ano_cincuenta</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">menores_ano_cincuenta</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Año</th>
+      <th>Deporte</th>
+      <th>Evento</th>
+      <th>País</th>
+      <th>Género</th>
+      <th>Medal Rank</th>
+      <th>Medalla</th>
+      <th>Nombre_atleta_o_Equipo</th>
+      <th>Edad_Atleta</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1952</td>
+      <td>Alpine Skiing</td>
+      <td>Women's Downhill</td>
+      <td>Italy</td>
+      <td>Women</td>
+      <td>3</td>
+      <td>bronze</td>
+      <td>Giuliana Chenal-Minuzzo</td>
+      <td>20.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1952</td>
+      <td>Alpine Skiing</td>
+      <td>Women's Giant Slalom</td>
+      <td>United States</td>
+      <td>Women</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Andrea Mead-Lawrence</td>
+      <td>19.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1952</td>
+      <td>Alpine Skiing</td>
+      <td>Women's Slalom</td>
+      <td>United States</td>
+      <td>Women</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Andrea Mead-Lawrence</td>
+      <td>19.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1952</td>
+      <td>Figure Skating</td>
+      <td>Men's Singles</td>
+      <td>United States</td>
+      <td>Men</td>
+      <td>3</td>
+      <td>bronze</td>
+      <td>Jim Grogan</td>
+      <td>20.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1952</td>
+      <td>Figure Skating</td>
+      <td>Women's Singles</td>
+      <td>United States</td>
+      <td>Women</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Tenley Albright</td>
+      <td>16.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">menores_ano_cincuenta</span><span class="p">[</span><span class="s2">&quot;Medalla&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>bronze    94
+silver    93
+gold      89
+Name: Medalla, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">mask</span> <span class="o">&amp;</span> <span class="n">mask_1</span><span class="p">][</span><span class="s2">&quot;Medalla&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>bronze    94
+silver    93
+gold      89
+Name: Medalla, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask_2</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;País&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;China&quot;</span>
+<span class="n">df</span><span class="p">[</span><span class="n">mask</span> <span class="o">&amp;</span> <span class="n">mask_1</span> <span class="o">&amp;</span> <span class="n">mask_2</span><span class="p">]</span><span class="c1">#[&quot;Género&quot;].value_counts()*100</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Año</th>
+      <th>Deporte</th>
+      <th>Evento</th>
+      <th>País</th>
+      <th>Género</th>
+      <th>Medal Rank</th>
+      <th>Medalla</th>
+      <th>Nombre_atleta_o_Equipo</th>
+      <th>Edad_Atleta</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1531</th>
+      <td>1994</td>
+      <td>Figure Skating</td>
+      <td>Women's Singles</td>
+      <td>China</td>
+      <td>Women</td>
+      <td>3</td>
+      <td>bronze</td>
+      <td>Chen Lu</td>
+      <td>17.0</td>
+    </tr>
+    <tr>
+      <th>1732</th>
+      <td>1998</td>
+      <td>Freestyle Skiing</td>
+      <td>Women's Aerials</td>
+      <td>China</td>
+      <td>Women</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Xu Nannan</td>
+      <td>19.0</td>
+    </tr>
+    <tr>
+      <th>1756</th>
+      <td>1998</td>
+      <td>Short-Track Speedskating</td>
+      <td>Men's 500 Meters</td>
+      <td>China</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>An Yulong</td>
+      <td>19.0</td>
+    </tr>
+    <tr>
+      <th>1765</th>
+      <td>1998</td>
+      <td>Short-Track Speedskating</td>
+      <td>Women's 500 Meters</td>
+      <td>China</td>
+      <td>Women</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Yang Yang (S)</td>
+      <td>20.0</td>
+    </tr>
+    <tr>
+      <th>1768</th>
+      <td>1998</td>
+      <td>Short-Track Speedskating</td>
+      <td>Women's 1,000 Meters</td>
+      <td>China</td>
+      <td>Women</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Yang Yang (S)</td>
+      <td>20.0</td>
+    </tr>
+    <tr>
+      <th>2229</th>
+      <td>2006</td>
+      <td>Short-Track Speedskating</td>
+      <td>Women's 500 Meters</td>
+      <td>China</td>
+      <td>Women</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Wang Meng</td>
+      <td>20.0</td>
+    </tr>
+    <tr>
+      <th>2233</th>
+      <td>2006</td>
+      <td>Short-Track Speedskating</td>
+      <td>Women's 1,000 Meters</td>
+      <td>China</td>
+      <td>Women</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Wang Meng</td>
+      <td>20.0</td>
+    </tr>
+    <tr>
+      <th>2237</th>
+      <td>2006</td>
+      <td>Short-Track Speedskating</td>
+      <td>Women's 1,500 Meters</td>
+      <td>China</td>
+      <td>Women</td>
+      <td>3</td>
+      <td>bronze</td>
+      <td>Wang Meng</td>
+      <td>20.0</td>
+    </tr>
+    <tr>
+      <th>2493</th>
+      <td>2010</td>
+      <td>Short-Track Speedskating</td>
+      <td>Women's 1,500 Meters</td>
+      <td>China</td>
+      <td>Women</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Zhou Yang</td>
+      <td>18.0</td>
+    </tr>
+    <tr>
+      <th>2616</th>
+      <td>2014</td>
+      <td>Short-Track Speedskating</td>
+      <td>Men's 1,500 Meters</td>
+      <td>China</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Tianyu Han</td>
+      <td>17.0</td>
+    </tr>
+    <tr>
+      <th>2827</th>
+      <td>2014</td>
+      <td>Short-Track Speedskating</td>
+      <td>Women's 1,000 Meters</td>
+      <td>China</td>
+      <td>Women</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Kexin Fan</td>
+      <td>20.0</td>
+    </tr>
+    <tr>
+      <th>2830</th>
+      <td>2014</td>
+      <td>Short-Track Speedskating</td>
+      <td>Men's 500 Meters</td>
+      <td>China</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Dajing Wu</td>
+      <td>19.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">mask</span> <span class="o">&amp;</span> <span class="n">mask_1</span> <span class="o">&amp;</span> <span class="n">mask_2</span><span class="p">][</span><span class="s2">&quot;Género&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Women    9
+Men      3
+Name: Género, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">mask</span> <span class="o">&amp;</span> <span class="n">mask_1</span> <span class="o">&amp;</span> <span class="n">mask_2</span><span class="p">][</span><span class="s2">&quot;Género&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Women    75.0
+Men      25.0
+Name: Género, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">mask</span><span class="o">|</span><span class="n">mask_1</span><span class="o">|</span><span class="n">mask_2</span><span class="p">][</span><span class="s2">&quot;Género&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Men      1513
+Women    1030
+Mixed      94
+Name: Género, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="nan">
+<h2><em>NaN</em><a class="headerlink" href="#nan" title="Permalink to this headline">#</a></h2>
+<p>Suele ocurrir que en nuestro <code class="docutils literal notranslate"><span class="pre">dataframe</span></code> se tengan valores perdidos. Estos deben ser tratados por métodos de imputación que mas adelante discutiremos. Por ahora veremos como eliminarlos o modificarlos.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 2865 entries, 0 to 2864
+Data columns (total 9 columns):
+ #   Column                  Non-Null Count  Dtype  
+---  ------                  --------------  -----  
+ 0   Año                     2865 non-null   int64  
+ 1   Deporte                 2865 non-null   object 
+ 2   Evento                  2865 non-null   object 
+ 3   País                    2865 non-null   object 
+ 4   Género                  2865 non-null   object 
+ 5   Medal Rank              2865 non-null   int64  
+ 6   Medalla                 2865 non-null   object 
+ 7   Nombre_atleta_o_Equipo  2865 non-null   object 
+ 8   Edad_Atleta             2173 non-null   float64
+dtypes: float64(1), int64(2), object(6)
+memory usage: 201.6+ KB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_drop</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">df_drop</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Año</th>
+      <th>Deporte</th>
+      <th>Evento</th>
+      <th>País</th>
+      <th>Género</th>
+      <th>Medal Rank</th>
+      <th>Medalla</th>
+      <th>Nombre_atleta_o_Equipo</th>
+      <th>Edad_Atleta</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3</th>
+      <td>1924</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 18 Kilometers</td>
+      <td>Norway</td>
+      <td>Men</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Thorleif Haug</td>
+      <td>29.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1924</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 18 Kilometers</td>
+      <td>Norway</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Johan GrÃ¸ttumsbraaten</td>
+      <td>24.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1924</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 18 Kilometers</td>
+      <td>Finland</td>
+      <td>Men</td>
+      <td>3</td>
+      <td>bronze</td>
+      <td>Tapani Niku</td>
+      <td>28.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1924</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 50 Kilometers</td>
+      <td>Norway</td>
+      <td>Men</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Thorleif Haug</td>
+      <td>29.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1924</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 50 Kilometers</td>
+      <td>Norway</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Thoralf StrÃ¸mstad</td>
+      <td>27.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_drop</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2173, 9)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Edad_Atleta&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0        True
+1        True
+2        True
+3       False
+4       False
+        ...  
+2860    False
+2861    False
+2862    False
+2863     True
+2864     True
+Name: Edad_Atleta, Length: 2865, dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Edad_Atleta&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Año</th>
+      <th>Deporte</th>
+      <th>Evento</th>
+      <th>País</th>
+      <th>Género</th>
+      <th>Medal Rank</th>
+      <th>Medalla</th>
+      <th>Nombre_atleta_o_Equipo</th>
+      <th>Edad_Atleta</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1924</td>
+      <td>Bobsled</td>
+      <td>Men's Four/Five</td>
+      <td>Switzerland</td>
+      <td>Men</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Switzerland-1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1924</td>
+      <td>Bobsled</td>
+      <td>Men's Four/Five</td>
+      <td>Britain</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Britain-1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1924</td>
+      <td>Bobsled</td>
+      <td>Men's Four/Five</td>
+      <td>Belgium</td>
+      <td>Men</td>
+      <td>3</td>
+      <td>bronze</td>
+      <td>Belgium-1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1924</td>
+      <td>Curling</td>
+      <td>Men's Curling</td>
+      <td>Britain</td>
+      <td>Men</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Britain</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>1924</td>
+      <td>Curling</td>
+      <td>Men's Curling</td>
+      <td>Sweden</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Sweden</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2857</th>
+      <td>2014</td>
+      <td>Bobsled</td>
+      <td>Men's Four</td>
+      <td>Russia</td>
+      <td>Men</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Russia</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2858</th>
+      <td>2014</td>
+      <td>Bobsled</td>
+      <td>Men's Four</td>
+      <td>Latvia</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Latvia</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2859</th>
+      <td>2014</td>
+      <td>Bobsled</td>
+      <td>Men's Four</td>
+      <td>United States</td>
+      <td>Men</td>
+      <td>3</td>
+      <td>bronze</td>
+      <td>United States</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2863</th>
+      <td>2014</td>
+      <td>Ice Hockey</td>
+      <td>Men's Ice Hockey</td>
+      <td>Canada</td>
+      <td>Men</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Canada</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2864</th>
+      <td>2014</td>
+      <td>Ice Hockey</td>
+      <td>Men's Ice Hockey</td>
+      <td>Sweden</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Sweden</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>692 rows × 9 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Podemos obtener la negación de la máscara</span>
+<span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Edad_Atleta&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">())]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Año</th>
+      <th>Deporte</th>
+      <th>Evento</th>
+      <th>País</th>
+      <th>Género</th>
+      <th>Medal Rank</th>
+      <th>Medalla</th>
+      <th>Nombre_atleta_o_Equipo</th>
+      <th>Edad_Atleta</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3</th>
+      <td>1924</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 18 Kilometers</td>
+      <td>Norway</td>
+      <td>Men</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Thorleif Haug</td>
+      <td>29.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1924</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 18 Kilometers</td>
+      <td>Norway</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Johan GrÃ¸ttumsbraaten</td>
+      <td>24.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1924</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 18 Kilometers</td>
+      <td>Finland</td>
+      <td>Men</td>
+      <td>3</td>
+      <td>bronze</td>
+      <td>Tapani Niku</td>
+      <td>28.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1924</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 50 Kilometers</td>
+      <td>Norway</td>
+      <td>Men</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Thorleif Haug</td>
+      <td>29.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1924</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 50 Kilometers</td>
+      <td>Norway</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Thoralf StrÃ¸mstad</td>
+      <td>27.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2849</th>
+      <td>2014</td>
+      <td>Snowboarding</td>
+      <td>Men's Parallel Slalom</td>
+      <td>Slovenia</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Zan Kosir</td>
+      <td>29.0</td>
+    </tr>
+    <tr>
+      <th>2850</th>
+      <td>2014</td>
+      <td>Snowboarding</td>
+      <td>Men's Parallel Slalom</td>
+      <td>Austria</td>
+      <td>Men</td>
+      <td>3</td>
+      <td>bronze</td>
+      <td>Benjamin Karl</td>
+      <td>28.0</td>
+    </tr>
+    <tr>
+      <th>2860</th>
+      <td>2014</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 50 Kilometers</td>
+      <td>Russia</td>
+      <td>Men</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Alexander Legkov</td>
+      <td>30.0</td>
+    </tr>
+    <tr>
+      <th>2861</th>
+      <td>2014</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 50 Kilometers</td>
+      <td>Russia</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Maxim Vylegzhanin</td>
+      <td>31.0</td>
+    </tr>
+    <tr>
+      <th>2862</th>
+      <td>2014</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 50 Kilometers</td>
+      <td>Russia</td>
+      <td>Men</td>
+      <td>3</td>
+      <td>bronze</td>
+      <td>Ilia Chernousov</td>
+      <td>27.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>2173 rows × 9 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 2865 entries, 0 to 2864
+Data columns (total 9 columns):
+ #   Column                  Non-Null Count  Dtype  
+---  ------                  --------------  -----  
+ 0   Año                     2865 non-null   int64  
+ 1   Deporte                 2865 non-null   object 
+ 2   Evento                  2865 non-null   object 
+ 3   País                    2865 non-null   object 
+ 4   Género                  2865 non-null   object 
+ 5   Medal Rank              2865 non-null   int64  
+ 6   Medalla                 2865 non-null   object 
+ 7   Nombre_atleta_o_Equipo  2865 non-null   object 
+ 8   Edad_Atleta             2173 non-null   float64
+dtypes: float64(1), int64(2), object(6)
+memory usage: 201.6+ KB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Todo regístro None o NaN es reemplazado por 0</span>
+<span class="n">df</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s2">&quot;Alerta!!!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Año</th>
+      <th>Deporte</th>
+      <th>Evento</th>
+      <th>País</th>
+      <th>Género</th>
+      <th>Medal Rank</th>
+      <th>Medalla</th>
+      <th>Nombre_atleta_o_Equipo</th>
+      <th>Edad_Atleta</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1924</td>
+      <td>Bobsled</td>
+      <td>Men's Four/Five</td>
+      <td>Switzerland</td>
+      <td>Men</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Switzerland-1</td>
+      <td>Alerta!!!</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1924</td>
+      <td>Bobsled</td>
+      <td>Men's Four/Five</td>
+      <td>Britain</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Britain-1</td>
+      <td>Alerta!!!</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1924</td>
+      <td>Bobsled</td>
+      <td>Men's Four/Five</td>
+      <td>Belgium</td>
+      <td>Men</td>
+      <td>3</td>
+      <td>bronze</td>
+      <td>Belgium-1</td>
+      <td>Alerta!!!</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1924</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 18 Kilometers</td>
+      <td>Norway</td>
+      <td>Men</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Thorleif Haug</td>
+      <td>29.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1924</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 18 Kilometers</td>
+      <td>Norway</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Johan GrÃ¸ttumsbraaten</td>
+      <td>24.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2860</th>
+      <td>2014</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 50 Kilometers</td>
+      <td>Russia</td>
+      <td>Men</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Alexander Legkov</td>
+      <td>30.0</td>
+    </tr>
+    <tr>
+      <th>2861</th>
+      <td>2014</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 50 Kilometers</td>
+      <td>Russia</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Maxim Vylegzhanin</td>
+      <td>31.0</td>
+    </tr>
+    <tr>
+      <th>2862</th>
+      <td>2014</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 50 Kilometers</td>
+      <td>Russia</td>
+      <td>Men</td>
+      <td>3</td>
+      <td>bronze</td>
+      <td>Ilia Chernousov</td>
+      <td>27.0</td>
+    </tr>
+    <tr>
+      <th>2863</th>
+      <td>2014</td>
+      <td>Ice Hockey</td>
+      <td>Men's Ice Hockey</td>
+      <td>Canada</td>
+      <td>Men</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Canada</td>
+      <td>Alerta!!!</td>
+    </tr>
+    <tr>
+      <th>2864</th>
+      <td>2014</td>
+      <td>Ice Hockey</td>
+      <td>Men's Ice Hockey</td>
+      <td>Sweden</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Sweden</td>
+      <td>Alerta!!!</td>
+    </tr>
+  </tbody>
+</table>
+<p>2865 rows × 9 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Edad_Atleta&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0        0.0
+1        0.0
+2        0.0
+3       29.0
+4       24.0
+        ... 
+2860    30.0
+2861    31.0
+2862    27.0
+2863     0.0
+2864     0.0
+Name: Edad_Atleta, Length: 2865, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Edad_Atleta_imputado&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Edad_Atleta&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Edad_Atleta&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Año</th>
+      <th>Deporte</th>
+      <th>Evento</th>
+      <th>País</th>
+      <th>Género</th>
+      <th>Medal Rank</th>
+      <th>Medalla</th>
+      <th>Nombre_atleta_o_Equipo</th>
+      <th>Edad_Atleta</th>
+      <th>Edad_Atleta_imputado</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1924</td>
+      <td>Bobsled</td>
+      <td>Men's Four/Five</td>
+      <td>Switzerland</td>
+      <td>Men</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Switzerland-1</td>
+      <td>NaN</td>
+      <td>25.152324</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1924</td>
+      <td>Bobsled</td>
+      <td>Men's Four/Five</td>
+      <td>Britain</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Britain-1</td>
+      <td>NaN</td>
+      <td>25.152324</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1924</td>
+      <td>Bobsled</td>
+      <td>Men's Four/Five</td>
+      <td>Belgium</td>
+      <td>Men</td>
+      <td>3</td>
+      <td>bronze</td>
+      <td>Belgium-1</td>
+      <td>NaN</td>
+      <td>25.152324</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1924</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 18 Kilometers</td>
+      <td>Norway</td>
+      <td>Men</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Thorleif Haug</td>
+      <td>29.0</td>
+      <td>29.000000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1924</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 18 Kilometers</td>
+      <td>Norway</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Johan GrÃ¸ttumsbraaten</td>
+      <td>24.0</td>
+      <td>24.000000</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1924</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 18 Kilometers</td>
+      <td>Finland</td>
+      <td>Men</td>
+      <td>3</td>
+      <td>bronze</td>
+      <td>Tapani Niku</td>
+      <td>28.0</td>
+      <td>28.000000</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1924</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 50 Kilometers</td>
+      <td>Norway</td>
+      <td>Men</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Thorleif Haug</td>
+      <td>29.0</td>
+      <td>29.000000</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1924</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 50 Kilometers</td>
+      <td>Norway</td>
+      <td>Men</td>
+      <td>2</td>
+      <td>silver</td>
+      <td>Thoralf StrÃ¸mstad</td>
+      <td>27.0</td>
+      <td>27.000000</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>1924</td>
+      <td>Cross-Country Skiing</td>
+      <td>Men's 50 Kilometers</td>
+      <td>Norway</td>
+      <td>Men</td>
+      <td>3</td>
+      <td>bronze</td>
+      <td>Johan GrÃ¸ttumsbraaten</td>
+      <td>24.0</td>
+      <td>24.000000</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1924</td>
+      <td>Curling</td>
+      <td>Men's Curling</td>
+      <td>Britain</td>
+      <td>Men</td>
+      <td>1</td>
+      <td>gold</td>
+      <td>Britain</td>
+      <td>NaN</td>
+      <td>25.152324</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Edad_Atleta&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">dropna</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NaN     692
+24.0    212
+23.0    200
+27.0    193
+25.0    178
+28.0    176
+26.0    168
+22.0    166
+21.0    146
+20.0    125
+29.0    117
+30.0     85
+19.0     85
+31.0     62
+32.0     57
+33.0     42
+18.0     41
+34.0     29
+17.0     27
+35.0     13
+16.0     12
+15.0      8
+36.0      8
+37.0      7
+38.0      6
+41.0      4
+39.0      2
+40.0      2
+14.0      1
+42.0      1
+Name: Edad_Atleta, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>25%</th>
+      <th>50%</th>
+      <th>75%</th>
+      <th>max</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Año</th>
+      <td>2865.0</td>
+      <td>1986.488656</td>
+      <td>23.489775</td>
+      <td>1924.0</td>
+      <td>1972.0</td>
+      <td>1992.000000</td>
+      <td>2006.0</td>
+      <td>2014.0</td>
+    </tr>
+    <tr>
+      <th>Medal Rank</th>
+      <td>2865.0</td>
+      <td>1.995812</td>
+      <td>0.815773</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>2.000000</td>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>Edad_Atleta</th>
+      <td>2173.0</td>
+      <td>25.152324</td>
+      <td>4.271764</td>
+      <td>14.0</td>
+      <td>22.0</td>
+      <td>25.000000</td>
+      <td>28.0</td>
+      <td>42.0</td>
+    </tr>
+    <tr>
+      <th>Edad_Atleta_imputado</th>
+      <td>2865.0</td>
+      <td>25.152324</td>
+      <td>3.720066</td>
+      <td>14.0</td>
+      <td>23.0</td>
+      <td>25.152324</td>
+      <td>27.0</td>
+      <td>42.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_drop</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2173, 9)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="pandas-crosstab">
+<h2><code class="docutils literal notranslate"><span class="pre">pandas.crosstab</span></code><a class="headerlink" href="#pandas-crosstab" title="Permalink to this headline">#</a></h2>
+<p>La función <code class="docutils literal notranslate"><span class="pre">pandas.crosstab</span></code> devuelve la tabla de contingencia resultante de cruzar dos o más columnas de un dataframe. Por defecto ell resultado evalúa las frecuencias (absolutas o relativas) de cada combinación de valores, es posible especificar una función de agregación.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Género&#39;</span><span class="p">],</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Medalla&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Medalla</th>
+      <th>bronze</th>
+      <th>gold</th>
+      <th>silver</th>
+    </tr>
+    <tr>
+      <th>Género</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Men</th>
+      <td>568</td>
+      <td>573</td>
+      <td>570</td>
+    </tr>
+    <tr>
+      <th>Mixed</th>
+      <td>36</td>
+      <td>37</td>
+      <td>36</td>
+    </tr>
+    <tr>
+      <th>Women</th>
+      <td>344</td>
+      <td>349</td>
+      <td>352</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Podemos obtener la suma por filas y columnas (subtotales) y renombrar esta</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Género&#39;</span><span class="p">],</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Medalla&#39;</span><span class="p">],</span> <span class="n">margins</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">margins_name</span><span class="o">=</span><span class="s2">&quot;Total&quot;</span><span class="p">,)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Medalla</th>
+      <th>bronze</th>
+      <th>gold</th>
+      <th>silver</th>
+      <th>Total</th>
+    </tr>
+    <tr>
+      <th>Género</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Men</th>
+      <td>568</td>
+      <td>573</td>
+      <td>570</td>
+      <td>1711</td>
+    </tr>
+    <tr>
+      <th>Mixed</th>
+      <td>36</td>
+      <td>37</td>
+      <td>36</td>
+      <td>109</td>
+    </tr>
+    <tr>
+      <th>Women</th>
+      <td>344</td>
+      <td>349</td>
+      <td>352</td>
+      <td>1045</td>
+    </tr>
+    <tr>
+      <th>Total</th>
+      <td>948</td>
+      <td>959</td>
+      <td>958</td>
+      <td>2865</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Podemos mostrar las frecuencias &quot;normalizadas&quot; (es decir una parte de la unidad). Se puede obtener respecto </span>
+<span class="c1">## al total o con respecto a los subtotales de filas o columnas. Asignamos al parámetro normalize el valor True,</span>
+<span class="c1">## la normalización se realiza con respecto al total de muestras</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Género&#39;</span><span class="p">],</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Medalla&#39;</span><span class="p">],</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Medalla</th>
+      <th>bronze</th>
+      <th>gold</th>
+      <th>silver</th>
+    </tr>
+    <tr>
+      <th>Género</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Men</th>
+      <td>0.198255</td>
+      <td>0.200000</td>
+      <td>0.198953</td>
+    </tr>
+    <tr>
+      <th>Mixed</th>
+      <td>0.012565</td>
+      <td>0.012914</td>
+      <td>0.012565</td>
+    </tr>
+    <tr>
+      <th>Women</th>
+      <td>0.120070</td>
+      <td>0.121815</td>
+      <td>0.122862</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Del total de las medallas entregadas:</p>
+<ol class="simple">
+<li><p>19.8% fueron de bronce y entregas a hombres.</p></li>
+<li><p>12.2% fueron de plata y entregadas a mujeres.</p></li>
+</ol>
+<p>En cada casilla podemos extraer información similar.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Género&#39;</span><span class="p">],</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Medalla&#39;</span><span class="p">],</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">margins</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">margins_name</span><span class="o">=</span> <span class="s2">&quot;Total %&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Medalla</th>
+      <th>bronze</th>
+      <th>gold</th>
+      <th>silver</th>
+      <th>Total %</th>
+    </tr>
+    <tr>
+      <th>Género</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Men</th>
+      <td>0.198255</td>
+      <td>0.200000</td>
+      <td>0.198953</td>
+      <td>0.597208</td>
+    </tr>
+    <tr>
+      <th>Mixed</th>
+      <td>0.012565</td>
+      <td>0.012914</td>
+      <td>0.012565</td>
+      <td>0.038045</td>
+    </tr>
+    <tr>
+      <th>Women</th>
+      <td>0.120070</td>
+      <td>0.121815</td>
+      <td>0.122862</td>
+      <td>0.364747</td>
+    </tr>
+    <tr>
+      <th>Total %</th>
+      <td>0.330890</td>
+      <td>0.334729</td>
+      <td>0.334380</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Género&#39;</span><span class="p">],</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;País&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>País</th>
+      <th>Australia</th>
+      <th>Austria</th>
+      <th>Belarus</th>
+      <th>Belgium</th>
+      <th>Britain</th>
+      <th>Bulgaria</th>
+      <th>Canada</th>
+      <th>China</th>
+      <th>Croatia</th>
+      <th>Czech Republic</th>
+      <th>...</th>
+      <th>Soviet Union</th>
+      <th>Spain</th>
+      <th>Sweden</th>
+      <th>Switzerland</th>
+      <th>Ukraine</th>
+      <th>Unified Team</th>
+      <th>United States</th>
+      <th>Uzbekistan</th>
+      <th>West Germany</th>
+      <th>Yugoslavia</th>
+    </tr>
+    <tr>
+      <th>Género</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Men</th>
+      <td>5</td>
+      <td>143</td>
+      <td>8</td>
+      <td>4</td>
+      <td>13</td>
+      <td>1</td>
+      <td>82</td>
+      <td>12</td>
+      <td>5</td>
+      <td>9</td>
+      <td>...</td>
+      <td>104</td>
+      <td>1</td>
+      <td>106</td>
+      <td>98</td>
+      <td>0</td>
+      <td>4</td>
+      <td>155</td>
+      <td>0</td>
+      <td>25</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>Mixed</th>
+      <td>0</td>
+      <td>5</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>11</td>
+      <td>5</td>
+      <td>0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>20</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>4</td>
+      <td>11</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Women</th>
+      <td>7</td>
+      <td>70</td>
+      <td>7</td>
+      <td>0</td>
+      <td>11</td>
+      <td>5</td>
+      <td>77</td>
+      <td>36</td>
+      <td>6</td>
+      <td>14</td>
+      <td>...</td>
+      <td>70</td>
+      <td>1</td>
+      <td>38</td>
+      <td>40</td>
+      <td>6</td>
+      <td>15</td>
+      <td>116</td>
+      <td>1</td>
+      <td>13</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>3 rows × 44 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pais_genero</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Género&#39;</span><span class="p">],</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;País&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">unstack</span><span class="p">())</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="mi">0</span><span class="p">:</span><span class="s2">&quot;Conteo&quot;</span><span class="p">},</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">pais_genero</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>Conteo</th>
+    </tr>
+    <tr>
+      <th>País</th>
+      <th>Género</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="3" valign="top">Australia</th>
+      <th>Men</th>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>Mixed</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Women</th>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th rowspan="3" valign="top">Austria</th>
+      <th>Men</th>
+      <td>143</td>
+    </tr>
+    <tr>
+      <th>Mixed</th>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>Women</th>
+      <td>70</td>
+    </tr>
+    <tr>
+      <th rowspan="3" valign="top">Belarus</th>
+      <th>Men</th>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>Mixed</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Women</th>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th rowspan="3" valign="top">Belgium</th>
+      <th>Men</th>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>Mixed</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Women</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th rowspan="3" valign="top">Britain</th>
+      <th>Men</th>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th>Mixed</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>Women</th>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th rowspan="3" valign="top">Bulgaria</th>
+      <th>Men</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Mixed</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Women</th>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th rowspan="3" valign="top">Canada</th>
+      <th>Men</th>
+      <td>82</td>
+    </tr>
+    <tr>
+      <th>Mixed</th>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>Women</th>
+      <td>77</td>
+    </tr>
+    <tr>
+      <th rowspan="3" valign="top">China</th>
+      <th>Men</th>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>Mixed</th>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>Women</th>
+      <td>36</td>
+    </tr>
+    <tr>
+      <th rowspan="3" valign="top">Croatia</th>
+      <th>Men</th>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>Mixed</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Women</th>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th rowspan="3" valign="top">Czech Republic</th>
+      <th>Men</th>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>Mixed</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Women</th>
+      <td>14</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pais_genero</span><span class="o">.</span><span class="n">index</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MultiIndex([(    &#39;Australia&#39;,   &#39;Men&#39;),
+            (    &#39;Australia&#39;, &#39;Mixed&#39;),
+            (    &#39;Australia&#39;, &#39;Women&#39;),
+            (      &#39;Austria&#39;,   &#39;Men&#39;),
+            (      &#39;Austria&#39;, &#39;Mixed&#39;),
+            (      &#39;Austria&#39;, &#39;Women&#39;),
+            (      &#39;Belarus&#39;,   &#39;Men&#39;),
+            (      &#39;Belarus&#39;, &#39;Mixed&#39;),
+            (      &#39;Belarus&#39;, &#39;Women&#39;),
+            (      &#39;Belgium&#39;,   &#39;Men&#39;),
+            ...
+            (&#39;United States&#39;, &#39;Women&#39;),
+            (   &#39;Uzbekistan&#39;,   &#39;Men&#39;),
+            (   &#39;Uzbekistan&#39;, &#39;Mixed&#39;),
+            (   &#39;Uzbekistan&#39;, &#39;Women&#39;),
+            ( &#39;West Germany&#39;,   &#39;Men&#39;),
+            ( &#39;West Germany&#39;, &#39;Mixed&#39;),
+            ( &#39;West Germany&#39;, &#39;Women&#39;),
+            (   &#39;Yugoslavia&#39;,   &#39;Men&#39;),
+            (   &#39;Yugoslavia&#39;, &#39;Mixed&#39;),
+            (   &#39;Yugoslavia&#39;, &#39;Women&#39;)],
+           names=[&#39;País&#39;, &#39;Género&#39;], length=132)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pais_genero</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;Belgium&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Conteo</th>
+    </tr>
+    <tr>
+      <th>Género</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Men</th>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>Mixed</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Women</th>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="conclusiones">
+<h2><em>Conclusiones.</em><a class="headerlink" href="#conclusiones" title="Permalink to this headline">#</a></h2>
+<p>Revisamos el método de importación de archivos en distintios formatos. Además, se vieron varios métodos de consulta de los <code class="docutils literal notranslate"><span class="pre">dataframe</span></code>. Se revisó <code class="docutils literal notranslate"><span class="pre">pandas.croostab</span></code> es una tabla de contingencía generada apartir del <code class="docutils literal notranslate"><span class="pre">dataframe.</span></code></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="Lectura_5_Pandas_Series_DataFrame.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Introducción Libreria <code class="docutils literal notranslate"><span class="pre">Pandas</span></code></p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Lectura_6.1_operacionesB%C3%A1sicasDataframes.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Operaciones básicas con dataframes</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Luis Andres Campos.<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
